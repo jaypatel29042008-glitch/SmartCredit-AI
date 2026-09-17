@@ -5,7 +5,7 @@
 import os
 import time
 import hashlib
-from datetime import datetime
+from datetime import datetime, timezone
 from collections import defaultdict
 from typing import List, Dict, Any
 
@@ -23,7 +23,7 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_sc
 
 from fastapi import FastAPI, HTTPException, Request, Response, status
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import HTMLResponse, JSONResponse
+from fastapi.responses import HTMLResponse, JSONResponse, FileResponse
 from fastapi.staticfiles import StaticFiles
 import uvicorn
 
@@ -226,7 +226,7 @@ class CreditModelEngine:
             ]
 
         # Audit logging
-        ts = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S")
+        ts = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S")
         app_id = f"APP-{np.random.randint(10000, 99999)}"
         capital = int(req_data["LoanAmount"] * 1000)
         raw_str = f"{app_id}|{ts}|{verdict}|{capital}|{confidence_pct}"
@@ -273,7 +273,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Security Headers Middleware
+# Security Headers Middleware (OWASP ASVS / Financial Grade Hardening)
 @app.middleware("http")
 async def add_security_headers(request: Request, call_next):
     response = await call_next(request)
@@ -282,6 +282,8 @@ async def add_security_headers(request: Request, call_next):
     response.headers["X-XSS-Protection"] = "1; mode=block"
     response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
     response.headers["Strict-Transport-Security"] = "max-age=31536000; includeSubDomains"
+    response.headers["Content-Security-Policy"] = "default-src 'self' https: data: 'unsafe-inline' 'unsafe-eval'; frame-ancestors 'none'; object-src 'none';"
+    response.headers["Permissions-Policy"] = "geolocation=(), microphone=(), camera=()"
     return response
 
 # Rate Limiter (Sliding Window in-memory, 40 requests/min per IP)
@@ -334,21 +336,32 @@ def health_check():
         "engine": "SmartCredit AI v2.4",
         "models_loaded": list(engine.trained_pipelines.keys()),
         "dataset_records": len(engine.df),
-        "timestamp": datetime.utcnow().isoformat()
+        "timestamp": datetime.now(timezone.utc).isoformat()
     }
 
 @app.post("/api/underwrite", tags=["Credit Underwriting"])
 def evaluate_loan_application(req: CreditApplicationRequest):
     try:
-        result = engine.underwrite(req.dict())
+        result = engine.underwrite(req.model_dump())
         return result
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Inference error: {str(e)}")
 
 @app.get("/api/portfolio-metrics", tags=["Portfolio Intelligence"])
-def get_portfolio_metrics():
+def get_portfolio_metrics(cohort: str = "all"):
     df = engine.df
+    if cohort == "commercial":
+        df = df[df["ApplicantIncome"] > 5500]
+    elif cohort == "retail":
+        df = df[df["ApplicantIncome"] <= 5500]
+    elif cohort == "semiurban":
+        df = df[df["Property_Area"] == "Semiurban"]
+        
     total = len(df)
+    if total == 0:
+        total = len(engine.df)
+        df = engine.df
+        
     approved = int((df["Loan_Status"] == "Y").sum())
     rejected = total - approved
     approval_rate = round((approved / total) * 100, 2)
@@ -357,6 +370,7 @@ def get_portfolio_metrics():
     npa_risk = round(100.0 - approval_rate, 2)
 
     return {
+        "cohort": cohort,
         "total_applications": total,
         "approved_applications": approved,
         "rejected_applications": rejected,
@@ -402,6 +416,38 @@ def get_audit_trail():
         "total_records": len(engine.audit_trail),
         "logs": engine.audit_trail[:50]
     }
+
+@app.get("/download-report", tags=["Examiner Deliverables"])
+def download_examiner_report():
+    report_path = "SmartCredit_Loan_Approval_Project_Report.docx"
+    if os.path.exists(report_path):
+        return FileResponse(
+            path=report_path,
+            media_type="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+            filename="SmartCredit_Loan_Approval_Project_Report.docx"
+        )
+    raise HTTPException(status_code=404, detail="Examiner report document not found. Run generate_report.py.")
+
+@app.get("/api/export-audit-csv", tags=["Model Governance"])
+def export_audit_csv():
+    import io, csv
+    output = io.StringIO()
+    writer = csv.writer(output)
+    writer.writerow(["Application_ID", "Timestamp_UTC", "Verdict", "Requested_Capital_USD", "Probability_Score", "SHA256_Hash"])
+    for entry in engine.audit_trail:
+        writer.writerow([
+            entry.get("app_id", ""),
+            entry.get("timestamp", ""),
+            entry.get("verdict", ""),
+            entry.get("capital", 0),
+            entry.get("probability", 0),
+            entry.get("hash", "")
+        ])
+    return Response(
+        content=output.getvalue(),
+        media_type="text/csv",
+        headers={"Content-Disposition": "attachment; filename=smartcredit_audit_ledger.csv"}
+    )
 
 @app.get("/", response_class=HTMLResponse, tags=["Web Interface"])
 def serve_dashboard():

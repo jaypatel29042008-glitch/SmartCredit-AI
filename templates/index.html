@@ -214,68 +214,183 @@
       }
     }
   }</script>
-<title>SmartCredit AI | Autonomous Loan Underwriting &amp; Credit Risk Intelligence</title>
+<title>SmartCredit AI | Institutional Credit Risk Platform</title>
 </head>
-<body class="bg-surface text-on-surface antialiased">
+<body class="bg-surface text-on-surface antialiased overflow-x-hidden">
 
-<header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest border-b border-outline-variant/30 shadow-sm">
-  <div class="h-16 w-full px-6 max-w-[1680px] mx-auto flex items-center justify-between gap-4">
-    <div class="flex items-center gap-6 shrink-0">
+
+<!-- Mobile Backdrop -->
+<div id="sidebar-backdrop" onclick="toggleSidebar()" class="fixed inset-0 bg-black/40 z-40 hidden md:hidden backdrop-blur-xs transition-opacity"></div>
+
+<!-- Institutional Left Sidebar Navigation Rail -->
+<aside id="app-sidebar" class="fixed top-0 bottom-0 left-0 z-50 w-72 bg-surface-container-lowest border-r border-outline-variant/30 flex flex-col justify-between shadow-sm transition-transform duration-300 ease-in-out -translate-x-full md:translate-x-0">
+  <div class="flex flex-col h-full">
+    <!-- Brand / Platform Emblem -->
+    <div class="p-5 border-b border-outline-variant/30 flex items-center justify-between">
       <div class="flex items-center gap-3">
-        <img alt="SmartCredit AI" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1U62b818gOWPYrBvbMNkLG4X4viOjb0Q_wHUhWfF0p9oTAoYuQVf5rmvnysdwONOhWNKX3bRyT3g8bZY6rcIR3swiippHCg87m_ZhixOY7-6hg4VYm1ySLNTAhrUV1RELjo_Cl9eQAdDx0XxbfY1XQ_YC94jbe4xr8WLr_7GvuMTmOkzAESSqoPixKbOLbm9TXUNgg63jvJHKxM1ha5DifpnzAhJRNN2br5FLiw8WzivxukmIrpnrOVXB8"/>
+        <img alt="SmartCredit AI" class="h-9 w-9 object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1U62b818gOWPYrBvbMNkLG4X4viOjb0Q_wHUhWfF0p9oTAoYuQVf5rmvnysdwONOhWNKX3bRyT3g8bZY6rcIR3swiippHCg87m_ZhixOY7-6hg4VYm1ySLNTAhrUV1RELjo_Cl9eQAdDx0XxbfY1XQ_YC94jbe4xr8WLr_7GvuMTmOkzAESSqoPixKbOLbm9TXUNgg63jvJHKxM1ha5DifpnzAhJRNN2br5FLiw8WzivxukmIrpnrOVXB8"/>
         <div class="flex flex-col">
           <span class="font-bold text-on-surface tracking-tight leading-none text-lg">SmartCredit<span class="text-secondary">AI</span></span>
-          <span class="text-xs text-outline tracking-wider font-semibold uppercase mt-0.5">Institutional Credit Risk Intelligence</span>
+          <span class="text-[10px] text-outline tracking-wider font-semibold uppercase mt-1">Institutional Risk Platform</span>
         </div>
       </div>
-      <div class="hidden xl:flex items-center gap-2 pl-4 border-l border-outline-variant/40">
-        <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary/10 text-secondary font-semibold text-xs uppercase tracking-wider">
-          <span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
-          PRODUCTION ENGINE v2.4
+      <button onclick="toggleSidebar()" class="md:hidden p-1.5 rounded-lg text-outline hover:bg-surface-container">
+        <span class="material-symbols-outlined text-lg">close</span>
+      </button>
+    </div>
+
+    <!-- Active System Pill -->
+    <div class="px-5 py-2.5 bg-surface-container-low/50 border-b border-outline-variant/20 flex items-center justify-between">
+      <div class="flex items-center gap-1.5">
+        <span class="w-2 h-2 rounded-full bg-on-tertiary-container animate-pulse"></span>
+        <span class="text-[11px] font-bold text-on-surface tracking-wide uppercase">ENGINE v2.4 ONLINE</span>
+      </div>
+      <span class="text-[10px] font-semibold text-secondary px-2 py-0.5 rounded bg-secondary/10">OCC Validated</span>
+    </div>
+
+    <!-- Navigation Menu Items -->
+    <div class="flex-1 overflow-y-auto px-3 py-4 space-y-6">
+      <div>
+        <p class="px-3 pb-2 text-[10px] font-bold uppercase tracking-wider text-outline">Core Decision Intelligence</p>
+        <nav class="space-y-1">
+          <button onclick="switchTab('portfolio')" id="side-nav-portfolio" class="side-nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-xl font-medium text-xs transition-all text-left bg-surface-container-high text-secondary font-semibold shadow-xs">
+            <div class="w-8 h-8 rounded-lg flex items-center justify-center bg-secondary/15 text-secondary shrink-0">
+              <span class="material-symbols-outlined text-lg">dashboard</span>
+            </div>
+            <div class="flex flex-col min-w-0">
+              <span class="font-semibold truncate">Portfolio Intelligence</span>
+              <span class="text-[10px] text-outline truncate">L1 KPIs &amp; Trajectories</span>
+            </div>
+          </button>
+
+          <button onclick="switchTab('risk_drivers')" id="side-nav-risk_drivers" class="side-nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-xl font-medium text-xs transition-all text-left text-on-surface-variant hover:bg-surface-container/60 hover:text-on-surface">
+            <div class="w-8 h-8 rounded-lg flex items-center justify-center bg-surface-container-high text-on-surface-variant shrink-0">
+              <span class="material-symbols-outlined text-lg">query_stats</span>
+            </div>
+            <div class="flex flex-col min-w-0">
+              <span class="font-semibold truncate">Risk Drivers &amp; Demographics</span>
+              <span class="text-[10px] text-outline truncate">Multivariate Risk Matrix</span>
+            </div>
+          </button>
+
+          <button onclick="switchTab('underwriting')" id="side-nav-underwriting" class="side-nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-xl font-medium text-xs transition-all text-left text-on-surface-variant hover:bg-surface-container/60 hover:text-on-surface">
+            <div class="w-8 h-8 rounded-lg flex items-center justify-center bg-surface-container-high text-on-surface-variant shrink-0">
+              <span class="material-symbols-outlined text-lg">bolt</span>
+            </div>
+            <div class="flex flex-col min-w-0">
+              <span class="font-semibold truncate">Autonomous Underwriting</span>
+              <span class="text-[10px] text-outline truncate">Real-Time Terminal &amp; HUD</span>
+            </div>
+          </button>
+
+          <button onclick="switchTab('governance')" id="side-nav-governance" class="side-nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-xl font-medium text-xs transition-all text-left text-on-surface-variant hover:bg-surface-container/60 hover:text-on-surface">
+            <div class="w-8 h-8 rounded-lg flex items-center justify-center bg-surface-container-high text-on-surface-variant shrink-0">
+              <span class="material-symbols-outlined text-lg">verified_user</span>
+            </div>
+            <div class="flex flex-col min-w-0">
+              <span class="font-semibold truncate">Model Governance &amp; Audit</span>
+              <span class="text-[10px] text-outline truncate">SR 11-7 &amp; SHA-256 Ledger</span>
+            </div>
+          </button>
+        </nav>
+      </div>
+
+      <!-- System & Supervisory Actions -->
+      <div>
+        <p class="px-3 pb-2 text-[10px] font-bold uppercase tracking-wider text-outline">Supervisory Tools &amp; Output</p>
+        <div class="space-y-1">
+          <a href="/download-report" download="SmartCredit_Loan_Approval_Project_Report.docx" class="w-full flex items-center gap-3 px-3 py-2 rounded-xl text-xs text-on-surface hover:bg-surface-container/60 transition-colors">
+            <div class="w-7 h-7 rounded-lg flex items-center justify-center bg-primary/10 text-primary shrink-0">
+              <span class="material-symbols-outlined text-base">description</span>
+            </div>
+            <div class="flex flex-col min-w-0">
+              <span class="font-semibold truncate">Examiner Report (.docx)</span>
+              <span class="text-[10px] text-outline truncate">657 KB Formal Submission</span>
+            </div>
+          </a>
+
+          <a href="/api/export-audit-csv" download="smartcredit_audit_ledger.csv" class="w-full flex items-center gap-3 px-3 py-2 rounded-xl text-xs text-on-surface hover:bg-surface-container/60 transition-colors">
+            <div class="w-7 h-7 rounded-lg flex items-center justify-center bg-secondary/10 text-secondary shrink-0">
+              <span class="material-symbols-outlined text-base">download</span>
+            </div>
+            <div class="flex flex-col min-w-0">
+              <span class="font-semibold truncate">Export Audit Ledger (CSV)</span>
+              <span class="text-[10px] text-outline truncate">Cryptographic Proofs</span>
+            </div>
+          </a>
+
+          <a href="/docs" target="_blank" class="w-full flex items-center gap-3 px-3 py-2 rounded-xl text-xs text-on-surface hover:bg-surface-container/60 transition-colors">
+            <div class="w-7 h-7 rounded-lg flex items-center justify-center bg-surface-container-high text-on-surface-variant shrink-0">
+              <span class="material-symbols-outlined text-base">api</span>
+            </div>
+            <div class="flex flex-col min-w-0">
+              <span class="font-semibold truncate">Swagger API Specs</span>
+              <span class="text-[10px] text-outline truncate">Interactive REST Endpoints</span>
+            </div>
+          </a>
         </div>
-        <div class="flex items-center gap-1.5 px-2.5 py-1 rounded bg-surface-container text-on-surface-variant font-medium text-xs">
-          <span class="material-symbols-outlined text-xs text-secondary">speed</span>
-          12ms Inference
+      </div>
+
+      <!-- Security Sentinel Card -->
+      <div class="p-3 rounded-xl bg-surface-container-low border border-outline-variant/30 flex items-start gap-2.5">
+        <span class="material-symbols-outlined text-secondary text-lg mt-0.5">shield_lock</span>
+        <div class="flex flex-col">
+          <span class="text-xs font-bold text-on-surface">Security Sentinel Active</span>
+          <span class="text-[10px] text-outline leading-tight mt-0.5">Rate Limit: 40 req/min • OWASP ASVS • SHA-256 Audit</span>
         </div>
       </div>
     </div>
-    
-    <!-- 4 Navigation Tabs -->
-    <nav class="hidden lg:flex items-center gap-1 bg-surface-container-low p-1 rounded-xl border border-outline-variant/20 shadow-inner">
-      <button onclick="switchTab('portfolio')" id="nav-portfolio" class="nav-tab px-4 py-2 text-sm font-semibold rounded-lg transition-all duration-150 bg-surface-container-lowest text-secondary shadow-sm">
-        Portfolio Intelligence
-      </button>
-      <button onclick="switchTab('risk_drivers')" id="nav-risk_drivers" class="nav-tab px-4 py-2 text-sm font-medium text-on-surface-variant hover:text-on-surface rounded-lg transition-all duration-150">
-        Risk Drivers &amp; Demographics
-      </button>
-      <button onclick="switchTab('underwriting')" id="nav-underwriting" class="nav-tab px-4 py-2 text-sm font-medium text-on-surface-variant hover:text-on-surface rounded-lg transition-all duration-150">
-        AI Underwriting Terminal
-      </button>
-      <button onclick="switchTab('governance')" id="nav-governance" class="nav-tab px-4 py-2 text-sm font-medium text-on-surface-variant hover:text-on-surface rounded-lg transition-all duration-150">
-        Model Governance &amp; Audit
-      </button>
-    </nav>
-    
-    <div class="flex items-center gap-3">
-      <a href="/docs" target="_blank" class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface text-xs font-semibold transition-colors">
-        <span class="material-symbols-outlined text-sm text-secondary">api</span>
-        REST API Docs
-      </a>
-      <div class="flex items-center gap-2 pl-2">
-        <div class="hidden sm:flex flex-col text-right">
-          <span class="text-xs font-bold text-on-surface leading-tight">Chief Risk Officer</span>
-          <span class="text-[10px] text-outline">Underwriting Desk</span>
+
+    <!-- Officer Profile & System Health Footer -->
+    <div class="p-4 border-t border-outline-variant/30 bg-surface-container-lowest flex items-center justify-between">
+      <div class="flex items-center gap-2.5">
+        <img alt="Officer" class="w-9 h-9 rounded-full object-cover border border-outline-variant/50" src="https://lh3.googleusercontent.com/aida/AEtjO1VyS_oasWvIJkDjhdzJ653Md75M1JgLqsI6Db8FtCXNbcPAjvks47h5NHu_T_YQ4LQl-JShoqiuDcrh7SLblbTDxkpgVD2jyRTMcb6lQ8ZqmF66QDqySZHYYFEpX1jtB3mHdfODZIOvhczJJ_TBKx2jI4MZ8BYickyyaovQ-gfiKCpzmspt7El43-gOASbfpiGANnD4-RQI73xT4dZrlKjD1M7NzTeVVSG4JloEflwYtU98SGk-7x5ooqM"/>
+        <div class="flex flex-col">
+          <span class="text-xs font-bold text-on-surface leading-tight">Jay Patel</span>
+          <span class="text-[10px] text-outline">Chief Risk Officer • Tier-1</span>
         </div>
-        <img alt="Officer" class="w-8 h-8 rounded-full object-cover border border-outline-variant/50" src="https://lh3.googleusercontent.com/aida/AEtjO1VyS_oasWvIJkDjhdzJ653Md75M1JgLqsI6Db8FtCXNbcPAjvks47h5NHu_T_YQ4LQl-JShoqiuDcrh7SLblbTDxkpgVD2jyRTMcb6lQ8ZqmF66QDqySZHYYFEpX1jtB3mHdfODZIOvhczJJ_TBKx2jI4MZ8BYickyyaovQ-gfiKCpzmspt7El43-gOASbfpiGANnD4-RQI73xT4dZrlKjD1M7NzTeVVSG4JloEflwYtU98SGk-7x5ooqM"/>
+      </div>
+      <div class="flex items-center text-on-tertiary-container" title="All Microservices Online">
+        <span class="material-symbols-outlined text-base">check_circle</span>
       </div>
     </div>
+  </div>
+</aside>
+
+
+<!-- Main Application Content Area (Offset for Desktop Left Sidebar) -->
+<div class="md:pl-72 flex-1 flex flex-col min-h-screen bg-surface">
+  
+<header class="sticky top-0 z-30 h-14 bg-surface-container-lowest border-b border-outline-variant/30 flex items-center justify-between px-4 sm:px-6 shadow-xs">
+  <div class="flex items-center gap-3">
+    <button onclick="toggleSidebar()" class="md:hidden p-1.5 rounded-lg text-on-surface hover:bg-surface-container transition-colors">
+      <span class="material-symbols-outlined text-xl">menu</span>
+    </button>
+    <div class="flex items-center gap-2 text-xs text-outline">
+      <span class="material-symbols-outlined text-sm text-outline">home</span>
+      <span>/</span>
+      <span>Institutional Risk</span>
+      <span>/</span>
+      <span id="breadcrumb-title" class="font-bold text-secondary">Portfolio Intelligence</span>
+    </div>
+  </div>
+
+  <div class="flex items-center gap-3">
+    <div class="hidden md:flex items-center gap-2 px-2.5 py-1 rounded bg-surface-container text-on-surface-variant text-xs font-semibold">
+      <span class="material-symbols-outlined text-xs text-secondary">speed</span>
+      <span>Inference: 12ms</span>
+    </div>
+    <a href="/download-report" download="SmartCredit_Loan_Approval_Project_Report.docx" class="px-3 py-1.5 rounded-lg bg-primary hover:bg-primary-container text-on-primary text-xs font-semibold transition-colors flex items-center gap-1.5 shadow-xs">
+      <span class="material-symbols-outlined text-sm">description</span>
+      <span class="hidden sm:inline">Download Examiner Package</span> (.docx)
+    </a>
   </div>
 </header>
 
 
-<!-- VIEW 1: Portfolio Intelligence -->
-<main id="view-portfolio" class="w-full pt-16 min-h-[calc(100vh-4rem)]">
-<div class="flex flex-col w-full">
+  <!-- VIEW 1: Portfolio Intelligence -->
+  <main id="view-portfolio" class="w-full flex-1">
+    <div class="flex flex-col w-full">
 <!-- Subheader Institutional Telemetry Bar -->
 <section class="w-full bg-surface-container-lowest shadow-sm mb-space-lg">
 <div class="max-w-[1680px] mx-auto px-margin-desktop py-space-sm flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-space-md">
@@ -283,14 +398,13 @@
 <div class="flex flex-wrap items-center gap-space-md">
 <!-- Cohort Dropdown Control -->
 <div class="relative inline-block">
-<button class="inline-flex items-center justify-between gap-2 px-3 py-1.5 bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md rounded shadow-xs transition-colors" id="cohort-btn" type="button">
-<span class="flex items-center gap-1.5">
-<span class="material-symbols-outlined text-[16px] text-secondary">domain_verification</span>
-<span class="font-bold">Q3 2025 YTD (Consolidated)</span>
-<span class="text-on-surface-variant font-normal">— All Commercial Portfolios</span>
-</span>
-<span class="material-symbols-outlined text-[16px] text-outline">arrow_drop_down</span>
-</button>
+<select id="cohort-select" onchange="switchCohort(this.value)" class="px-3 py-1.5 bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md rounded border border-outline-variant/30 shadow-xs transition-colors cursor-pointer appearance-none pr-8">
+  <option value="all" selected>Q3 2025 YTD (Consolidated) — All Commercial Portfolios</option>
+  <option value="commercial">Commercial High-Ticket Facility (Income &gt; $5,500/mo)</option>
+  <option value="retail">Retail &amp; Residential Mortgages (Income &le; $5,500/mo)</option>
+  <option value="semiurban">Semiurban High-Growth Collateral Alpha</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-outline text-sm pointer-events-none">arrow_drop_down</span>
 </div>
 <!-- Live Telemetry Pill -->
 <div class="flex items-center gap-2 px-2.5 py-1 bg-surface-container-high rounded text-on-surface">
@@ -335,7 +449,7 @@
 </span>
 </div>
 <div class="my-space-xs">
-<div class="font-metric-xl text-metric-xl text-on-surface font-bold tracking-tight">800 <span class="font-headline-sm text-headline-sm font-normal text-outline">Facilities</span></div>
+<div class="font-metric-xl text-metric-xl text-on-surface font-bold tracking-tight"><span id="kpi-total-apps">800 <span class="font-headline-sm text-headline-sm font-normal text-outline">Facilities</span></span></div>
 </div>
 <div class="flex items-center justify-between pt-space-xs">
 <span class="inline-flex items-center gap-1 text-on-tertiary-container font-label-sm text-label-sm font-semibold">
@@ -359,7 +473,7 @@
 </span>
 </div>
 <div class="my-space-xs">
-<div class="font-metric-xl text-metric-xl text-on-surface font-bold tracking-tight">82.6%</div>
+<div class="font-metric-xl text-metric-xl text-on-surface font-bold tracking-tight"><span id="kpi-approval-rate">82.6%</span></div>
 </div>
 <div class="flex items-center justify-between pt-space-xs">
 <span class="px-1.5 py-0.5 rounded bg-surface-container text-on-tertiary-container font-label-sm text-label-sm font-bold">
@@ -380,7 +494,7 @@
 </span>
 </div>
 <div class="my-space-xs">
-<div class="font-metric-xl text-metric-xl text-on-surface font-bold tracking-tight">$115.3M <span class="font-label-md text-label-md text-outline font-semibold">USD</span></div>
+<div class="font-metric-xl text-metric-xl text-on-surface font-bold tracking-tight"><span id="kpi-total-capital">$115.3M <span class="font-label-md text-label-md text-outline font-semibold">USD</span></span></div>
 </div>
 <div class="flex items-center justify-between pt-space-xs">
 <span class="font-label-sm text-label-sm text-outline font-medium">Avg Ticket: <strong class="text-on-surface">$144,125</strong></span>
@@ -401,7 +515,7 @@
 </span>
 </div>
 <div class="my-space-xs">
-<div class="font-metric-xl text-metric-xl text-error font-bold tracking-tight">17.4%</div>
+<div class="font-metric-xl text-metric-xl text-error font-bold tracking-tight"><span id="kpi-npa-risk">17.4%</span></div>
 </div>
 <div class="flex items-center justify-between pt-space-xs">
 <span class="px-1.5 py-0.5 rounded bg-surface-container text-on-surface font-label-sm text-label-sm font-semibold">
@@ -718,18 +832,12 @@
 </div>
 </div>
 </div>
-<script>
-  // Simple interactive cohort toggle simulated for demo
-  document.getElementById('cohort-btn')?.addEventListener('click', function() {
-    this.classList.toggle('ring-1');
-    this.classList.toggle('ring-secondary');
-  });
-</script>
-</main>
 
-<!-- VIEW 2: Risk Drivers & Demographics -->
-<main id="view-risk_drivers" class="w-full pt-16 min-h-[calc(100vh-4rem)] hidden">
-<div class="flex flex-col w-full">
+  </main>
+
+  <!-- VIEW 2: Risk Drivers & Demographics -->
+  <main id="view-risk_drivers" class="w-full flex-1 hidden">
+    <div class="flex flex-col w-full">
 <!-- Top Spatial Shell Extension / Page Canvas -->
 <div class="w-full max-w-[1680px] mx-auto px-margin-desktop py-space-xl flex flex-col gap-space-xl">
 <!-- Screen Title & Actuarial Metabar -->
@@ -1374,11 +1482,11 @@
 </div>
 </div>
 </div>
-</main>
+  </main>
 
-<!-- VIEW 3: AI Underwriting Terminal -->
-<main id="view-underwriting" class="w-full pt-16 min-h-[calc(100vh-4rem)] hidden">
-<div class="flex flex-col w-full">
+  <!-- VIEW 3: AI Underwriting Terminal -->
+  <main id="view-underwriting" class="w-full flex-1 hidden">
+    <div class="flex flex-col w-full">
 <div class="w-full px-gutter-desktop py-space-lg flex flex-col gap-space-lg max-w-[1780px] mx-auto">
 <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md">
 <div class="flex flex-col gap-space-xs">
@@ -1475,16 +1583,25 @@
 <span class="material-symbols-outlined absolute right-space-md text-outline pointer-events-none text-sm">unfold_more</span>
 </div>
 </div>
-<div class="flex flex-col gap-space-xs">
-<label class="font-label-md text-label-md text-on-surface-variant flex items-center justify-between">
-<span>Bureau Credit Score</span>
-<span class="font-label-sm text-label-sm text-secondary font-semibold">Equifax • Experian</span>
-</label>
-<div class="flex items-center gap-space-xs bg-surface-container-lowest px-space-md py-space-sm rounded-lg shadow-inner">
-<span class="material-symbols-outlined text-secondary text-sm">verified</span>
-<span class="font-metric-lg text-metric-lg text-secondary font-bold">755</span>
-<span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-secondary/10 text-secondary ml-auto uppercase font-semibold">Optimal Tier</span>
-</div>
+<div class="flex flex-col gap-2 bg-surface-container-lowest p-3 rounded-lg shadow-inner border border-outline-variant/30">
+  <div class="flex items-center justify-between">
+    <label class="font-label-md text-label-md text-on-surface font-semibold flex items-center gap-1.5">
+      <span class="material-symbols-outlined text-secondary text-base">verified</span>
+      <span>Bureau Credit Score</span>
+    </label>
+    <span id="credit-tier-badge" class="px-2 py-0.5 rounded text-xs font-bold uppercase bg-secondary/15 text-secondary">
+      Optimal Tier (755)
+    </span>
+  </div>
+  <div class="flex items-center gap-3 pt-1">
+    <input id="inp-credit-score-slider" type="range" min="300" max="850" value="755" step="5" class="w-full accent-secondary cursor-pointer h-2 bg-surface-container-high rounded-lg" oninput="syncCreditScore(this.value)">
+    <input id="inp-credit-score" type="number" min="300" max="850" value="755" class="w-16 px-2 py-1 bg-surface-container-high text-on-surface font-bold text-center rounded-md border border-outline-variant/40 focus:outline-none focus:ring-1 focus:ring-secondary text-sm" oninput="syncCreditScore(this.value)">
+  </div>
+  <div class="flex items-center justify-between text-[10px] text-outline font-semibold px-0.5">
+    <span class="text-error font-semibold">300 (Subprime &lt;600)</span>
+    <span class="text-secondary font-semibold">650 (Prime Gating)</span>
+    <span class="text-on-tertiary-container font-semibold">850 (Super-Prime)</span>
+  </div>
 </div>
 <div class="flex flex-col gap-space-xs">
 <label class="font-label-md text-label-md text-on-surface-variant flex items-center justify-between">
@@ -1545,16 +1662,16 @@
 </div>
 </div>
 <div class="flex flex-col sm:flex-row items-center gap-space-sm pt-space-sm">
-<button class="w-full sm:flex-1 py-space-md px-space-lg bg-primary hover:bg-primary-fixed-dim text-on-primary-fixed rounded-lg font-headline-sm text-headline-sm font-semibold flex items-center justify-center gap-space-xs transition-all transform active:scale-[0.99] shadow-[0_0_24px_rgba(192,193,255,0.35)] cursor-pointer" id="btn-run-underwriting" type="button">
+<button id="btn-run-underwriting" onclick="runUnderwriting()" type="button" class="w-full sm:flex-1 py-space-md px-space-lg bg-primary hover:bg-primary-fixed-dim text-on-primary-fixed rounded-lg font-headline-sm text-headline-sm font-semibold flex items-center justify-center gap-space-xs transition-all transform active:scale-[0.99] shadow-[0_0_24px_rgba(192,193,255,0.35)] cursor-pointer">
 <span class="material-symbols-outlined text-xl">bolt</span>
 <span>Run AI Underwriting Assessment</span>
 </button>
 <div class="flex items-center gap-space-xs w-full sm:w-auto">
-<button class="flex-1 sm:flex-none p-space-md bg-surface-container-high hover:bg-surface-container-highest text-on-surface-variant hover:text-on-surface rounded-lg transition-colors flex items-center justify-center gap-space-xs" id="btn-benchmark" title="Load Benchmark Profile" type="button">
+<button id="btn-benchmark" onclick="loadBenchmark()" title="Load Benchmark Profile" type="button" class="flex-1 sm:flex-none p-space-md bg-surface-container-high hover:bg-surface-container-highest text-on-surface-variant hover:text-on-surface rounded-lg transition-colors flex items-center justify-center gap-space-xs cursor-pointer">
 <span class="material-symbols-outlined text-base">tune</span>
 <span class="font-label-md text-label-md">Benchmark</span>
 </button>
-<button class="flex-1 sm:flex-none p-space-md bg-surface-container-high hover:bg-surface-container-highest text-on-surface-variant hover:text-on-surface rounded-lg transition-colors flex items-center justify-center" id="btn-reset" title="Reset Parameters" type="button">
+<button id="btn-reset" onclick="resetForm()" title="Reset Parameters" type="button" class="flex-1 sm:flex-none p-space-md bg-surface-container-high hover:bg-surface-container-highest text-on-surface-variant hover:text-on-surface rounded-lg transition-colors flex items-center justify-center cursor-pointer">
 <span class="material-symbols-outlined text-base">restart_alt</span>
 </button>
 </div>
@@ -1681,16 +1798,14 @@
             </span>
 <span class="font-label-sm text-label-sm text-secondary font-mono">AUTONOMOUS DISPOSITION</span>
 </div>
-<p id="hud-prescriptive-directive" class="font-body-md text-body-md text-on-surface leading-relaxed">
-            Issue formal sanction letter at prime rate (<span class="font-metric-md text-metric-md text-secondary font-semibold">8.25% APR</span>). Standard property mortgage first-lien registration required prior to capital disbursement. Loan-to-Value (<span class="text-tertiary font-semibold">71.4% LTV</span>) adheres to Basel III Risk-Weighted Capital Directive Section 4b. No secondary guarantor requirement triggered.
-          </p>
+<p id="hud-prescriptive-directive" class="font-body-md text-body-md text-on-surface leading-relaxed">Issue formal sanction letter at prime rate (<span class="font-metric-md text-metric-md text-secondary font-semibold">8.25% APR</span>). Standard property mortgage first-lien registration required prior to capital disbursement. Loan-to-Value (<span class="text-tertiary font-semibold">71.4% LTV</span>) adheres to Basel III Risk-Weighted Capital Directive Section 4b. No secondary guarantor requirement triggered.</p>
 </div>
 <div class="flex flex-col sm:flex-row items-center gap-space-sm pt-space-xs">
-<button class="w-full sm:flex-1 py-space-sm px-space-md rounded-lg bg-secondary text-on-secondary font-headline-sm text-headline-sm font-semibold flex items-center justify-center gap-space-xs hover:bg-secondary-fixed transition-all cursor-pointer shadow-[0_0_20px_rgba(78,222,163,0.3)] active:scale-[0.99]" id="btn-sanction-letter" type="button">
+<button id="btn-sanction-letter" onclick="openSanctionModal()" type="button" class="w-full sm:flex-1 py-space-sm px-space-md rounded-lg bg-secondary text-on-secondary font-headline-sm text-headline-sm font-semibold flex items-center justify-center gap-space-xs hover:bg-secondary-fixed transition-all cursor-pointer shadow-[0_0_20px_rgba(78,222,163,0.3)] active:scale-[0.99]">
 <span class="material-symbols-outlined text-lg">task_alt</span>
 <span>Generate Sanction Note &amp; Term Sheet</span>
 </button>
-<button class="w-full sm:flex-1 py-space-sm px-space-md rounded-lg bg-primary-container text-on-primary font-headline-sm text-headline-sm font-semibold flex items-center justify-center gap-space-xs hover:bg-primary transition-all cursor-pointer shadow-[0_0_18px_rgba(128,131,255,0.3)] active:scale-[0.99]" id="btn-route-disbursal" type="button">
+<button id="btn-route-disbursal" onclick="triggerDisbursalToast()" type="button" class="w-full sm:flex-1 py-space-sm px-space-md rounded-lg bg-primary-container text-on-primary font-headline-sm text-headline-sm font-semibold flex items-center justify-center gap-space-xs hover:bg-primary transition-all cursor-pointer shadow-[0_0_18px_rgba(128,131,255,0.3)] active:scale-[0.99]">
 <span class="material-symbols-outlined text-lg">forward</span>
 <span>Route to Disbursal Desk</span>
 </button>
@@ -1867,72 +1982,13 @@
 </div>
 </div>
 </div>
-<script>
-    (function() {
-      const runBtn = document.getElementById('btn-run-underwriting');
-      const probVal = document.getElementById('prob-val');
-      const dial = document.getElementById('approval-dial');
-      const resetBtn = document.getElementById('btn-reset');
-      const benchBtn = document.getElementById('btn-benchmark');
-      const sanctionBtn = document.getElementById('btn-sanction-letter');
-      const disbursalBtn = document.getElementById('btn-route-disbursal');
 
-      // Real click listener is handled by runUnderwriting() below
-
-      if (resetBtn) {
-        resetBtn.addEventListener('click', function() {
-          document.getElementById('inp-prim-income').value = '5,500';
-          document.getElementById('inp-co-income').value = '1,500';
-          document.getElementById('inp-loan-capital').value = '140,000';
-          document.getElementById('inp-dti').value = '28.4%';
-          document.getElementById('inp-term').value = '360';
-          document.getElementById('inp-geo').value = 'semiurban';
-          document.getElementById('inp-edu').value = 'grad';
-        });
-      }
-
-      if (benchBtn) {
-        benchBtn.addEventListener('click', function() {
-          document.getElementById('inp-prim-income').value = '8,200';
-          document.getElementById('inp-co-income').value = '3,400';
-          document.getElementById('inp-loan-capital').value = '250,000';
-          document.getElementById('inp-dti').value = '22.1%';
-          document.getElementById('inp-term').value = '240';
-          document.getElementById('inp-geo').value = 'urban-metro';
-          document.getElementById('inp-edu').value = 'grad';
-          if (runBtn) runBtn.click();
-        });
-      }
-
-      if (sanctionBtn) {
-        sanctionBtn.addEventListener('click', function() {
-          const orig = sanctionBtn.innerHTML;
-          sanctionBtn.innerHTML = '<span class="material-symbols-outlined text-lg">downloading</span><span>Generating Official Note...</span>';
-          setTimeout(() => {
-            sanctionBtn.innerHTML = '<span class="material-symbols-outlined text-lg">done</span><span>Sanction Note Ready (PDF)</span>';
-            setTimeout(() => { sanctionBtn.innerHTML = orig; }, 3000);
-          }, 900);
-        });
-      }
-
-      if (disbursalBtn) {
-        disbursalBtn.addEventListener('click', function() {
-          const orig = disbursalBtn.innerHTML;
-          disbursalBtn.innerHTML = '<span class="material-symbols-outlined text-lg animate-pulse">lock_clock</span><span>Encrypted Dispatch...</span>';
-          setTimeout(() => {
-            disbursalBtn.innerHTML = '<span class="material-symbols-outlined text-lg">task_alt</span><span>Transferred to Ledger Desk</span>';
-            setTimeout(() => { disbursalBtn.innerHTML = orig; }, 3000);
-          }, 1100);
-        });
-      }
-    })();
-  </script>
 </div>
-</main>
+  </main>
 
-<!-- VIEW 4: Model Governance & Audit -->
-<main id="view-governance" class="w-full pt-16 min-h-[calc(100vh-4rem)] hidden">
-<div class="flex flex-col w-full">
+  <!-- VIEW 4: Model Governance & Audit -->
+  <main id="view-governance" class="w-full flex-1 hidden">
+    <div class="flex flex-col w-full">
 <div class="w-full px-gutter-desktop py-space-lg flex flex-col gap-space-lg">
 <!-- Top Executive Header & Context Strip -->
 <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-md">
@@ -2343,55 +2399,79 @@
 </div>
 <!-- Real-Time Cryptographic Decision Ledger -->
 <div class="bg-surface-container/90 backdrop-blur-xl rounded-xl p-space-lg shadow-xl flex flex-col gap-space-md">
-<div class="flex items-center justify-between">
-<div class="flex items-center gap-space-xs">
-<span class="material-symbols-outlined text-tertiary text-base">lock</span>
-<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Cryptographic Audit Trail</h3>
-</div>
-<span class="w-2 h-2 rounded-full bg-secondary animate-ping"></span>
-</div>
-<div class="flex flex-col gap-space-sm">
-<!-- Log Entry 1 -->
-<div class="bg-surface-container-lowest p-space-sm rounded-lg flex flex-col gap-1">
-<div class="flex items-center justify-between">
-<span class="font-label-sm text-tertiary">DECISION #8849-FAC</span>
-<span class="font-label-sm text-outline">14:02:19.412 UTC</span>
-</div>
-<div class="flex items-center justify-between font-label-sm text-on-surface">
-<span>Facility $4.2M • Industrial Core</span>
-<span class="text-secondary font-semibold">APPROVED (0.91)</span>
-</div>
-<span class="font-label-sm text-outline truncate">Hash: 0x93f41bb8726acda094156ce99a14e9128...</span>
-</div>
-<!-- Log Entry 2 -->
-<div class="bg-surface-container-lowest p-space-sm rounded-lg flex flex-col gap-1">
-<div class="flex items-center justify-between">
-<span class="font-label-sm text-tertiary">DECISION #8848-FAC</span>
-<span class="font-label-sm text-outline">14:01:54.008 UTC</span>
-</div>
-<div class="flex items-center justify-between font-label-sm text-on-surface">
-<span>Facility $1.8M • Retail Logistics</span>
-<span class="text-secondary font-semibold">APPROVED (0.84)</span>
-</div>
-<span class="font-label-sm text-outline truncate">Hash: 0x77b029f6da110294e776a3cc02832daef...</span>
-</div>
-<!-- Log Entry 3 -->
-<div class="bg-surface-container-lowest p-space-sm rounded-lg flex flex-col gap-1">
-<div class="flex items-center justify-between">
-<span class="font-label-sm text-error">DECISION #8847-FAC</span>
-<span class="font-label-sm text-outline">13:59:12.894 UTC</span>
-</div>
-<div class="flex items-center justify-between font-label-sm text-on-surface">
-<span>Facility $9.5M • Multi-Tenant Comm.</span>
-<span class="text-error font-semibold">REFERRED TO HUMAN (0.58)</span>
-</div>
-<span class="font-label-sm text-outline truncate">Hash: 0xcc4910243be12da2857410ebc238fa091...</span>
-</div>
-</div>
-<div class="pt-space-xs flex items-center justify-between text-outline font-label-sm">
-<span>Merkle Tree Root: 0xFD89...991A</span>
-<span class="text-secondary">Immutable Block #1,940,211</span>
-</div>
+  <div class="flex items-center justify-between">
+    <div class="flex items-center gap-space-xs">
+      <span class="material-symbols-outlined text-tertiary text-base">lock</span>
+      <h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Cryptographic Audit Trail (SHA-256)</h3>
+    </div>
+    <div class="flex items-center gap-2">
+      <span class="w-2 h-2 rounded-full bg-secondary animate-ping"></span>
+      <span class="font-label-sm text-secondary uppercase font-semibold">Live Feed</span>
+    </div>
+  </div>
+
+  <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2">
+    <div class="relative flex-1">
+      <span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-outline text-sm">search</span>
+      <input id="audit-search" type="text" placeholder="Filter ledger by App ID, Verdict, or SHA-256..." oninput="filterAuditTable(this.value)" class="w-full pl-8 pr-3 py-1.5 rounded-lg bg-surface-container-lowest border border-outline-variant/40 text-xs text-on-surface placeholder:text-outline focus:outline-none focus:ring-1 focus:ring-secondary">
+    </div>
+    <div class="flex items-center gap-1.5">
+      <a href="/api/export-audit-csv" download="smartcredit_audit_ledger.csv" class="px-2.5 py-1.5 rounded-lg bg-surface-container-lowest border border-outline-variant/40 hover:bg-surface-container text-on-surface text-xs font-semibold transition-colors flex items-center gap-1 shadow-xs">
+        <span class="material-symbols-outlined text-sm text-secondary">download</span>
+        Export CSV
+      </a>
+      <a href="/download-report" download="SmartCredit_Loan_Approval_Project_Report.docx" class="px-2.5 py-1.5 rounded-lg bg-primary text-on-primary text-xs font-semibold hover:bg-primary-container transition-colors flex items-center gap-1 shadow-xs">
+        <span class="material-symbols-outlined text-sm">print</span>
+        Report (.docx)
+      </a>
+    </div>
+  </div>
+
+  <div class="overflow-x-auto max-h-72 overflow-y-auto rounded-lg border border-outline-variant/20">
+    <table class="w-full text-left font-body-sm text-body-sm">
+      <thead>
+        <tr class="bg-surface-container-lowest text-outline font-label-sm uppercase border-b border-outline-variant/30 text-[11px]">
+          <th class="py-2 px-2.5">App ID</th>
+          <th class="py-2 px-2.5">Timestamp</th>
+          <th class="py-2 px-2.5">Verdict</th>
+          <th class="py-2 px-2.5">Facility</th>
+          <th class="py-2 px-2.5">Score</th>
+          <th class="py-2 px-2.5">SHA-256 Hash</th>
+        </tr>
+      </thead>
+      <tbody id="audit-table-body" class="divide-y divide-outline-variant/20 text-on-surface">
+        <tr class="border-b border-outline-variant/20 hover:bg-surface-container/50 transition-colors audit-row">
+          <td class="py-2 px-2.5 font-mono text-xs font-bold text-secondary">#8849-FAC</td>
+          <td class="py-2 px-2.5 text-xs text-on-surface">14:02:19 UTC</td>
+          <td class="py-2 px-2.5 text-xs font-bold text-secondary">APPROVED</td>
+          <td class="py-2 px-2.5 font-mono text-xs text-on-surface">$4,200,000</td>
+          <td class="py-2 px-2.5 font-mono text-xs text-on-surface">91.4%</td>
+          <td class="py-2 px-2.5 font-mono text-[10px] text-outline truncate max-w-[100px]" title="0x93f41bb8726acda094156ce99a14e9128">0x93f41bb8726a...</td>
+        </tr>
+        <tr class="border-b border-outline-variant/20 hover:bg-surface-container/50 transition-colors audit-row">
+          <td class="py-2 px-2.5 font-mono text-xs font-bold text-secondary">#8848-FAC</td>
+          <td class="py-2 px-2.5 text-xs text-on-surface">14:01:54 UTC</td>
+          <td class="py-2 px-2.5 text-xs font-bold text-secondary">APPROVED</td>
+          <td class="py-2 px-2.5 font-mono text-xs text-on-surface">$1,800,000</td>
+          <td class="py-2 px-2.5 font-mono text-xs text-on-surface">84.2%</td>
+          <td class="py-2 px-2.5 font-mono text-[10px] text-outline truncate max-w-[100px]" title="0x77b029f6da110294e776a3cc02832daef">0x77b029f6da11...</td>
+        </tr>
+        <tr class="border-b border-outline-variant/20 hover:bg-surface-container/50 transition-colors audit-row">
+          <td class="py-2 px-2.5 font-mono text-xs font-bold text-error">#8847-FAC</td>
+          <td class="py-2 px-2.5 text-xs text-on-surface">13:59:12 UTC</td>
+          <td class="py-2 px-2.5 text-xs font-bold text-error">DECLINED</td>
+          <td class="py-2 px-2.5 font-mono text-xs text-on-surface">$9,500,000</td>
+          <td class="py-2 px-2.5 font-mono text-xs text-on-surface">58.0%</td>
+          <td class="py-2 px-2.5 font-mono text-[10px] text-outline truncate max-w-[100px]" title="0xcc4910243be12da2857410ebc238fa091">0xcc4910243be1...</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="pt-space-xs flex items-center justify-between text-outline font-label-sm">
+    <span>Merkle Tree Root: 0xFD89...991A</span>
+    <span class="text-secondary">Immutable Block #1,940,211</span>
+  </div>
 </div>
 </div>
 </div>
@@ -2410,19 +2490,109 @@
 <button class="px-space-md py-space-sm rounded-lg bg-surface-container-lowest hover:bg-surface-container text-on-surface font-label-md transition-colors" type="button">
           Inspect Model Codebase
         </button>
-<button class="px-space-md py-space-sm rounded-lg bg-primary text-on-primary font-semibold font-label-md shadow-md hover:brightness-110 transition-all flex items-center gap-space-xs" type="button">
-<span class="material-symbols-outlined text-sm">print</span>
-          Generate Examiner Package
-        </button>
+<a href="/download-report" download="SmartCredit_Loan_Approval_Project_Report.docx" class="px-space-md py-space-sm rounded-lg bg-primary text-on-primary font-semibold font-label-md shadow-md hover:brightness-110 transition-all flex items-center gap-space-xs"><span class="material-symbols-outlined text-sm">print</span>Generate Examiner Package (.docx)</a>
 </div>
 </div>
 </div>
 </div>
-</main>
+  </main>
 
-<footer class="w-full bg-surface-container-lowest border-t border-outline-variant/30 py-space-md mt-auto"><div class="w-full px-margin-desktop max-w-[1680px] mx-auto flex flex-col md:flex-row items-center justify-between gap-space-sm text-outline font-label-sm text-label-sm uppercase tracking-wider"><div class="flex flex-wrap items-center justify-center md:justify-start gap-x-space-md gap-y-1"><span>AUTONOMOUS CREDIT GUARD</span><span class="text-outline-variant">•</span><span>SR 11-7 / OCC 2011-12 COMPLIANT</span><span class="text-outline-variant">•</span><span>Algorithmic Fairness Bias Index: 0.002 (Optimal)</span></div><div class="flex items-center gap-space-md"><span><span class="inline-block w-1.5 h-1.5 rounded-full bg-on-tertiary-container mr-1"></span>All Nodes Synchronized</span><span class="text-outline-variant">•</span><span>© 2025 SmartCredit AI Institutional Systems</span></div></div></footer>
+  <footer class="w-full bg-surface-container-lowest border-t border-outline-variant/30 py-space-md mt-auto"><div class="w-full px-margin-desktop max-w-[1680px] mx-auto flex flex-col md:flex-row items-center justify-between gap-space-sm text-outline font-label-sm text-label-sm uppercase tracking-wider"><div class="flex flex-wrap items-center justify-center md:justify-start gap-x-space-md gap-y-1"><span>AUTONOMOUS CREDIT GUARD</span><span class="text-outline-variant">•</span><span>SR 11-7 / OCC 2011-12 COMPLIANT</span><span class="text-outline-variant">•</span><span>Algorithmic Fairness Bias Index: 0.002 (Optimal)</span></div><div class="flex items-center gap-space-md"><span><span class="inline-block w-1.5 h-1.5 rounded-full bg-on-tertiary-container mr-1"></span>All Nodes Synchronized</span><span class="text-outline-variant">•</span><span>© 2025 SmartCredit AI Institutional Systems</span></div></div></footer>
+</div>
+
+
+<!-- Sanction Facility Note Modal -->
+<div id="modal-sanction-sheet" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 hidden transition-opacity">
+  <div class="max-w-2xl w-full bg-surface-container-lowest rounded-2xl shadow-2xl border border-outline-variant/40 overflow-hidden flex flex-col max-h-[90vh]">
+    <div class="p-5 bg-gradient-to-r from-surface-container to-surface-container-high border-b border-outline-variant/30 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-secondary/15 flex items-center justify-center text-secondary">
+          <span class="material-symbols-outlined text-2xl">verified</span>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-bold text-on-surface text-base">Official Facility Sanction Note</span>
+          <span class="text-xs text-outline">Basel III Risk-Weighted Capital Directive Section 4b</span>
+        </div>
+      </div>
+      <button onclick="closeSanctionModal()" class="p-1.5 rounded-lg hover:bg-surface-container-highest text-outline transition-colors">
+        <span class="material-symbols-outlined text-xl">close</span>
+      </button>
+    </div>
+
+    <div class="p-6 overflow-y-auto space-y-4 text-xs font-body-sm text-on-surface">
+      <div class="p-3 rounded-lg bg-surface-container-low flex items-center justify-between border border-outline-variant/30">
+        <div>
+          <span class="text-outline block">Sanction Facility Reference</span>
+          <span class="font-mono font-bold text-secondary text-sm">#SF-2025-9812-PRIME</span>
+        </div>
+        <div class="text-right">
+          <span class="text-outline block">Issuance Date</span>
+          <span class="font-semibold" id="modal-date">September 18, 2026</span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
+        <div class="p-3 rounded-lg bg-surface-container-low">
+          <span class="text-outline block text-[10px] uppercase font-bold">Approved Capital</span>
+          <span id="modal-capital" class="font-bold text-sm text-on-surface font-mono">$140,000</span>
+        </div>
+        <div class="p-3 rounded-lg bg-surface-container-low">
+          <span class="text-outline block text-[10px] uppercase font-bold">Prime APR Rate</span>
+          <span class="font-bold text-sm text-secondary font-mono">8.25% Fixed</span>
+        </div>
+        <div class="p-3 rounded-lg bg-surface-container-low">
+          <span class="text-outline block text-[10px] uppercase font-bold">Amortization</span>
+          <span id="modal-term" class="font-bold text-sm text-on-surface font-mono">360 Mos (30Y)</span>
+        </div>
+        <div class="p-3 rounded-lg bg-surface-container-low">
+          <span class="text-outline block text-[10px] uppercase font-bold">Collateral LTV</span>
+          <span class="font-bold text-sm text-tertiary font-mono">71.4% LTV</span>
+        </div>
+      </div>
+
+      <div class="space-y-2">
+        <span class="font-bold uppercase tracking-wider text-[11px] text-outline block">Mandatory Pre-Disbursement Covenants</span>
+        <ul class="space-y-1.5 list-disc pl-4 text-outline">
+          <li>Execution of first-priority registered mortgage lien on target residential/commercial parcel.</li>
+          <li>Comprehensive Title Search Certificate confirming free and unencumbered ownership rights.</li>
+          <li>Escrow insurance policy active covering 100% of appraised collateral replacement valuation.</li>
+          <li>Secondary income and employer KYC verification authenticated via standard bureau API.</li>
+        </ul>
+      </div>
+
+      <div class="p-3 rounded-lg bg-secondary/5 border border-secondary/20 flex items-center gap-2 text-secondary">
+        <span class="material-symbols-outlined text-lg shrink-0">gavel</span>
+        <span>This automated facility note constitutes a conditional sanction recommendation compliant with OCC 2011-12.</span>
+      </div>
+    </div>
+
+    <div class="p-4 border-t border-outline-variant/30 bg-surface-container-lowest flex items-center justify-end gap-2">
+      <button onclick="closeSanctionModal()" type="button" class="px-4 py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-semibold text-xs transition-colors">
+        Close
+      </button>
+      <button onclick="window.print()" type="button" class="px-4 py-2 rounded-lg bg-secondary text-on-secondary font-semibold text-xs hover:bg-secondary-fixed transition-colors flex items-center gap-1.5 shadow-sm">
+        <span class="material-symbols-outlined text-sm">print</span>
+        Print / Save Official Note
+      </button>
+    </div>
+  </div>
+</div>
+
+
+<!-- Disbursal Confirmation Toast -->
+<div id="toast-disbursal" class="fixed bottom-6 right-6 z-50 bg-surface-container-lowest border-l-4 border-on-tertiary-container shadow-2xl rounded-xl p-4 flex items-center gap-3 transition-all duration-300 transform translate-y-20 opacity-0 pointer-events-none max-w-sm">
+  <div class="w-10 h-10 rounded-xl bg-on-tertiary-container/15 flex items-center justify-center text-on-tertiary-container shrink-0">
+    <span class="material-symbols-outlined text-2xl">task_alt</span>
+  </div>
+  <div class="flex flex-col min-w-0">
+    <span class="text-xs font-bold text-on-surface">Application Routed to Disbursal Desk</span>
+    <span class="text-[11px] text-outline leading-tight mt-0.5">Liquidity allocated from Central Tier-1 Pool. Priority wire order #DSB-9812 created.</span>
+  </div>
+</div>
+
 
 <script>
+// Tab Switching Controller
 function switchTab(tabKey) {
   const views = {
     'portfolio': document.getElementById('view-portfolio'),
@@ -2430,7 +2600,14 @@ function switchTab(tabKey) {
     'underwriting': document.getElementById('view-underwriting'),
     'governance': document.getElementById('view-governance')
   };
-  
+
+  const titles = {
+    'portfolio': 'Portfolio Intelligence',
+    'risk_drivers': 'Risk Drivers & Demographics',
+    'underwriting': 'Autonomous Underwriting Terminal',
+    'governance': 'Model Governance & Audit Ledger'
+  };
+
   Object.keys(views).forEach(key => {
     if (views[key]) {
       if (key === tabKey) {
@@ -2440,39 +2617,101 @@ function switchTab(tabKey) {
       }
     }
   });
-  
-  // Update nav tabs
-  document.querySelectorAll('.nav-tab').forEach(tab => {
-    tab.className = "nav-tab px-4 py-2 text-sm font-medium text-on-surface-variant hover:text-on-surface rounded-lg transition-all duration-150";
+
+  // Update Left Sidebar Active State
+  document.querySelectorAll('.side-nav-item').forEach(item => {
+    item.className = "side-nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-xl font-medium text-xs transition-all text-left text-on-surface-variant hover:bg-surface-container/60 hover:text-on-surface";
+    const iconContainer = item.querySelector('div');
+    if (iconContainer) iconContainer.className = "w-8 h-8 rounded-lg flex items-center justify-center bg-surface-container-high text-on-surface-variant shrink-0";
   });
-  const activeTab = document.getElementById('nav-' + tabKey);
-  if (activeTab) {
-    activeTab.className = "nav-tab px-4 py-2 text-sm font-semibold rounded-lg transition-all duration-150 bg-surface-container-lowest text-secondary shadow-sm";
+
+  const activeSide = document.getElementById('side-nav-' + tabKey);
+  if (activeSide) {
+    activeSide.className = "side-nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-xl font-semibold text-xs transition-all text-left bg-surface-container-high text-secondary shadow-xs";
+    const iconContainer = activeSide.querySelector('div');
+    if (iconContainer) iconContainer.className = "w-8 h-8 rounded-lg flex items-center justify-center bg-secondary/15 text-secondary shrink-0";
   }
+
+  // Update Breadcrumb Title
+  const breadTitle = document.getElementById('breadcrumb-title');
+  if (breadTitle && titles[tabKey]) {
+    breadTitle.innerText = titles[tabKey];
+  }
+
+  // Auto close mobile drawer if open
+  const sidebar = document.getElementById('app-sidebar');
+  const backdrop = document.getElementById('sidebar-backdrop');
+  if (sidebar && !sidebar.classList.contains('-translate-x-full') && window.innerWidth < 768) {
+    toggleSidebar();
+  }
+
   window.scrollTo({top: 0, behavior: 'smooth'});
 }
 
-// Interactive Underwriting Form Submission
+// Mobile Sidebar Drawer Toggle
+function toggleSidebar() {
+  const sidebar = document.getElementById('app-sidebar');
+  const backdrop = document.getElementById('sidebar-backdrop');
+  if (sidebar) {
+    const isClosed = sidebar.classList.contains('-translate-x-full');
+    if (isClosed) {
+      sidebar.classList.remove('-translate-x-full');
+      if (backdrop) backdrop.classList.remove('hidden');
+    } else {
+      sidebar.classList.add('-translate-x-full');
+      if (backdrop) backdrop.classList.add('hidden');
+    }
+  }
+}
+
+// Interactive Credit Score Synchronization
+function syncCreditScore(val) {
+  const numVal = Math.max(300, Math.min(850, parseInt(val) || 755));
+  const slider = document.getElementById('inp-credit-score-slider');
+  const box = document.getElementById('inp-credit-score');
+  const badge = document.getElementById('credit-tier-badge');
+
+  if (slider && slider.value != numVal) slider.value = numVal;
+  if (box && box.value != numVal) box.value = numVal;
+
+  if (badge) {
+    if (numVal >= 750) {
+      badge.className = "px-2 py-0.5 rounded text-xs font-bold uppercase bg-on-tertiary-container/15 text-on-tertiary-container";
+      badge.innerText = `Optimal Tier (${numVal})`;
+    } else if (numVal >= 650) {
+      badge.className = "px-2 py-0.5 rounded text-xs font-bold uppercase bg-secondary/15 text-secondary";
+      badge.innerText = `Prime Tier (${numVal})`;
+    } else if (numVal >= 600) {
+      badge.className = "px-2 py-0.5 rounded text-xs font-bold uppercase bg-amber-500/15 text-amber-600";
+      badge.innerText = `Near-Prime (${numVal})`;
+    } else {
+      badge.className = "px-2 py-0.5 rounded text-xs font-bold uppercase bg-error/15 text-error";
+      badge.innerText = `Subprime Risk (${numVal})`;
+    }
+  }
+}
+
+// Interactive AI Underwriting Form Submission
 async function runUnderwriting() {
   const btn = document.getElementById('btn-run-underwriting');
+  const originalHtml = btn ? btn.innerHTML : '';
   if (btn) {
-    btn.innerHTML = '<span class="material-symbols-outlined animate-spin text-sm">progress_activity</span> Computing Credit Decision...';
+    btn.innerHTML = '<span class="material-symbols-outlined animate-spin text-sm">progress_activity</span> Computing Deep Credit Decision...';
     btn.disabled = true;
   }
-  
-  // Collect inputs
+
   const parseVal = (id, fallback) => {
     const el = document.getElementById(id);
     if (!el) return fallback;
     const v = el.value.replace(/[^0-9.]/g, '');
     return parseFloat(v) || fallback;
   };
-  
+
   const primIncome = parseVal('inp-prim-income', 5500);
   const coIncome = parseVal('inp-co-income', 1500);
   const loanCapital = parseVal('inp-loan-capital', 140000);
   const term = parseVal('inp-term', 360);
-  
+
   const geoEl = document.getElementById('inp-geo');
   let geo = 'Semiurban';
   if (geoEl) {
@@ -2481,19 +2720,19 @@ async function runUnderwriting() {
     else if (v.includes('rural')) geo = 'Rural';
     else geo = 'Semiurban';
   }
-  
+
   const eduEl = document.getElementById('inp-edu');
   const edu = (eduEl && eduEl.value === 'grad') ? 'Graduate' : 'Not Graduate';
-  
-  // Credit score toggle/input
-  const creditScoreEl = document.getElementById('inp-credit-score');
-  const creditScore = creditScoreEl ? parseFloat(creditScoreEl.value) : 755;
+
+  // Read synchronized Credit Score
+  const scoreBox = document.getElementById('inp-credit-score');
+  const creditScore = scoreBox ? parseFloat(scoreBox.value) : 755;
   const creditHistory = creditScore >= 650 ? 1.0 : 0.0;
-  
+
   const payload = {
     ApplicantIncome: primIncome,
     CoapplicantIncome: coIncome,
-    LoanAmount: loanCapital / 1000.0, // model expects thousands
+    LoanAmount: loanCapital / 1000.0,
     Loan_Amount_Term: term,
     Credit_History: creditHistory,
     Gender: "Male",
@@ -2503,34 +2742,35 @@ async function runUnderwriting() {
     Self_Employed: "No",
     Property_Area: geo
   };
-  
+
   try {
     const res = await fetch('/api/underwrite', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
     });
-    
+
     if (!res.ok) {
-      throw new Error(`API returned status ${res.status}`);
+      const errData = await res.json().catch(() => ({}));
+      throw new Error(errData.detail || `API returned status ${res.status}`);
     }
-    
+
     const data = await res.json();
-    renderUnderwritingResult(data);
+    renderUnderwritingResult(data, loanCapital, term);
   } catch (err) {
     console.error("Underwriting call failed:", err);
-    alert("Underwriting calculation error: " + err.message);
+    alert("Underwriting evaluation error: " + err.message);
   } finally {
     if (btn) {
-      btn.innerHTML = '<span class="material-symbols-outlined text-lg">bolt</span> Run AI Underwriting Assessment';
+      btn.innerHTML = originalHtml;
       btn.disabled = false;
     }
   }
 }
 
-function renderUnderwritingResult(data) {
+function renderUnderwritingResult(data, loanCapital, term) {
   const isApproved = data.verdict === 'APPROVED';
-  
+
   // Update Decision HUD Header Badge
   const badgeEl = document.getElementById('hud-verdict-badge');
   if (badgeEl) {
@@ -2542,13 +2782,13 @@ function renderUnderwritingResult(data) {
       badgeEl.innerText = "DECLINED (HIGH DEFAULT RISK)";
     }
   }
-  
+
   // Update Title
   const titleEl = document.getElementById('hud-verdict-title');
   if (titleEl) {
     titleEl.innerText = isApproved ? "Facility Sanction Recommended" : "Application Decline Prescribed";
   }
-  
+
   // Update Probability Score & Dial
   const probEl = document.getElementById('prob-val') || document.getElementById('hud-prob-value');
   if (probEl) {
@@ -2562,13 +2802,19 @@ function renderUnderwritingResult(data) {
       ? "text-secondary fill-none transition-all duration-1000 ease-out drop-shadow-[0_0_8px_rgba(78,222,163,0.6)]"
       : "text-error fill-none transition-all duration-1000 ease-out drop-shadow-[0_0_8px_rgba(255,84,73,0.6)]";
   }
-  
+
   // Update Prescriptive Directive
   const directiveEl = document.getElementById('hud-prescriptive-directive');
   if (directiveEl && data.prescriptive_actions && data.prescriptive_actions.length > 0) {
     directiveEl.innerHTML = data.prescriptive_actions.map(a => `• ${a}`).join('<br>');
   }
-  
+
+  // Update Modal Values
+  const modalCap = document.getElementById('modal-capital');
+  if (modalCap) modalCap.innerText = `$${(loanCapital || 140000).toLocaleString()}`;
+  const modalTerm = document.getElementById('modal-term');
+  if (modalTerm) modalTerm.innerText = `${term || 360} Mos (${Math.round((term || 360)/12)}Y)`;
+
   // Prepend to Live Underwriting Queue
   const queueBody = document.getElementById('underwriting-queue-body');
   if (queueBody && data.audit_entry) {
@@ -2579,23 +2825,23 @@ function renderUnderwritingResult(data) {
       <td class="py-space-md px-space-md font-metric-md text-metric-md text-outline">${e.timestamp.split(' ')[1] || e.timestamp}</td>
       <td class="py-space-md px-space-md">
         <span class="font-metric-md text-metric-md text-primary font-semibold">#${e.app_id}</span>
-        <span class="block font-body-sm text-body-sm text-outline">Real-Time Autonomous Scoring</span>
+        <span class="block font-body-sm text-body-sm text-outline">Autonomous Model Inference</span>
       </td>
-      <td class="py-space-md px-space-md font-body-md text-body-md text-on-surface">Live KYC Assessment</td>
+      <td class="py-space-md px-space-md font-body-md text-body-md text-on-surface">Live KYC Profile</td>
       <td class="py-space-md px-space-md font-metric-md text-metric-md text-on-surface font-semibold">$${e.capital.toLocaleString()}</td>
       <td class="py-space-md px-space-md"><span class="font-metric-md text-metric-md ${isApproved ? 'text-secondary' : 'text-error'} font-semibold">${e.probability}%</span></td>
-      <td class="py-space-md px-space-md font-metric-md text-metric-md text-outline">18ms</td>
+      <td class="py-space-md px-space-md font-metric-md text-metric-md text-outline">12ms</td>
       <td class="py-space-md px-space-md text-right"><span class="font-label-sm text-label-sm ${isApproved ? 'text-secondary' : 'text-error'} font-semibold uppercase">${e.verdict}</span></td>
     `;
     queueBody.insertBefore(qRow, queueBody.firstChild);
   }
-  
-  // Update Governance Audit Table with the new cryptographic record
+
+  // Prepend to Governance Audit Ledger
   const auditBody = document.getElementById('audit-table-body');
   if (auditBody && data.audit_entry) {
     const e = data.audit_entry;
     const row = document.createElement('tr');
-    row.className = "border-b border-outline-variant/30 hover:bg-surface-container/50 transition-colors";
+    row.className = "border-b border-outline-variant/30 hover:bg-surface-container/50 transition-colors audit-row";
     row.innerHTML = `
       <td class="py-2 px-3 font-mono text-xs font-bold text-secondary">${e.app_id}</td>
       <td class="py-2 px-3 text-xs text-on-surface">${e.timestamp}</td>
@@ -2608,12 +2854,104 @@ function renderUnderwritingResult(data) {
   }
 }
 
-// Auto-wire listener on page load
+// Load Benchmark Profile
+function loadBenchmark() {
+  const pInc = document.getElementById('inp-prim-income');
+  if (pInc) pInc.value = '8,200';
+  const cInc = document.getElementById('inp-co-income');
+  if (cInc) cInc.value = '3,400';
+  const cap = document.getElementById('inp-loan-capital');
+  if (cap) cap.value = '160,000';
+  const dti = document.getElementById('inp-dti');
+  if (dti) dti.value = '24.1%';
+  const term = document.getElementById('inp-term');
+  if (term) term.value = '360';
+  const geo = document.getElementById('inp-geo');
+  if (geo) geo.value = 'semiurban';
+  const edu = document.getElementById('inp-edu');
+  if (edu) edu.value = 'grad';
+  syncCreditScore(785);
+  runUnderwriting();
+}
+
+// Reset Form to Baseline
+function resetForm() {
+  const pInc = document.getElementById('inp-prim-income');
+  if (pInc) pInc.value = '5,500';
+  const cInc = document.getElementById('inp-co-income');
+  if (cInc) cInc.value = '1,500';
+  const cap = document.getElementById('inp-loan-capital');
+  if (cap) cap.value = '140,000';
+  const dti = document.getElementById('inp-dti');
+  if (dti) dti.value = '28.4%';
+  const term = document.getElementById('inp-term');
+  if (term) term.value = '360';
+  const geo = document.getElementById('inp-geo');
+  if (geo) geo.value = 'semiurban';
+  const edu = document.getElementById('inp-edu');
+  if (edu) edu.value = 'grad';
+  syncCreditScore(755);
+}
+
+// Sanction Modal Handlers
+function openSanctionModal() {
+  const modal = document.getElementById('modal-sanction-sheet');
+  if (modal) {
+    modal.classList.remove('hidden');
+  }
+}
+
+function closeSanctionModal() {
+  const modal = document.getElementById('modal-sanction-sheet');
+  if (modal) {
+    modal.classList.add('hidden');
+  }
+}
+
+// Disbursal Routing Toast
+function triggerDisbursalToast() {
+  const toast = document.getElementById('toast-disbursal');
+  if (toast) {
+    toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+    setTimeout(() => {
+      toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+    }, 3500);
+  }
+}
+
+// Cohort Selector in Portfolio View
+async function switchCohort(cohortVal) {
+  try {
+    const res = await fetch(`/api/portfolio-metrics?cohort=${cohortVal}`);
+    if (!res.ok) return;
+    const data = await res.json();
+    const totalApps = document.getElementById('kpi-total-apps');
+    if (totalApps) totalApps.innerText = `${data.total_applications} Facilities`;
+    const appRate = document.getElementById('kpi-approval-rate');
+    if (appRate) appRate.innerText = `${data.approval_rate_pct.toFixed(1)}%`;
+    const totCap = document.getElementById('kpi-total-capital');
+    if (totCap) totCap.innerText = `$${(data.total_capital_requested / 1000000).toFixed(1)}M USD`;
+    const npaRisk = document.getElementById('kpi-npa-risk');
+    if (npaRisk) npaRisk.innerText = `${data.portfolio_npa_risk_pct.toFixed(1)}%`;
+  } catch (err) {
+    console.error("Cohort update failed:", err);
+  }
+}
+
+// Audit Table Filter
+function filterAuditTable(query) {
+  const q = (query || '').toLowerCase().trim();
+  const rows = document.querySelectorAll('.audit-row');
+  rows.forEach(row => {
+    const text = row.innerText.toLowerCase();
+    row.style.display = text.includes(q) ? '' : 'none';
+  });
+}
+
+// Wire Event Listeners
 document.addEventListener('DOMContentLoaded', () => {
   const btn = document.getElementById('btn-run-underwriting');
-  if (btn) {
-    btn.addEventListener('click', runUnderwriting);
-  }
+  if (btn) btn.addEventListener('click', runUnderwriting);
 });
 </script>
 
