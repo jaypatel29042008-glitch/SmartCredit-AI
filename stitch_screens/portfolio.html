@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@600;700&amp;family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "surface-container-highest": "#d5e3fd",
+          "outline-variant": "#c6c6cd",
+          "tertiary-fixed-dim": "#68dba9",
+          "on-surface": "#0d1c2f",
+          "outline": "#76777d",
+          "on-secondary-container": "#fefcff",
+          "on-secondary-fixed": "#00174b",
+          "on-tertiary-fixed-variant": "#005137",
+          "surface-variant": "#d5e3fd",
+          "on-primary": "#ffffff",
+          "primary-fixed-dim": "#bec6e0",
+          "secondary-fixed-dim": "#b4c5ff",
+          "primary": "#000000",
+          "on-error-container": "#93000a",
+          "tertiary-fixed": "#85f8c4",
+          "error-container": "#ffdad6",
+          "tertiary-container": "#002114",
+          "secondary-container": "#316bf3",
+          "surface-container": "#e6eeff",
+          "surface-tint": "#565e74",
+          "tertiary": "#000000",
+          "on-primary-container": "#7c839b",
+          "secondary": "#0051d5",
+          "inverse-surface": "#233144",
+          "on-primary-fixed": "#131b2e",
+          "primary-fixed": "#dae2fd",
+          "surface": "#f8f9ff",
+          "on-surface-variant": "#45464d",
+          "surface-bright": "#f8f9ff",
+          "surface-dim": "#ccdbf4",
+          "on-tertiary-fixed": "#002114",
+          "surface-container-high": "#dde9ff",
+          "on-secondary": "#ffffff",
+          "surface-container-lowest": "#ffffff",
+          "secondary-fixed": "#dbe1ff",
+          "on-background": "#0d1c2f",
+          "on-error": "#ffffff",
+          "inverse-primary": "#bec6e0",
+          "error": "#ba1a1a",
+          "primary-container": "#131b2e",
+          "surface-container-low": "#eff4ff",
+          "on-tertiary-container": "#069669",
+          "background": "#f8f9ff",
+          "on-primary-fixed-variant": "#3f465c",
+          "on-secondary-fixed-variant": "#003ea8",
+          "on-tertiary": "#ffffff",
+          "inverse-on-surface": "#ebf1ff"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.125rem",
+          "lg": "0.25rem",
+          "xl": "0.5rem",
+          "full": "0.75rem"
+        },
+        "spacing": {
+          "margin-tablet": "1.5rem",
+          "space-sm": "0.5rem",
+          "space-xs": "0.25rem",
+          "space-xl": "1.5rem",
+          "gutter-desktop": "1.5rem",
+          "space-2xs": "0.125rem",
+          "margin": "1rem",
+          "margin-desktop": "2rem",
+          "gutter": "1rem",
+          "space-md": "0.75rem",
+          "space-lg": "1rem",
+          "space-2xl": "2rem"
+        },
+        "fontFamily": {
+          "label-md": [
+            "Inter"
+          ],
+          "label-sm": [
+            "Inter"
+          ],
+          "headline-md": [
+            "Hanken Grotesk"
+          ],
+          "metric-xl": [
+            "Inter"
+          ],
+          "body-sm": [
+            "Inter"
+          ],
+          "headline-lg": [
+            "Hanken Grotesk"
+          ],
+          "body-lg": [
+            "Inter"
+          ],
+          "metric-lg": [
+            "Inter"
+          ],
+          "headline-sm": [
+            "Hanken Grotesk"
+          ],
+          "body-md": [
+            "Inter"
+          ],
+          "display-lg": [
+            "Hanken Grotesk"
+          ],
+          "display-lg-mobile": [
+            "Hanken Grotesk"
+          ]
+        },
+        "fontSize": {
+          "label-md": [
+            "11px",
+            {
+              "lineHeight": "14px",
+              "letterSpacing": "0.04em",
+              "fontWeight": "600"
+            }
+          ],
+          "label-sm": [
+            "10px",
+            {
+              "lineHeight": "12px",
+              "letterSpacing": "0.06em",
+              "fontWeight": "600"
+            }
+          ],
+          "headline-md": [
+            "20px",
+            {
+              "lineHeight": "28px",
+              "letterSpacing": "-0.015em",
+              "fontWeight": "600"
+            }
+          ],
+          "metric-xl": [
+            "28px",
+            {
+              "lineHeight": "32px",
+              "letterSpacing": "-0.02em",
+              "fontWeight": "700"
+            }
+          ],
+          "body-sm": [
+            "12px",
+            {
+              "lineHeight": "16px",
+              "letterSpacing": "0em",
+              "fontWeight": "400"
+            }
+          ],
+          "headline-lg": [
+            "24px",
+            {
+              "lineHeight": "32px",
+              "letterSpacing": "-0.02em",
+              "fontWeight": "600"
+            }
+          ],
+          "body-lg": [
+            "15px",
+            {
+              "lineHeight": "22px",
+              "letterSpacing": "-0.005em",
+              "fontWeight": "400"
+            }
+          ],
+          "metric-lg": [
+            "20px",
+            {
+              "lineHeight": "24px",
+              "letterSpacing": "-0.015em",
+              "fontWeight": "600"
+            }
+          ],
+          "headline-sm": [
+            "16px",
+            {
+              "lineHeight": "24px",
+              "letterSpacing": "-0.01em",
+              "fontWeight": "600"
+            }
+          ],
+          "body-md": [
+            "13px",
+            {
+              "lineHeight": "18px",
+              "letterSpacing": "0em",
+              "fontWeight": "400"
+            }
+          ],
+          "display-lg": [
+            "32px",
+            {
+              "lineHeight": "40px",
+              "letterSpacing": "-0.025em",
+              "fontWeight": "700"
+            }
+          ],
+          "display-lg-mobile": [
+            "26px",
+            {
+              "lineHeight": "34px",
+              "letterSpacing": "-0.02em",
+              "fontWeight": "700"
+            }
+          ]
+        }
+      }
+    }
+  }</script></head><body class="bg-background font-body-md text-body-md text-on-surface antialiased min-h-screen flex flex-col"><header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest border-b border-outline-variant/30 shadow-[0_1px_3px_0_rgba(15,23,42,0.04),0_1px_2px_-1px_rgba(15,23,42,0.04)]"><div class="h-16 w-full px-margin-desktop max-w-[1680px] mx-auto flex items-center justify-between gap-space-lg"><div class="flex items-center gap-space-lg shrink-0"><div class="flex items-center gap-space-md"><img alt="High-tech institutional bank shield logo with credit circuit nodes and AI spark, glowing electric indigo and emerald, vector SVG style. Brand logo. - Primary color: #6366f1
+- Font: hankenGrotesk
+- Mode: dark
+- Roundness: rounded-sm
+" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1U62b818gOWPYrBvbMNkLG4X4viOjb0Q_wHUhWfF0p9oTAoYuQVf5rmvnysdwONOhWNKX3bRyT3g8bZY6rcIR3swiippHCg87m_ZhixOY7-6hg4VYm1ySLNTAhrUV1RELjo_Cl9eQAdDx0XxbfY1XQ_YC94jbe4xr8WLr_7GvuMTmOkzAESSqoPixKbOLbm9TXUNgg63jvJHKxM1ha5DifpnzAhJRNN2br5FLiw8WzivxukmIrpnrOVXB8"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-on-surface font-bold tracking-tight leading-none">SmartCredit AI</span><span class="font-label-sm text-label-sm text-outline tracking-wider font-semibold uppercase mt-0.5">Institutional Credit Risk Intelligence</span></div></div><div class="hidden xl:flex items-center gap-space-xs pl-space-md border-l border-outline-variant/40"><div class="flex items-center gap-1.5 px-2 py-0.5 rounded bg-surface-container text-on-tertiary-container font-label-sm text-label-sm font-semibold border border-tertiary-fixed-dim/30"><span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container animate-pulse"></span>PRODUCTION ENGINE v2.4</div><div class="px-2 py-0.5 rounded bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm font-semibold border border-outline-variant/30">18ms Latency</div><div class="px-2 py-0.5 rounded bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm font-semibold border border-outline-variant/30">SR 11-7 / OCC Validated</div></div></div><nav class="hidden lg:flex items-center h-full gap-space-lg shrink-0" data-active-classes="text-secondary border-b-2 border-secondary font-semibold"><a aria-current="page" class="h-full flex items-center transition-colors px-1 text-secondary border-b-2 border-secondary font-semibold" data-path="portfolio-intelligence" href="#">Portfolio Intelligence (Executive BI)</a><a class="h-full flex items-center text-on-surface-variant hover:text-on-surface font-body-md text-body-md transition-colors px-1 border-b-2 border-transparent" data-path="risk-drivers" href="#">Risk Drivers &amp; Demographic Matrix</a><a class="h-full flex items-center text-on-surface-variant hover:text-on-surface font-body-md text-body-md transition-colors px-1 border-b-2 border-transparent" data-path="underwriting-terminal" href="#">AI Underwriting Terminal</a><a class="h-full flex items-center text-on-surface-variant hover:text-on-surface font-body-md text-body-md transition-colors px-1 border-b-2 border-transparent" data-path="model-governance" href="#">Model Governance &amp; Audit</a></nav><div class="flex items-center gap-space-md shrink-0"><button class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface hover:bg-surface-container-low hover:text-on-surface font-label-md text-label-md uppercase tracking-wider transition-colors shadow-sm" type="button"><span class="material-symbols-outlined text-[16px]">file_download</span>Export Audit Pack</button><button aria-label="Alerts" class="relative p-1.5 rounded text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-error ring-2 ring-surface-container-lowest"></span></button><div class="flex items-center gap-space-sm pl-space-sm border-l border-outline-variant/40"><div class="hidden md:flex flex-col text-right"><span class="font-label-md text-label-md text-on-surface font-semibold leading-tight">Marcus Vance</span><span class="font-label-sm text-label-sm text-outline font-medium">Chief Risk Officer</span></div><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-outline-variant/60" src="https://lh3.googleusercontent.com/aida/AEtjO1VyS_oasWvIJkDjhdzJ653Md75M1JgLqsI6Db8FtCXNbcPAjvks47h5NHu_T_YQ4LQl-JShoqiuDcrh7SLblbTDxkpgVD2jyRTMcb6lQ8ZqmF66QDqySZHYYFEpX1jtB3mHdfODZIOvhczJJ_TBKx2jI4MZ8BYickyyaovQ-gfiKCpzmspt7El43-gOASbfpiGANnD4-RQI73xT4dZrlKjD1M7NzTeVVSG4JloEflwYtU98SGk-7x5ooqM"/></div></div></div></header><main class="w-full pt-16 bg-background flex-1"><div class="flex flex-col w-full">
+<!-- Subheader Institutional Telemetry Bar -->
+<section class="w-full bg-surface-container-lowest shadow-sm mb-space-lg">
+<div class="max-w-[1680px] mx-auto px-margin-desktop py-space-sm flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-space-md">
+<!-- Left: Cohort Selector & Live Feed Status -->
+<div class="flex flex-wrap items-center gap-space-md">
+<!-- Cohort Dropdown Control -->
+<div class="relative inline-block">
+<button class="inline-flex items-center justify-between gap-2 px-3 py-1.5 bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md rounded shadow-xs transition-colors" id="cohort-btn" type="button">
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-secondary">domain_verification</span>
+<span class="font-bold">Q3 2025 YTD (Consolidated)</span>
+<span class="text-on-surface-variant font-normal">— All Commercial Portfolios</span>
+</span>
+<span class="material-symbols-outlined text-[16px] text-outline">arrow_drop_down</span>
+</button>
+</div>
+<!-- Live Telemetry Pill -->
+<div class="flex items-center gap-2 px-2.5 py-1 bg-surface-container-high rounded text-on-surface">
+<span class="flex h-2 w-2 relative">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-on-tertiary-container opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-on-tertiary-container"></span>
+</span>
+<span class="font-label-sm text-label-sm font-semibold tracking-wider uppercase text-on-tertiary-container">DATA PIPE: REAL-TIME FEDWIRE FEED</span>
+<span class="text-outline-variant font-bold">•</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Latency: 12ms</span>
+</div>
+<!-- Stress Scenario Indicator -->
+<div class="flex items-center gap-1.5 px-2.5 py-1 bg-surface-container-low rounded text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[15px] text-secondary">stacked_line_chart</span>
+<span class="font-semibold text-on-surface">Stress Horizon:</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container font-medium text-secondary">CCAR Severely Adverse (Q3-Q4)</span>
+</div>
+</div>
+<!-- Right Action Suite -->
+<div class="flex items-center gap-space-sm justify-end">
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-primary text-on-primary font-label-md text-label-md uppercase tracking-wider rounded shadow-sm hover:bg-primary-container transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px] text-tertiary-fixed">bolt</span>
+<span>Simulate CCAR Macro Stress Test</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-surface-container-lowest text-on-surface font-label-md text-label-md uppercase tracking-wider rounded shadow-sm hover:bg-surface-container-low transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px] text-outline">file_present</span>
+<span>Export Board Audit Dossier</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Main Executive Canvas -->
+<div class="w-full max-w-[1680px] mx-auto px-margin-desktop space-y-space-xl pb-space-2xl">
+<!-- KPI Metrics Ribbon (5 Pristine Executive Blocks) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-space-md">
+<!-- Card 1: Ingested Facilities -->
+<div class="bg-surface-container-lowest p-space-lg rounded shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between pb-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold">Total Ingested</span>
+<span class="p-1 rounded bg-surface-container text-secondary">
+<span class="material-symbols-outlined text-[16px]">account_balance</span>
+</span>
+</div>
+<div class="my-space-xs">
+<div class="font-metric-xl text-metric-xl text-on-surface font-bold tracking-tight">800 <span class="font-headline-sm text-headline-sm font-normal text-outline">Facilities</span></div>
+</div>
+<div class="flex items-center justify-between pt-space-xs">
+<span class="inline-flex items-center gap-1 text-on-tertiary-container font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[14px]">arrow_upward</span> +12.4% MoM
+          </span>
+<span class="text-outline font-label-sm text-label-sm">3 Regional Hubs</span>
+</div>
+<!-- Sparkline visualization -->
+<div class="w-full h-4 mt-2">
+<svg class="w-full h-full text-secondary" fill="none" preserveaspectratio="none" viewbox="0 0 100 20">
+<path d="M0,16 L15,14 L30,15 L45,10 L60,12 L75,6 L90,8 L100,2" stroke="currentColor" stroke-linecap="round" stroke-width="2" vector-effect="non-scaling-stroke"></path>
+</svg>
+</div>
+</div>
+<!-- Card 2: Approval Sanction Rate -->
+<div class="bg-surface-container-lowest p-space-lg rounded shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between pb-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold">Approval Sanction Rate</span>
+<span class="p-1 rounded bg-surface-container text-on-tertiary-container">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+</span>
+</div>
+<div class="my-space-xs">
+<div class="font-metric-xl text-metric-xl text-on-surface font-bold tracking-tight">82.6%</div>
+</div>
+<div class="flex items-center justify-between pt-space-xs">
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-on-tertiary-container font-label-sm text-label-sm font-bold">
+            +2.4% vs Basel III
+          </span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">661 Sanctioned</span>
+</div>
+<div class="w-full bg-surface-container h-1.5 rounded-full overflow-hidden mt-2">
+<div class="bg-on-tertiary-container h-full rounded-full" style="width: 82.6%"></div>
+</div>
+</div>
+<!-- Card 3: Total Underwritten Capital -->
+<div class="bg-surface-container-lowest p-space-lg rounded shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between pb-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold">Total Capital Underwritten</span>
+<span class="p-1 rounded bg-surface-container text-secondary">
+<span class="material-symbols-outlined text-[16px]">payments</span>
+</span>
+</div>
+<div class="my-space-xs">
+<div class="font-metric-xl text-metric-xl text-on-surface font-bold tracking-tight">$115.3M <span class="font-label-md text-label-md text-outline font-semibold">USD</span></div>
+</div>
+<div class="flex items-center justify-between pt-space-xs">
+<span class="font-label-sm text-label-sm text-outline font-medium">Avg Ticket: <strong class="text-on-surface">$144,125</strong></span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container-high text-on-surface font-label-sm text-label-sm font-semibold">Tier A1 Senior</span>
+</div>
+<div class="w-full h-4 mt-2">
+<svg class="w-full h-full text-secondary" fill="none" preserveaspectratio="none" viewbox="0 0 100 20">
+<path d="M0,18 L20,16 L40,11 L60,9 L80,5 L100,3" stroke="currentColor" stroke-linecap="round" stroke-width="2" vector-effect="non-scaling-stroke"></path>
+</svg>
+</div>
+</div>
+<!-- Card 4: Default Risk (NPA Filter) -->
+<div class="bg-surface-container-lowest p-space-lg rounded shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between pb-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold">Default Risk (NPA Filter)</span>
+<span class="p-1 rounded bg-error-container text-error">
+<span class="material-symbols-outlined text-[16px]">drive_file_rename_outline</span>
+</span>
+</div>
+<div class="my-space-xs">
+<div class="font-metric-xl text-metric-xl text-error font-bold tracking-tight">17.4%</div>
+</div>
+<div class="flex items-center justify-between pt-space-xs">
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-on-surface font-label-sm text-label-sm font-semibold">
+            139 Filtered
+          </span>
+<span class="text-error font-label-sm text-label-sm font-bold">$20.1M Guarded</span>
+</div>
+<div class="w-full bg-surface-container h-1.5 rounded-full overflow-hidden mt-2">
+<div class="bg-error h-full rounded-full" style="width: 17.4%"></div>
+</div>
+</div>
+<!-- Card 5: AI Sanction Accuracy -->
+<div class="bg-surface-container-lowest p-space-lg rounded shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between pb-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold">AI Sanction Accuracy</span>
+<span class="p-1 rounded bg-primary text-on-primary">
+<span class="material-symbols-outlined text-[16px]">psychology</span>
+</span>
+</div>
+<div class="my-space-xs">
+<div class="font-metric-xl text-metric-xl text-on-surface font-bold tracking-tight">87.5% <span class="font-label-sm text-label-sm text-on-tertiary-container font-semibold">Ensemble</span></div>
+</div>
+<div class="flex items-center justify-between pt-space-xs">
+<span class="font-label-sm text-label-sm text-outline font-medium">ROC-AUC: <strong class="text-on-surface">0.891</strong></span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-on-surface font-label-sm text-label-sm font-semibold">F1: 0.880</span>
+</div>
+<div class="flex items-center gap-1 mt-2">
+<div class="h-1.5 flex-1 rounded-xs bg-secondary"></div>
+<div class="h-1.5 flex-1 rounded-xs bg-secondary"></div>
+<div class="h-1.5 flex-1 rounded-xs bg-secondary"></div>
+<div class="h-1.5 flex-1 rounded-xs bg-secondary"></div>
+<div class="h-1.5 w-3 rounded-xs bg-surface-container"></div>
+</div>
+</div>
+</div>
+<!-- Executive Analytics Dual Panel Row -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-space-lg">
+<!-- Left Column (5 Cols): Donut & Cushion Breakdown -->
+<div class="xl:col-span-5 bg-surface-container-lowest rounded shadow-sm p-space-xl flex flex-col justify-between">
+<!-- Header -->
+<div class="flex items-center justify-between pb-space-md">
+<div class="flex flex-col">
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">Portfolio Sanction Split &amp; Capital Cushion</h2>
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider mt-0.5">Basel III Standardized Capital Allocation Model</span>
+</div>
+<span class="px-2 py-1 bg-surface-container text-secondary font-label-sm text-label-sm rounded font-semibold">
+            Audit Level 1
+          </span>
+</div>
+<!-- Donut Visualization Stage -->
+<div class="flex flex-col sm:flex-row items-center justify-around gap-space-lg py-space-md">
+<!-- Scaled High-Precision Donut Chart SVG -->
+<div class="relative w-44 h-44 flex items-center justify-center shrink-0">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 120 120">
+<!-- Background Circle -->
+<circle cx="60" cy="60" fill="transparent" r="48" stroke="#e6eeff" stroke-width="14"></circle>
+<!-- Rejected Arc (17.4% -> 301.59 * 0.174 = 52.48, offset from start) -->
+<circle cx="60" cy="60" fill="transparent" r="48" stroke="#ba1a1a" stroke-dasharray="52.48 301.59" stroke-dashoffset="0" stroke-linecap="butt" stroke-width="14"></circle>
+<!-- Sanctioned Arc (82.6% -> 301.59 * 0.826 = 249.11) -->
+<circle cx="60" cy="60" fill="transparent" r="48" stroke="#069669" stroke-dasharray="249.11 301.59" stroke-dashoffset="-52.48" stroke-linecap="butt" stroke-width="14"></circle>
+</svg>
+<!-- Central Donut Metric -->
+<div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+<span class="font-label-sm text-label-sm text-outline uppercase font-semibold">Active Pool</span>
+<span class="font-metric-lg text-metric-lg font-bold text-on-surface">$115.3M</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">661 Validated</span>
+</div>
+</div>
+<!-- Legend & Micro Breakdown -->
+<div class="flex flex-col gap-space-md w-full sm:w-auto">
+<div class="p-space-sm bg-surface-container-low rounded space-y-1">
+<div class="flex items-center justify-between gap-4">
+<span class="flex items-center gap-1.5 font-label-md text-label-md text-on-surface font-semibold">
+<span class="w-2.5 h-2.5 rounded-full bg-on-tertiary-container"></span>
+                  Sanctioned Volume
+                </span>
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">82.6%</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span>$95.24M Deployed</span>
+<span class="text-on-tertiary-container font-semibold">661 Facilities</span>
+</div>
+</div>
+<div class="p-space-sm bg-surface-container-low rounded space-y-1">
+<div class="flex items-center justify-between gap-4">
+<span class="flex items-center gap-1.5 font-label-md text-label-md text-on-surface font-semibold">
+<span class="w-2.5 h-2.5 rounded-full bg-error"></span>
+                  Auto-Rejected (NPA)
+                </span>
+<span class="font-headline-sm text-headline-sm font-bold text-error">17.4%</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span>$20.06M Guarded</span>
+<span class="text-error font-semibold">139 Facilities</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Pillar Metrology & CET1 Resilience -->
+<div class="grid grid-cols-2 gap-space-md pt-space-md bg-surface-container-low p-space-md rounded">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline uppercase font-semibold">Capital Cushion Surplus</span>
+<span class="font-headline-sm text-headline-sm font-bold text-on-tertiary-container mt-0.5">+$8.45M</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Over CET1 Target Regulatory Min</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline uppercase font-semibold">Algorithmic Drift</span>
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface mt-0.5">0.014%</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Optimal Statistical Stability</span>
+</div>
+</div>
+</div>
+<!-- Right Column (7 Cols): Delinquency Run-Rate Curve -->
+<div class="xl:col-span-7 bg-surface-container-lowest rounded shadow-sm p-space-xl flex flex-col justify-between">
+<!-- Header with Comparative Controls -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between pb-space-sm gap-2">
+<div>
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">Delinquency Trajectory Comparison</h2>
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">30 / 60 / 90+ DPD Non-Accrual Run-Rate (12-Month Cohort Projection)</span>
+</div>
+<div class="flex items-center gap-space-md text-label-sm font-label-sm">
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-1 rounded bg-on-tertiary-container"></span>
+<span class="text-on-surface font-semibold">AI Model v2.4</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-0.5 border-t border-dashed border-outline"></span>
+<span class="text-outline font-medium">Legacy Underwriting</span>
+</div>
+</div>
+</div>
+<!-- Comparative SVG Line Graph Area -->
+<div class="relative w-full h-56 my-space-md">
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 700 220">
+<!-- Gridlines -->
+<line stroke="#e6eeff" stroke-width="1" x1="40" x2="680" y1="20" y2="20"></line>
+<text fill="#76777d" font-family="Inter" font-size="10" text-anchor="end" x="32" y="24">3.0%</text>
+<line stroke="#e6eeff" stroke-width="1" x1="40" x2="680" y1="70" y2="70"></line>
+<text fill="#76777d" font-family="Inter" font-size="10" text-anchor="end" x="32" y="74">2.0%</text>
+<line stroke="#e6eeff" stroke-width="1" x1="40" x2="680" y1="120" y2="120"></line>
+<text fill="#76777d" font-family="Inter" font-size="10" text-anchor="end" x="32" y="124">1.0%</text>
+<line stroke="#e6eeff" stroke-width="1" x1="40" x2="680" y1="170" y2="170"></line>
+<text fill="#76777d" font-family="Inter" font-size="10" text-anchor="end" x="32" y="174">0.0%</text>
+<!-- X Axis ticks -->
+<line stroke="#cbd5e1" stroke-width="1" x1="40" x2="680" y1="175" y2="175"></line>
+<text fill="#76777d" font-family="Inter" font-size="11" x="60" y="195">Current (0 DPD)</text>
+<text fill="#76777d" font-family="Inter" font-size="11" x="230" y="195">Early 30 DPD</text>
+<text fill="#76777d" font-family="Inter" font-size="11" x="440" y="195">Late 60 DPD</text>
+<text fill="#76777d" font-family="Inter" font-size="11" x="630" y="195">Default (90+ DPD)</text>
+<!-- Gradient Area under AI curve -->
+<defs>
+<lineargradient id="aiGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#069669" stop-opacity="0.25"></stop>
+<stop offset="100%" stop-color="#069669" stop-opacity="0.0"></stop>
+</lineargradient>
+</defs>
+<polygon fill="url(#aiGradient)" points="60,170 230,162 440,152 640,140 640,175 60,175"></polygon>
+<!-- Legacy Line (Dashed Red/Charcoal trajectory rising to 2.45%) -->
+<path d="M60,165 C150,158 230,135 340,105 C450,75 550,55 640,48" fill="none" stroke="#ba1a1a" stroke-dasharray="4,4" stroke-width="2"></path>
+<circle cx="640" cy="48" fill="#ba1a1a" r="4"></circle>
+<text fill="#ba1a1a" font-family="Inter" font-size="11" font-weight="700" x="645" y="44">2.45% (Legacy)</text>
+<!-- AI Engine Line (Emerald Low Trajectory ending at 0.18%) -->
+<path d="M60,170 C150,168 230,162 340,156 C450,150 550,144 640,140" fill="none" stroke="#069669" stroke-width="2.5"></path>
+<circle cx="640" cy="140" fill="#069669" r="4"></circle>
+<text fill="#069669" font-family="Inter" font-size="11" font-weight="700" x="645" y="136">0.18% (SmartCredit AI)</text>
+</svg>
+</div>
+<!-- Metric Footer Callouts -->
+<div class="flex flex-wrap items-center justify-between gap-space-md pt-space-sm bg-surface-container-low p-space-md rounded">
+<div class="flex items-center gap-space-md">
+<div class="p-2 rounded bg-surface-container-highest text-secondary">
+<span class="material-symbols-outlined text-[20px]">trending_down</span>
+</div>
+<div>
+<div class="font-headline-sm text-headline-sm font-bold text-on-surface">-64.2% Reduction in NPA Realization</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Validated through backtesting 14,200 commercial historical default instances.</div>
+</div>
+</div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm text-outline uppercase font-semibold">Recovery Expectancy</span>
+<div class="font-headline-sm text-headline-sm font-bold text-on-tertiary-container">84.8% LGD Hedge</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Syndication & Regional Deployment Table Section -->
+<div class="bg-surface-container-lowest rounded shadow-sm overflow-hidden">
+<!-- Table Filter Bar & Tools -->
+<div class="p-space-lg flex flex-col md:flex-row items-stretch md:items-center justify-between gap-space-md bg-surface-container-low">
+<div>
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">Regional Hub Capital Deployment &amp; Risk Health</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Detailed syndication breakdown across primary tier-1 underwriting jurisdictions.</p>
+</div>
+<div class="flex items-center gap-space-sm">
+<!-- Mini Search -->
+<div class="relative">
+<span class="material-symbols-outlined absolute left-2.5 top-2 text-[16px] text-outline">search</span>
+<input class="h-8 pl-8 pr-3 bg-surface-container-lowest text-on-surface font-body-sm text-body-sm rounded shadow-2xs focus:outline-none focus:ring-1 focus:ring-secondary w-64" placeholder="Filter by region, ticker, or FICO..." type="text"/>
+</div>
+<button class="h-8 px-2.5 bg-surface-container-lowest text-on-surface font-label-md text-label-md rounded shadow-2xs hover:bg-surface-container flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[15px]">filter_list</span>
+<span>Filters</span>
+</button>
+</div>
+</div>
+<!-- Financial Data Grid -->
+<div class="overflow-x-auto w-full">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container font-label-md text-label-md text-outline uppercase tracking-wider">
+<th class="py-2.5 px-space-lg">Regional Syndicate Hub</th>
+<th class="py-2.5 px-space-md text-right">Facilities Ingested</th>
+<th class="py-2.5 px-space-md text-right">Sanction Rate</th>
+<th class="py-2.5 px-space-md text-right">Committed Capital</th>
+<th class="py-2.5 px-space-md text-right">Avg Debt Yield</th>
+<th class="py-2.5 px-space-md text-right">Weighted FICO</th>
+<th class="py-2.5 px-space-md text-center">Status Index</th>
+<th class="py-2.5 px-space-lg text-right">Governance Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container font-body-md text-body-md text-on-surface">
+<!-- Row 1: New York -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-3 px-space-lg font-semibold">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span>New York Tier-1 Metro</span>
+<span class="text-outline font-normal font-label-sm text-label-sm">(East-Commercial)</span>
+</div>
+</td>
+<td class="py-3 px-space-md text-right font-medium">394</td>
+<td class="py-3 px-space-md text-right font-bold text-on-tertiary-container">84.2%</td>
+<td class="py-3 px-space-md text-right font-bold">$58,200,000</td>
+<td class="py-3 px-space-md text-right">11.4%</td>
+<td class="py-3 px-space-md text-right font-mono font-medium">748</td>
+<td class="py-3 px-space-md text-center">
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-tertiary-container font-label-sm text-label-sm font-bold uppercase">
+                  Optimal Sovereign
+                </span>
+</td>
+<td class="py-3 px-space-lg text-right">
+<button class="px-2.5 py-1 rounded bg-surface-container-lowest hover:bg-surface-container text-secondary font-label-md text-label-md uppercase font-semibold shadow-xs" type="button">
+                  Deep Audit
+                </button>
+</td>
+</tr>
+<!-- Row 2: Chicago -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-3 px-space-lg font-semibold">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span>Chicago Midwest Industrial</span>
+<span class="text-outline font-normal font-label-sm text-label-sm">(Central-Syndicate)</span>
+</div>
+</td>
+<td class="py-3 px-space-md text-right font-medium">246</td>
+<td class="py-3 px-space-md text-right font-bold text-on-tertiary-container">81.7%</td>
+<td class="py-3 px-space-md text-right font-bold">$34,800,000</td>
+<td class="py-3 px-space-md text-right">12.9%</td>
+<td class="py-3 px-space-md text-right font-mono font-medium">722</td>
+<td class="py-3 px-space-md text-center">
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-tertiary-container font-label-sm text-label-sm font-bold uppercase">
+                  Robust Cushion
+                </span>
+</td>
+<td class="py-3 px-space-lg text-right">
+<button class="px-2.5 py-1 rounded bg-surface-container-lowest hover:bg-surface-container text-secondary font-label-md text-label-md uppercase font-semibold shadow-xs" type="button">
+                  Deep Audit
+                </button>
+</td>
+</tr>
+<!-- Row 3: Dallas -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-3 px-space-lg font-semibold">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span>Dallas Sunbelt Commercial</span>
+<span class="text-outline font-normal font-label-sm text-label-sm">(Southwest-Direct)</span>
+</div>
+</td>
+<td class="py-3 px-space-md text-right font-medium">160</td>
+<td class="py-3 px-space-md text-right font-bold text-on-tertiary-container">79.3%</td>
+<td class="py-3 px-space-md text-right font-bold">$22,300,000</td>
+<td class="py-3 px-space-md text-right">10.8%</td>
+<td class="py-3 px-space-md text-right font-mono font-medium">710</td>
+<td class="py-3 px-space-md text-center">
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface font-label-sm text-label-sm font-bold uppercase">
+                  Monitored Tier
+                </span>
+</td>
+<td class="py-3 px-space-lg text-right">
+<button class="px-2.5 py-1 rounded bg-surface-container-lowest hover:bg-surface-container text-secondary font-label-md text-label-md uppercase font-semibold shadow-xs" type="button">
+                  Deep Audit
+                </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Institutional Micro Summary Strip -->
+<div class="px-space-lg py-2.5 bg-surface-container-low flex flex-wrap items-center justify-between text-outline font-label-sm text-label-sm uppercase tracking-wider">
+<div class="flex items-center gap-space-md">
+<span>Consolidated Leverage Ratio: <strong class="text-on-surface">2.41x</strong></span>
+<span>•</span>
+<span>Coverage Trigger: <strong class="text-on-surface">1.65x DSCR</strong></span>
+<span>•</span>
+<span>Stress Tolerance: <strong class="text-on-tertiary-container">+350 bps Base Rate Hike</strong></span>
+</div>
+<div class="flex items-center gap-1.5 text-on-surface font-semibold">
+<span class="material-symbols-outlined text-[15px] text-on-tertiary-container">verified</span>
+<span>Regulatory Compliant (FRB / EBA Protocol)</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  // Simple interactive cohort toggle simulated for demo
+  document.getElementById('cohort-btn')?.addEventListener('click', function() {
+    this.classList.toggle('ring-1');
+    this.classList.toggle('ring-secondary');
+  });
+</script></main><footer class="w-full bg-surface-container-lowest border-t border-outline-variant/30 py-space-md mt-auto"><div class="w-full px-margin-desktop max-w-[1680px] mx-auto flex flex-col md:flex-row items-center justify-between gap-space-sm text-outline font-label-sm text-label-sm uppercase tracking-wider"><div class="flex flex-wrap items-center justify-center md:justify-start gap-x-space-md gap-y-1"><span>AUTONOMOUS CREDIT GUARD</span><span class="text-outline-variant">•</span><span>SR 11-7 / OCC 2011-12 COMPLIANT</span><span class="text-outline-variant">•</span><span>Algorithmic Fairness Bias Index: 0.002 (Optimal)</span></div><div class="flex items-center gap-space-md"><span><span class="inline-block w-1.5 h-1.5 rounded-full bg-on-tertiary-container mr-1"></span>All Nodes Synchronized</span><span class="text-outline-variant">•</span><span>© 2025 SmartCredit AI Institutional Systems</span></div></div></footer></body></html>

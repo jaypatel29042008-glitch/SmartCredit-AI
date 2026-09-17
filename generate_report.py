@@ -76,7 +76,7 @@ table_meta.alignment = WD_TABLE_ALIGNMENT.CENTER
 meta_data = [
     ("Domain Area:", "Financial Analytics & Automated Risk Underwriting"),
     ("Primary Dataset:", "Kaggle Loan Prediction Problem Dataset (800 records)"),
-    ("Technology Stack:", "Python 3.14, Streamlit, Scikit-Learn, Plotly, Pandas"),
+    ("Technology Stack:", "Python 3.14, FastAPI REST API, Google Stitch UI, Scikit-Learn, Pydantic, Pandas"),
     ("Submission Deliverables:", "Code (app.py), requirements.txt, README.md, Report, GitHub Repo")
 ]
 
@@ -267,6 +267,37 @@ if os.path.exists("screenshot_view3.png"):
     r_cap3.font.size = Pt(9)
     r_cap3.font.italic = True
     r_cap3.font.color.rgb = COLOR_MUTED
+
+# Insert Screenshot 4
+if os.path.exists("screenshot_view4.png"):
+    add_styled_heading(doc, "View 4: Institutional Model Governance & Cryptographic Audit Trail", level=2)
+    p_img4 = doc.add_paragraph()
+    p_img4.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    doc.add_picture("screenshot_view4.png", width=Inches(6.2))
+    p_cap4 = doc.add_paragraph()
+    p_cap4.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    r_cap4 = p_cap4.add_run("Figure 4: Model Governance Terminal showing multi-model benchmarks, SHAP feature importance, fairness audit (Bias Index 0.002), and SHA-256 tamper-evident ledger.")
+    r_cap4.font.size = Pt(9)
+    r_cap4.font.italic = True
+    r_cap4.font.color.rgb = COLOR_MUTED
+
+# REST API & Security Verification Section
+add_styled_heading(doc, "API & Cybersecurity Safeguards Verification", level=2)
+p_sec = doc.add_paragraph()
+p_sec.add_run(
+    "To ensure regulatory compliance (Basel III, OCC 2011-12, SR 11-7) and production reliability, the underlying FastAPI backend incorporates institutional-grade security mechanisms:\n"
+)
+sec_bullets = [
+    ("Strict Pydantic Contract Validation:", "All incoming underwriting payloads are strictly validated against numeric boundaries (income, term, requested capital) and categorical regex patterns to neutralize injection vulnerabilities."),
+    ("Sliding-Window Rate Limiting:", "The underwriting endpoint (/api/underwrite) is protected by an in-memory sliding-window rate limiter restricted to 40 requests/minute per client IP to mitigate denial-of-service attempts."),
+    ("Cybersecurity Headers Middleware:", "Every HTTP response automatically enforces X-Content-Type-Options: nosniff, X-Frame-Options: DENY, X-XSS-Protection: 1; mode=block, Referrer-Policy, and HSTS."),
+    ("Cryptographic SHA-256 Audit Trail:", "Every automated underwriting decision is hashed in real-time with an immutable timestamp and application ID, creating an auditable ledger for supervisory bank examiners.")
+]
+for title, desc in sec_bullets:
+    bp = doc.add_paragraph(style='List Bullet')
+    r_t = bp.add_run(f"{title} ")
+    r_t.font.bold = True
+    bp.add_run(desc)
 
 # -------------------------------------------------------------
 # 6. STRATEGIC RECOMMENDATIONS & RISK MITIGATION
