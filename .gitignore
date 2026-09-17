@@ -1,0 +1,21 @@
+﻿__pycache__/
+*.pyc
+.env
+.venv/
+env/
+venv/
+# Meeting temporary data files
+all_links.txt
+analyze_chat.py
+chat_messages.json
+clean_transcript.txt
+filtered_chat_links.txt
+host_messages.txt
+last_messages.txt
+meeting_info.json
+meeting_details.json
+split_transcript.py
+transcript.vtt
+transcript_part*.txt
+zoom_data.json
+chat_filtered.txt
