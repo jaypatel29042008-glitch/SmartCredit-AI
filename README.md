@@ -58,43 +58,48 @@ Three supervised classification algorithms were trained using stratified holdout
 
 ## Cybersecurity & Regulatory Governance
 
-SmartCredit AI complies with US Federal Reserve **SR 11-7** / OCC 2011-12 Model Risk Management directives and OWASP API security standards:
+SmartCredit AI complies with Reserve Bank of India (**RBI**) Prudential Guidelines, **IRACP Norms**, Master Direction on Digital Lending 2025, and OWASP API security standards:
 
-1. **Strict Contract Validation:** All inputs to /api/underwrite are validated with Pydantic schemas enforcing strict numerical bounds and regex allowlists.
-2. **Sliding-Window Rate Limiting:** Underwriting endpoints are protected by an in-memory sliding-window limiter (40 req/min per IP) to mitigate denial-of-service and brute-force scraping.
-3. **Cybersecurity Headers:** HTTP responses enforce X-Content-Type-Options: nosniff, X-Frame-Options: DENY, X-XSS-Protection: 1; mode=block, Referrer-Policy: strict-origin-when-cross-origin, and HSTS.
-4. **Cryptographic SHA-256 Audit Trail:** Every underwriting decision generates a tamper-evident SHA-256 hash linking applicant ID, timestamp, verdict, capital, and confidence score.
-5. **Algorithmic Fairness Audit:** Active bias index of 0.002 across protected demographic features, adhering to the Equal Credit Opportunity Act (ECOA).
+1. **Strict Contract Validation:** All inputs to `/api/underwrite` are validated with Pydantic v2 schemas enforcing strict numerical bounds and Indian banking currency parameters (INR ₹).
+2. **Sliding-Window Rate Limiting:** Underwriting endpoints are protected by an in-memory sliding-window limiter (40 req/min per IP) to mitigate denial-of-service and automated brute-force inference.
+3. **Cybersecurity Headers:** HTTP responses enforce `X-Content-Type-Options: nosniff`, `X-Frame-Options: DENY`, `X-XSS-Protection: 1; mode=block`, `Referrer-Policy: strict-origin-when-cross-origin`, and HSTS.
+4. **Cryptographic SHA-256 Audit Trail & Merkle Proofs:** Every underwriting decision generates a tamper-evident SHA-256 hash linking applicant ID, timestamp, verdict, capital, and confidence score. Merkle root validation guarantees zero unauthorized modifications.
+5. **Algorithmic Fairness & Disparate Impact Audit:** Active bias index of 0.002 across protected demographic features, adhering to the RBI Fair Practice Code (FPC) and the Four-Fifths Disparate Impact Rule (0.98 ratio).
 
 ---
 
 ## Google Stitch UI Interface Architecture
 
-The frontend integrates Google Stitch white-theme production designs into an interactive Single Page Application (SPA):
+The frontend integrates institutional Google Stitch white-theme production designs into an interactive Single Page Application (SPA):
 
-`
-SmartCredit Platform Views:
- |-- View 1: Portfolio Intelligence (Executive KPIs, dynamic trajectories, sanction metrics)
- |-- View 2: Risk Drivers & Demographics (Credit bureau compliance, geographic collateral alpha)
- |-- View 3: Autonomous Underwriting Terminal (Interactive form, animated dial HUD, live queue)
- |-- View 4: Model Governance & Audit Ledger (Multi-model benchmarks, SHAP matrix, SHA-256 audit log)
-`
+```
+SmartCredit Platform Architecture:
+ |-- Authentication Portal: /login (Dedicated Officer Sign-In with 1-Click Demo & Clearance Badges)
+ |-- View 1: Portfolio Intelligence (Executive KPIs in INR ₹, dynamic delinquency trajectories, regional syndicate hubs)
+ |-- View 2: Risk Drivers & Demographics (CIBIL™ score tiers, collateral geo-tiers, interactive actuarial scenario simulator)
+ |-- View 3: Autonomous Underwriting Terminal (CIBIL slider sync, real-time decision HUD, sanction covenants, live audit stream)
+ |-- View 4: Model Governance & Audit Ledger (Segmented sub-panes: Stress Tests, SHAP attribution, SHA-256 Merkle ledger)
+```
 
 ---
 
 ## REST API Specification
 
-The platform exposes high-performance REST endpoints documented via interactive Swagger UI at http://localhost:8000/docs:
+The platform exposes high-performance REST endpoints documented via interactive Swagger UI at `http://localhost:8000/docs`:
 
 | Method | Endpoint | Description |
 |---|---|---|
-| GET | /health | Health check, model status, and dataset record count |
-| POST | /api/underwrite | Sub-second credit scoring and Level 5 prescriptive action generation |
-| GET | /api/portfolio-metrics | Executive portfolio KPIs (approval rate, capital exposure, NPA risk) |
-| GET | /api/risk-drivers | Demographic and credit bureau risk distribution matrix |
-| GET | /api/model-governance | Multi-model benchmark metrics and feature importance weights |
-| GET | /api/audit-logs | Tamper-evident cryptographic SHA-256 audit ledger |
-| GET | / | Serves the unified Google Stitch Single Page Application |
+| GET | `/health` | Health check, engine status, loaded models, and dataset record count |
+| POST | `/api/underwrite` | Sub-second credit scoring and Level 5 prescriptive action generation |
+| GET | `/api/portfolio-metrics` | Executive portfolio KPIs (sanction rate, capital exposure in INR ₹, NPA risk) |
+| GET | `/api/risk-drivers` | Demographic and CIBIL™ risk distribution matrix |
+| GET | `/api/model-governance` | Multi-model benchmark metrics, feature importance, and governance standard |
+| GET | `/api/audit-logs` | Tamper-evident cryptographic SHA-256 audit ledger |
+| GET | `/api/export-audit-csv` | Direct download of the tamper-evident audit ledger in CSV format |
+| GET | `/download-report` | Direct download of the 1.25 MB formal examination Word document (.docx) |
+| GET | `/login` | Serves the dedicated Institutional Officer Authentication Portal |
+| GET | `/logout` | Clears credentials and securely redirects to `/login?logged_out=1` |
+| GET | `/` | Serves the unified Google Stitch Single Page Application |
 
 ---
 
