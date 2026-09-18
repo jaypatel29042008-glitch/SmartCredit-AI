@@ -274,7 +274,7 @@
         <span class="w-2 h-2 rounded-full bg-on-tertiary-container animate-pulse"></span>
         <span class="text-[11px] font-bold text-on-surface tracking-wide uppercase">ENGINE v2.4 ONLINE</span>
       </div>
-      <span class="text-[10px] font-semibold text-secondary px-2 py-0.5 rounded bg-secondary/10">OCC Validated</span>
+      <span class="text-[10px] font-semibold text-secondary px-2 py-0.5 rounded bg-secondary/10">RBI Validated</span>
     </div>
 
     <!-- Navigation Menu Items -->
@@ -380,9 +380,14 @@
             <span id="sidebar-officer-title" class="text-[10px] text-outline truncate">Senior Underwriter • UW-8492</span>
           </div>
         </div>
-        <button onclick="openOfficerLoginModal()" type="button" title="Switch Officer / Sign In" class="p-1.5 rounded-lg text-outline hover:text-secondary hover:bg-surface-container transition-colors shrink-0 cursor-pointer">
-          <span class="material-symbols-outlined text-base">switch_account</span>
-        </button>
+        <div class="flex items-center gap-1 shrink-0">
+          <button onclick="openOfficerLoginModal()" type="button" title="Switch Officer Profile" class="p-1.5 rounded-lg text-outline hover:text-secondary hover:bg-surface-container transition-colors cursor-pointer">
+            <span class="material-symbols-outlined text-base">switch_account</span>
+          </button>
+          <button onclick="handleOfficerLogout()" type="button" title="Sign Out / End Session" class="p-1.5 rounded-lg text-outline hover:text-error hover:bg-error-container/20 transition-colors cursor-pointer">
+            <span class="material-symbols-outlined text-base">logout</span>
+          </button>
+        </div>
       </div>
       <div class="flex items-center justify-between px-2 py-1 rounded bg-secondary/10 text-secondary text-[10px] font-semibold">
         <span class="flex items-center gap-1.5">
@@ -411,8 +416,8 @@
         <span class="material-symbols-outlined text-base">account_balance</span>
       </div>
       <div class="flex flex-col">
-        <span class="text-xs font-bold text-on-surface leading-tight tracking-tight">Apex Institutional Lending Group</span>
-        <span class="text-[10px] text-outline font-medium">Branch #042 • NY Financial Hub</span>
+        <span class="text-xs font-bold text-on-surface leading-tight tracking-tight">Apex Bharat Commercial Bank</span>
+        <span class="text-[10px] text-outline font-medium">Branch #042 • Mumbai BKC Financial Hub</span>
       </div>
     </div>
 
@@ -430,7 +435,7 @@
     <!-- Active FedWire / Telemetry Badge -->
     <div class="hidden xl:flex items-center gap-2 px-2.5 py-1.5 rounded-lg bg-surface-container-low border border-outline-variant/30 text-xs font-semibold">
       <span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
-      <span class="text-[11px] text-on-surface font-medium">FedWire Node Active</span>
+      <span class="text-[11px] text-on-surface font-medium">RBI SFMS / RTGS Node Active</span>
       <span class="text-outline text-[10px]">• 12ms</span>
     </div>
 
@@ -458,7 +463,7 @@
           <img id="popover-officer-avatar" alt="Officer" class="w-11 h-11 rounded-xl object-cover border border-secondary/40 shrink-0" src="https://lh3.googleusercontent.com/aida/AEtjO1VyS_oasWvIJkDjhdzJ653Md75M1JgLqsI6Db8FtCXNbcPAjvks47h5NHu_T_YQ4LQl-JShoqiuDcrh7SLblbTDxkpgVD2jyRTMcb6lQ8ZqmF66QDqySZHYYFEpX1jtB3mHdfODZIOvhczJJ_TBKx2jI4MZ8BYickyyaovQ-gfiKCpzmspt7El43-gOASbfpiGANnD4-RQI73xT4dZrlKjD1M7NzTeVVSG4JloEflwYtU98SGk-7x5ooqM"/>
           <div class="flex flex-col min-w-0">
             <span id="popover-officer-name" class="text-sm font-bold text-on-surface leading-tight">Senior Underwriter Jay Patel</span>
-            <span class="text-[11px] text-outline mt-0.5">Apex Credit Risk Committee</span>
+            <span class="text-[11px] text-outline mt-0.5">Apex National Credit Risk Committee</span>
             <span class="inline-flex items-center gap-1 text-[10px] text-secondary font-bold font-mono mt-1">
               <span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>
               ID: UW-8492 • Level 3 Clearance
@@ -470,11 +475,11 @@
         <div class="py-3 space-y-2 text-xs">
           <div class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low">
             <span class="text-outline text-[11px]">Approval Authority</span>
-            <span class="font-bold text-on-surface font-mono">Up to $1.5M Capital</span>
+            <span class="font-bold text-on-surface font-mono">Up to ₹1.50 Crore Capital</span>
           </div>
           <div class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low">
             <span class="text-outline text-[11px]">Branch Node</span>
-            <span class="font-semibold text-on-surface">Apex Group #042 (NYC)</span>
+            <span class="font-semibold text-on-surface">Apex Bharat Hub #042 (Mumbai BKC)</span>
           </div>
           <div class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low">
             <span class="text-outline text-[11px]">Audit Logging</span>
@@ -492,9 +497,13 @@
             <span class="material-symbols-outlined text-base text-primary">print</span>
             <span>Examiner Supervisory Report</span>
           </a>
-          <button onclick="openOfficerLoginModal()" type="button" class="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-semibold text-error hover:bg-error-container/20 transition-colors cursor-pointer">
-            <span class="material-symbols-outlined text-base">logout</span>
-            <span>Switch Officer / Sign In</span>
+          <button onclick="openOfficerLoginModal()" type="button" class="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-semibold text-on-surface hover:bg-surface-container transition-colors cursor-pointer">
+            <span class="material-symbols-outlined text-base text-outline">switch_account</span>
+            <span>Switch Officer Profile</span>
+          </button>
+          <button onclick="handleOfficerLogout()" type="button" class="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-semibold text-error hover:bg-error-container/20 transition-colors cursor-pointer">
+            <span class="material-symbols-outlined text-base text-error">logout</span>
+            <span>Sign Out / Terminate Session</span>
           </button>
         </div>
       </div>
@@ -515,8 +524,8 @@
 <div class="relative inline-block">
 <select id="cohort-select" onchange="switchCohort(this.value)" class="px-3 py-1.5 bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md rounded-lg border border-outline-variant/30 shadow-xs transition-colors cursor-pointer appearance-none pr-8">
   <option value="all" selected>Q3 2025 YTD (Consolidated) — All Commercial Portfolios</option>
-  <option value="commercial">Commercial High-Ticket Facility (Income &gt; $5,500/mo)</option>
-  <option value="retail">Retail &amp; Residential Mortgages (Income &le; $5,500/mo)</option>
+  <option value="commercial">Commercial High-Ticket Facility (Income &gt; ₹55,000/mo)</option>
+  <option value="retail">Retail &amp; Residential Mortgages (Income &le; ₹55,000/mo)</option>
   <option value="semiurban">Semiurban High-Growth Collateral Alpha</option>
 </select>
 <span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-outline text-sm pointer-events-none">arrow_drop_down</span>
@@ -527,7 +536,7 @@
 <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
 <span class="relative inline-flex rounded-full h-2 w-2 bg-secondary"></span>
 </span>
-<span class="font-label-sm text-label-sm font-semibold tracking-wider uppercase text-secondary">DATA PIPE: REAL-TIME FEDWIRE FEED</span>
+<span class="font-label-sm text-label-sm font-semibold tracking-wider uppercase text-secondary">DATA PIPE: REAL-TIME RBI SFMS / RTGS FEED</span>
 <span class="text-outline-variant font-bold">•</span>
 <span class="font-label-sm text-label-sm text-on-surface-variant font-medium">12ms Latency</span>
 </div>
@@ -537,7 +546,7 @@
 <span class="px-2.5 py-1 bg-surface-container-low rounded-lg text-on-surface-variant font-label-sm text-label-sm border border-outline-variant/30 flex items-center gap-1.5">
   <span class="material-symbols-outlined text-sm text-secondary">stacked_line_chart</span>
   <span class="font-semibold text-on-surface">Stress Horizon:</span>
-  <span class="text-secondary font-semibold">CCAR Adverse Q3-Q4</span>
+  <span class="text-secondary font-semibold">RBI Macro Stress (FSR Baseline)</span>
 </span>
 <a href="/api/export-audit-csv" download="smartcredit_audit_ledger.csv" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-surface-container-lowest hover:bg-surface-container text-on-surface font-label-md text-label-md rounded-lg border border-outline-variant/30 shadow-xs transition-colors">
 <span class="material-symbols-outlined text-sm text-secondary">download</span>
@@ -587,7 +596,7 @@
 </div>
 <div class="flex items-center justify-between pt-space-xs">
 <span class="px-1.5 py-0.5 rounded bg-surface-container text-on-tertiary-container font-label-sm text-label-sm font-bold">
-            +2.4% vs Basel III
+            +2.4% vs RBI Norms
           </span>
 <span class="font-label-sm text-label-sm text-on-surface-variant font-medium">661 Sanctioned</span>
 </div>
@@ -604,10 +613,10 @@
 </span>
 </div>
 <div class="my-space-xs">
-<div class="font-metric-xl text-metric-xl text-on-surface font-bold tracking-tight"><span id="kpi-total-capital">$115.3M <span class="font-label-md text-label-md text-outline font-semibold">USD</span></span></div>
+<div class="font-metric-xl text-metric-xl text-on-surface font-bold tracking-tight"><span id="kpi-total-capital">₹115.3 Cr <span class="font-label-md text-label-md text-outline font-semibold">INR</span></span></div>
 </div>
 <div class="flex items-center justify-between pt-space-xs">
-<span class="font-label-sm text-label-sm text-outline font-medium">Avg Ticket: <strong class="text-on-surface">$144,125</strong></span>
+<span class="font-label-sm text-label-sm text-outline font-medium">Avg Ticket: <strong class="text-on-surface">₹14.4 Lakhs</strong></span>
 <span class="px-1.5 py-0.5 rounded bg-surface-container-high text-on-surface font-label-sm text-label-sm font-semibold">Tier A1 Senior</span>
 </div>
 <div class="w-full h-4 mt-2">
@@ -631,7 +640,7 @@
 <span class="px-1.5 py-0.5 rounded bg-surface-container text-on-surface font-label-sm text-label-sm font-semibold">
             139 Filtered
           </span>
-<span class="text-error font-label-sm text-label-sm font-bold">$20.1M Guarded</span>
+<span class="text-error font-label-sm text-label-sm font-bold">₹20.1 Cr Guarded</span>
 </div>
 <div class="w-full bg-surface-container h-1.5 rounded-full overflow-hidden mt-2">
 <div class="bg-error h-full rounded-full" style="width: 17.4%"></div>
@@ -671,9 +680,7 @@
 <h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">Portfolio Sanction Split &amp; Capital Cushion</h2>
 <span class="font-label-sm text-label-sm text-outline uppercase tracking-wider mt-0.5">Basel III Standardized Capital Allocation Model</span>
 </div>
-<span class="px-2 py-1 bg-surface-container text-secondary font-label-sm text-label-sm rounded font-semibold">
-            Audit Level 1
-          </span>
+<span class="inline-flex items-center gap-1 px-2 py-1 bg-surface-container text-secondary font-label-sm text-label-sm rounded font-semibold"><span class="material-symbols-outlined text-xs">verified</span>Audit Level 1</span>
 </div>
 <!-- Donut Visualization Stage -->
 <div class="flex flex-col sm:flex-row items-center justify-around gap-space-lg py-space-md">
@@ -690,7 +697,7 @@
 <!-- Central Donut Metric -->
 <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
 <span class="font-label-sm text-label-sm text-outline uppercase font-semibold">Active Pool</span>
-<span class="font-metric-lg text-metric-lg font-bold text-on-surface">$115.3M</span>
+<span class="font-metric-lg text-metric-lg font-bold text-on-surface">₹115.3 Cr</span>
 <span class="font-label-sm text-label-sm text-on-surface-variant">661 Validated</span>
 </div>
 </div>
@@ -705,7 +712,7 @@
 <span class="font-headline-sm text-headline-sm font-bold text-on-surface">82.6%</span>
 </div>
 <div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
-<span>$95.24M Deployed</span>
+<span>₹95.24 Cr Deployed</span>
 <span class="text-on-tertiary-container font-semibold">661 Facilities</span>
 </div>
 </div>
@@ -718,7 +725,7 @@
 <span class="font-headline-sm text-headline-sm font-bold text-error">17.4%</span>
 </div>
 <div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
-<span>$20.06M Guarded</span>
+<span>₹20.06 Cr Guarded</span>
 <span class="text-error font-semibold">139 Facilities</span>
 </div>
 </div>
@@ -728,8 +735,8 @@
 <div class="grid grid-cols-2 gap-space-md pt-space-md bg-surface-container-low p-space-md rounded">
 <div class="flex flex-col">
 <span class="font-label-sm text-label-sm text-outline uppercase font-semibold">Capital Cushion Surplus</span>
-<span class="font-headline-sm text-headline-sm font-bold text-on-tertiary-container mt-0.5">+$8.45M</span>
-<span class="font-body-sm text-body-sm text-on-surface-variant">Over CET1 Target Regulatory Min</span>
+<span class="font-headline-sm text-headline-sm font-bold text-on-tertiary-container mt-0.5">+₹8.45 Cr</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Over RBI CET1 Target Min</span>
 </div>
 <div class="flex flex-col">
 <span class="font-label-sm text-label-sm text-outline uppercase font-semibold">Algorithmic Drift</span>
@@ -841,7 +848,7 @@
 <th class="py-2.5 px-space-md text-right">Sanction Rate</th>
 <th class="py-2.5 px-space-md text-right">Committed Capital</th>
 <th class="py-2.5 px-space-md text-right">Avg Debt Yield</th>
-<th class="py-2.5 px-space-md text-right">Weighted FICO</th>
+<th class="py-2.5 px-space-md text-right">Weighted CIBIL</th>
 <th class="py-2.5 px-space-md text-center">Status Index</th>
 <th class="py-2.5 px-space-lg text-right">Governance Action</th>
 </tr>
@@ -852,13 +859,13 @@
 <td class="py-3 px-space-lg font-semibold">
 <div class="flex items-center gap-2">
 <span class="w-2 h-2 rounded-full bg-secondary"></span>
-<span>New York Tier-1 Metro</span>
-<span class="text-outline font-normal font-label-sm text-label-sm">(East-Commercial)</span>
+<span>Mumbai BKC Financial Hub</span>
+<span class="text-outline font-normal font-label-sm text-label-sm">(West Syndicate)</span>
 </div>
 </td>
 <td class="py-3 px-space-md text-right font-medium">394</td>
 <td class="py-3 px-space-md text-right font-bold text-on-tertiary-container">84.2%</td>
-<td class="py-3 px-space-md text-right font-bold">$58,200,000</td>
+<td class="py-3 px-space-md text-right font-bold">₹58.20 Cr</td>
 <td class="py-3 px-space-md text-right">11.4%</td>
 <td class="py-3 px-space-md text-right font-mono font-medium">748</td>
 <td class="py-3 px-space-md text-center">
@@ -867,8 +874,9 @@
                 </span>
 </td>
 <td class="py-3 px-space-lg text-right">
-<button class="px-2.5 py-1 rounded bg-surface-container-lowest hover:bg-surface-container text-secondary font-label-md text-label-md uppercase font-semibold shadow-xs" type="button">
-                  Deep Audit
+<button onclick="openDeepAuditModal('Mumbai')" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-lowest hover:bg-secondary/10 border border-outline-variant/30 text-secondary font-label-md text-label-md uppercase font-semibold shadow-xs transition-colors cursor-pointer" type="button">
+                  <span class="material-symbols-outlined text-xs text-secondary">policy</span>
+                  <span>Deep Audit</span>
                 </button>
 </td>
 </tr>
@@ -877,13 +885,13 @@
 <td class="py-3 px-space-lg font-semibold">
 <div class="flex items-center gap-2">
 <span class="w-2 h-2 rounded-full bg-secondary"></span>
-<span>Chicago Midwest Industrial</span>
-<span class="text-outline font-normal font-label-sm text-label-sm">(Central-Syndicate)</span>
+<span>Bengaluru Tech Corridor</span>
+<span class="text-outline font-normal font-label-sm text-label-sm">(South Syndicate)</span>
 </div>
 </td>
 <td class="py-3 px-space-md text-right font-medium">246</td>
 <td class="py-3 px-space-md text-right font-bold text-on-tertiary-container">81.7%</td>
-<td class="py-3 px-space-md text-right font-bold">$34,800,000</td>
+<td class="py-3 px-space-md text-right font-bold">₹34.80 Cr</td>
 <td class="py-3 px-space-md text-right">12.9%</td>
 <td class="py-3 px-space-md text-right font-mono font-medium">722</td>
 <td class="py-3 px-space-md text-center">
@@ -892,8 +900,9 @@
                 </span>
 </td>
 <td class="py-3 px-space-lg text-right">
-<button class="px-2.5 py-1 rounded bg-surface-container-lowest hover:bg-surface-container text-secondary font-label-md text-label-md uppercase font-semibold shadow-xs" type="button">
-                  Deep Audit
+<button onclick="openDeepAuditModal('Bengaluru')" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-lowest hover:bg-secondary/10 border border-outline-variant/30 text-secondary font-label-md text-label-md uppercase font-semibold shadow-xs transition-colors cursor-pointer" type="button">
+                  <span class="material-symbols-outlined text-xs text-secondary">policy</span>
+                  <span>Deep Audit</span>
                 </button>
 </td>
 </tr>
@@ -902,13 +911,13 @@
 <td class="py-3 px-space-lg font-semibold">
 <div class="flex items-center gap-2">
 <span class="w-2 h-2 rounded-full bg-secondary"></span>
-<span>Dallas Sunbelt Commercial</span>
-<span class="text-outline font-normal font-label-sm text-label-sm">(Southwest-Direct)</span>
+<span>Delhi NCR Commercial Hub</span>
+<span class="text-outline font-normal font-label-sm text-label-sm">(North Syndicate)</span>
 </div>
 </td>
 <td class="py-3 px-space-md text-right font-medium">160</td>
 <td class="py-3 px-space-md text-right font-bold text-on-tertiary-container">79.3%</td>
-<td class="py-3 px-space-md text-right font-bold">$22,300,000</td>
+<td class="py-3 px-space-md text-right font-bold">₹22.30 Cr</td>
 <td class="py-3 px-space-md text-right">10.8%</td>
 <td class="py-3 px-space-md text-right font-mono font-medium">710</td>
 <td class="py-3 px-space-md text-center">
@@ -917,8 +926,9 @@
                 </span>
 </td>
 <td class="py-3 px-space-lg text-right">
-<button class="px-2.5 py-1 rounded bg-surface-container-lowest hover:bg-surface-container text-secondary font-label-md text-label-md uppercase font-semibold shadow-xs" type="button">
-                  Deep Audit
+<button onclick="openDeepAuditModal('Delhi')" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-lowest hover:bg-secondary/10 border border-outline-variant/30 text-secondary font-label-md text-label-md uppercase font-semibold shadow-xs transition-colors cursor-pointer" type="button">
+                  <span class="material-symbols-outlined text-xs text-secondary">policy</span>
+                  <span>Deep Audit</span>
                 </button>
 </td>
 </tr>
@@ -936,7 +946,7 @@
 </div>
 <div class="flex items-center gap-1.5 text-on-surface font-semibold">
 <span class="material-symbols-outlined text-[15px] text-on-tertiary-container">verified</span>
-<span>Regulatory Compliant (FRB / EBA Protocol)</span>
+<span>Regulatory Compliant (RBI IRACP / Basel III Protocol)</span>
 </div>
 </div>
 </div>
@@ -994,10 +1004,10 @@
 <div class="relative">
 <select class="w-full h-8 pl-2 pr-7 text-on-surface bg-surface-container-low hover:bg-surface-container text-body-sm font-body-sm rounded appearance-none cursor-pointer focus:outline-none">
 <option>All Income Bands</option>
-<option>&lt; $3,000 / mo</option>
-<option>$3,000 – $6,000 / mo</option>
-<option selected="">$6,000 – $10,000 / mo (Star Cohort)</option>
-<option>&gt; $10,000 / mo (HNW)</option>
+<option>&lt; ₹30,000 / mo</option>
+<option>₹30,000 – ₹60,000 / mo</option>
+<option selected="">₹60,000 – ₹1,00,000 / mo (Star Cohort)</option>
+<option>&gt; ₹1,00,000 / mo (HNI)</option>
 </select>
 <span class="material-symbols-outlined pointer-events-none absolute right-2 top-2 text-[16px] text-outline">expand_more</span>
 </div>
@@ -1067,7 +1077,7 @@
 <span class="text-label-sm font-label-sm text-outline">OCC Statistical Validation Passed</span>
 </div>
 <p class="font-body-lg text-body-lg text-on-surface font-medium leading-snug">
-              Demographic cross-tabulation indicates highest underwriting elasticity in <span class="font-bold text-secondary">$6,000 – $10,000</span> household monthly income brackets with zero 90+ DPD defaults.
+              Demographic cross-tabulation indicates highest underwriting elasticity in <span class="font-bold text-secondary">₹60,000 – ₹1,00,000</span> household monthly income brackets with zero 90+ DPD defaults.
             </p>
 <p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
               Synthetic stress testing at +300bps federal benchmark rates preserves 1.84x debt service coverage (DSCR) across this segment.
@@ -1087,8 +1097,8 @@
 <div class="flex flex-col">
 <span class="font-label-sm text-label-sm uppercase text-outline font-semibold">Total Deployed Capital</span>
 <div class="flex items-baseline gap-1">
-<span class="font-metric-xl text-metric-xl text-on-surface font-extrabold">$95.2M</span>
-<span class="font-label-sm text-label-sm text-outline">/ $115.3M</span>
+<span class="font-metric-xl text-metric-xl text-on-surface font-extrabold">₹95.2 Cr</span>
+<span class="font-label-sm text-label-sm text-outline">/ ₹115.3 Cr</span>
 </div>
 <span class="font-body-sm text-body-sm text-outline">Distributed in 4 tiers</span>
 </div>
@@ -1117,22 +1127,22 @@
 <div class="flex flex-col gap-1.5">
 <div class="flex items-center justify-between text-body-sm font-body-sm">
 <div class="flex items-center gap-2">
-<span class="font-semibold text-on-surface">Tier 1: &lt; $3,000 / mo</span>
+<span class="font-semibold text-on-surface">Tier 1: &lt; ₹30,000 / mo</span>
 <span class="text-outline text-label-sm font-label-sm">(83 Applications)</span>
 </div>
 <div class="flex items-center gap-3">
-<span class="text-on-surface-variant font-medium"><strong class="text-on-surface">$4.8M</strong> Appr. (54.2%)</span>
-<span class="text-error font-medium">$5.1M Rej.</span>
+<span class="text-on-surface-variant font-medium"><strong class="text-on-surface">₹4.8 Cr</strong> Appr. (54.2%)</span>
+<span class="text-error font-medium">₹5.1 Cr Rej.</span>
 <span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-error-container/40 text-error font-bold">Beta 1.48</span>
 </div>
 </div>
 <!-- Dual segment stacked progress -->
 <div class="w-full h-5 rounded bg-surface-container flex overflow-hidden">
-<div class="h-full bg-secondary transition-all" style="width: 54.2%;" title="Approved $4.8M (54.2%)"></div>
-<div class="h-full bg-outline-variant/60 transition-all" style="width: 45.8%;" title="Rejected $5.1M (45.8%)"></div>
+<div class="h-full bg-secondary transition-all" style="width: 54.2%;" title="Approved ₹4.8 Cr (54.2%)"></div>
+<div class="h-full bg-outline-variant/60 transition-all" style="width: 45.8%;" title="Rejected ₹5.1 Cr (45.8%)"></div>
 </div>
 <div class="flex items-center justify-between text-label-sm font-label-sm text-outline">
-<span>Approval Vol: $4,840,000</span>
+<span>Approval Vol: ₹4,84,00,000</span>
 <span>Subprime Yield Offset: +410bps</span>
 </div>
 </div>
@@ -1140,21 +1150,21 @@
 <div class="flex flex-col gap-1.5">
 <div class="flex items-center justify-between text-body-sm font-body-sm">
 <div class="flex items-center gap-2">
-<span class="font-semibold text-on-surface">Tier 2: $3,000 – $6,000 / mo</span>
+<span class="font-semibold text-on-surface">Tier 2: ₹30,000 – ₹60,000 / mo</span>
 <span class="text-outline text-label-sm font-label-sm">(342 Applications)</span>
 </div>
 <div class="flex items-center gap-3">
-<span class="text-on-surface-variant font-medium"><strong class="text-on-surface">$38.4M</strong> Appr. (81.9%)</span>
-<span class="text-error font-medium">$9.2M Rej.</span>
+<span class="text-on-surface-variant font-medium"><strong class="text-on-surface">₹38.4 Cr</strong> Appr. (81.9%)</span>
+<span class="text-error font-medium">₹9.2 Cr Rej.</span>
 <span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container text-secondary font-bold">Beta 0.82</span>
 </div>
 </div>
 <div class="w-full h-5 rounded bg-surface-container flex overflow-hidden">
-<div class="h-full bg-secondary transition-all" style="width: 81.9%;" title="Approved $38.4M (81.9%)"></div>
-<div class="h-full bg-outline-variant/60 transition-all" style="width: 18.1%;" title="Rejected $9.2M (18.1%)"></div>
+<div class="h-full bg-secondary transition-all" style="width: 81.9%;" title="Approved ₹38.4 Cr (81.9%)"></div>
+<div class="h-full bg-outline-variant/60 transition-all" style="width: 18.1%;" title="Rejected ₹9.2 Cr (18.1%)"></div>
 </div>
 <div class="flex items-center justify-between text-label-sm font-label-sm text-outline">
-<span>Approval Vol: $38,410,000</span>
+<span>Approval Vol: ₹3,84,10,000</span>
 <span>Controlled Migration Zone</span>
 </div>
 </div>
@@ -1162,13 +1172,13 @@
 <div class="p-space-sm rounded bg-surface-container-low flex flex-col gap-1.5">
 <div class="flex items-center justify-between text-body-sm font-body-sm">
 <div class="flex items-center gap-2">
-<span class="font-bold text-on-surface">Tier 3: $6,000 – $10,000 / mo</span>
+<span class="font-bold text-on-surface">Tier 3: ₹60,000 – ₹1,00,000 / mo</span>
 <span class="px-1.5 py-0.5 rounded bg-tertiary-fixed/30 text-on-tertiary-container font-label-sm text-label-sm font-bold uppercase">Star Cohort</span>
 <span class="text-outline text-label-sm font-label-sm">(245 Apps)</span>
 </div>
 <div class="flex items-center gap-3">
-<span class="text-on-surface-variant font-medium"><strong class="text-on-surface">$34.1M</strong> Appr. (89.8%)</span>
-<span class="text-outline font-medium">$3.9M Rej.</span>
+<span class="text-on-surface-variant font-medium"><strong class="text-on-surface">₹34.1 Cr</strong> Appr. (89.8%)</span>
+<span class="text-outline font-medium">₹3.9 Cr Rej.</span>
 <span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-tertiary-fixed text-on-tertiary-fixed font-bold">Beta 0.24</span>
 </div>
 </div>
@@ -1180,28 +1190,28 @@
 </div>
 <div class="flex items-center justify-between text-label-sm font-label-sm text-on-tertiary-container font-semibold">
 <span>Zero 90+ DPD Defaults (Trailing 365D Projected)</span>
-<span>Net Loss Expectancy: &lt; $12,400</span>
+<span>Net Loss Expectancy: &lt; ₹1,24,000</span>
 </div>
 </div>
 <!-- Tier 4 -->
 <div class="flex flex-col gap-1.5">
 <div class="flex items-center justify-between text-body-sm font-body-sm">
 <div class="flex items-center gap-2">
-<span class="font-semibold text-on-surface">Tier 4: &gt; $10,000 / mo (HNW)</span>
+<span class="font-semibold text-on-surface">Tier 4: &gt; ₹1,00,000 / mo (HNI / Corporate)</span>
 <span class="text-outline text-label-sm font-label-sm">(130 Applications)</span>
 </div>
 <div class="flex items-center gap-3">
-<span class="text-on-surface-variant font-medium"><strong class="text-on-surface">$17.9M</strong> Appr. (89.2%)</span>
-<span class="text-outline font-medium">$1.9M Rej.</span>
+<span class="text-on-surface-variant font-medium"><strong class="text-on-surface">₹17.9 Cr</strong> Appr. (89.2%)</span>
+<span class="text-outline font-medium">₹1.9 Cr Rej.</span>
 <span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container text-secondary font-bold">Beta 0.31</span>
 </div>
 </div>
 <div class="w-full h-5 rounded bg-surface-container flex overflow-hidden">
-<div class="h-full bg-secondary transition-all" style="width: 89.2%;" title="Approved $17.9M (89.2%)"></div>
-<div class="h-full bg-outline-variant/60 transition-all" style="width: 10.8%;" title="Rejected $1.9M (10.8%)"></div>
+<div class="h-full bg-secondary transition-all" style="width: 89.2%;" title="Approved ₹17.9 Cr (89.2%)"></div>
+<div class="h-full bg-outline-variant/60 transition-all" style="width: 10.8%;" title="Rejected ₹1.9 Cr (10.8%)"></div>
 </div>
 <div class="flex items-center justify-between text-label-sm font-label-sm text-outline">
-<span>Approval Vol: $17,920,000</span>
+<span>Approval Vol: ₹1,79,20,000</span>
 <span>Collateralized Jumbo Facilities</span>
 </div>
 </div>
@@ -1222,7 +1232,7 @@
 <span>Adverse Action / Rejected</span>
 </div>
 </div>
-<span class="font-medium text-outline">Normalized per Basel III Framework</span>
+<span class="font-medium text-outline">Normalized per RBI IRACP Norms</span>
 </div>
 </div>
 <!-- Right Column: Capital Allocation Donut Chart & STP Engine Badge (5 cols) -->
@@ -1230,7 +1240,7 @@
 <div class="flex items-center justify-between mb-space-sm">
 <div class="flex flex-col">
 <span class="font-headline-sm text-headline-sm text-on-surface font-bold">Gross Exposure Balance</span>
-<span class="font-label-sm text-label-sm text-outline uppercase font-semibold">Total Pool: $115.3M Underwritten</span>
+<span class="font-label-sm text-label-sm text-outline uppercase font-semibold">Total Pool: ₹115.3 Cr Underwritten</span>
 </div>
 <span class="material-symbols-outlined text-[20px] text-outline">pie_chart</span>
 </div>
@@ -1249,7 +1259,7 @@
 <circle cx="50" cy="50" fill="transparent" r="38" stroke="#131b2e" stroke-dasharray="55.6 314" stroke-dashoffset="-258.4" stroke-width="15"></circle>
 </svg>
 <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
-<span class="font-metric-lg text-metric-lg text-on-surface font-bold leading-none">$95.2M</span>
+<span class="font-metric-lg text-metric-lg text-on-surface font-bold leading-none">₹95.2 Cr</span>
 <span class="font-label-sm text-label-sm text-outline font-semibold uppercase mt-1">Funded Net</span>
 </div>
 </div>
@@ -1258,30 +1268,30 @@
 <div class="flex items-center justify-between gap-4 text-body-sm font-body-sm">
 <div class="flex items-center gap-1.5">
 <span class="w-2.5 h-2.5 rounded-full bg-[#316bf3]"></span>
-<span class="text-on-surface-variant">Tier 1 (&lt; $3k)</span>
+<span class="text-on-surface-variant">Tier 1 (&lt; ₹30k)</span>
 </div>
-<span class="font-bold text-on-surface">$4.8M (5.0%)</span>
+<span class="font-bold text-on-surface">₹4.8 Cr (5.0%)</span>
 </div>
 <div class="flex items-center justify-between gap-4 text-body-sm font-body-sm">
 <div class="flex items-center gap-1.5">
 <span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
-<span class="text-on-surface-variant">Tier 2 ($3k-$6k)</span>
+<span class="text-on-surface-variant">Tier 2 (₹30k-₹60k)</span>
 </div>
-<span class="font-bold text-on-surface">$38.4M (40.3%)</span>
+<span class="font-bold text-on-surface">₹38.4 Cr (40.3%)</span>
 </div>
 <div class="flex items-center justify-between gap-4 text-body-sm font-body-sm">
 <div class="flex items-center gap-1.5">
 <span class="w-2.5 h-2.5 rounded-full bg-on-tertiary-container"></span>
-<span class="text-on-surface-variant">Tier 3 ($6k-$10k)</span>
+<span class="text-on-surface-variant">Tier 3 (₹60k-₹100k)</span>
 </div>
-<span class="font-bold text-on-tertiary-container">$34.1M (35.8%)</span>
+<span class="font-bold text-on-tertiary-container">₹34.1 Cr (35.8%)</span>
 </div>
 <div class="flex items-center justify-between gap-4 text-body-sm font-body-sm">
 <div class="flex items-center gap-1.5">
 <span class="w-2.5 h-2.5 rounded-full bg-primary-container"></span>
-<span class="text-on-surface-variant">Tier 4 (&gt; $10k)</span>
+<span class="text-on-surface-variant">Tier 4 (&gt; ₹100k)</span>
 </div>
-<span class="font-bold text-on-surface">$17.9M (18.9%)</span>
+<span class="font-bold text-on-surface">₹17.9 Cr (18.9%)</span>
 </div>
 </div>
 </div>
@@ -1500,7 +1510,7 @@
 </div>
 <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Co-Borrower Income Factor</h3>
 <p class="font-body-md text-body-md text-on-surface-variant mt-2">
-            The presence of a verifiable co-borrower in household brackets between $4,000–$7,500/mo completely suppresses mid-tier default migration.
+            The presence of a verifiable co-borrower in household brackets between ₹40,000–₹75,000/mo completely suppresses mid-tier default migration.
           </p>
 </div>
 <div class="mt-space-lg pt-space-md border-t border-outline-variant/30 flex flex-col gap-1">
@@ -1648,12 +1658,12 @@
 <div class="flex flex-col gap-space-xs">
 <label class="font-label-md text-label-md text-on-surface-variant flex items-center justify-between">
 <span>Primary Monthly Income</span>
-<span class="font-label-sm text-label-sm text-tertiary">Verified W2</span>
+<span class="font-label-sm text-label-sm text-tertiary">Verified Form 16 / ITR</span>
 </label>
 <div class="relative flex items-center">
-<span class="absolute left-space-md font-metric-md text-metric-md text-outline pointer-events-none">$</span>
-<input class="w-full bg-surface-container-lowest pl-8 pr-space-md py-space-sm rounded-lg font-metric-md text-metric-md text-on-surface focus:outline-none focus:bg-surface-container-high transition-colors shadow-inner" id="inp-prim-income" placeholder="0" type="text" value="5,500"/>
-<span class="absolute right-space-md font-label-sm text-label-sm text-outline-variant uppercase">USD</span>
+<span class="absolute left-space-md font-metric-md text-metric-md text-outline pointer-events-none">₹</span>
+<input class="w-full bg-surface-container-lowest pl-8 pr-space-md py-space-sm rounded-lg font-metric-md text-metric-md text-on-surface focus:outline-none focus:bg-surface-container-high transition-colors shadow-inner" id="inp-prim-income" placeholder="0" type="text" value="55,000"/>
+<span class="absolute right-space-md font-label-sm text-label-sm text-outline-variant uppercase">INR</span>
 </div>
 </div>
 <div class="flex flex-col gap-space-xs">
@@ -1662,9 +1672,9 @@
 <span class="font-label-sm text-label-sm text-outline">Optional</span>
 </label>
 <div class="relative flex items-center">
-<span class="absolute left-space-md font-metric-md text-metric-md text-outline pointer-events-none">$</span>
-<input class="w-full bg-surface-container-lowest pl-8 pr-space-md py-space-sm rounded-lg font-metric-md text-metric-md text-on-surface focus:outline-none focus:bg-surface-container-high transition-colors shadow-inner" id="inp-co-income" placeholder="0" type="text" value="1,500"/>
-<span class="absolute right-space-md font-label-sm text-label-sm text-secondary uppercase font-semibold">Total: $7.0k</span>
+<span class="absolute left-space-md font-metric-md text-metric-md text-outline pointer-events-none">₹</span>
+<input class="w-full bg-surface-container-lowest pl-8 pr-space-md py-space-sm rounded-lg font-metric-md text-metric-md text-on-surface focus:outline-none focus:bg-surface-container-high transition-colors shadow-inner" id="inp-co-income" placeholder="0" type="text" value="15,000"/>
+<span class="absolute right-space-md font-label-sm text-label-sm text-secondary uppercase font-semibold">Total: ₹70.0k</span>
 </div>
 </div>
 <div class="flex flex-col gap-space-xs">
@@ -1673,9 +1683,9 @@
 <span class="font-label-sm text-label-sm text-primary">Senior Lien</span>
 </label>
 <div class="relative flex items-center">
-<span class="absolute left-space-md font-metric-md text-metric-md text-outline pointer-events-none">$</span>
-<input class="w-full bg-surface-container-lowest pl-8 pr-space-md py-space-sm rounded-lg font-metric-md text-metric-md text-on-surface focus:outline-none focus:bg-surface-container-high transition-colors shadow-inner" id="inp-loan-capital" placeholder="0" type="text" value="140,000"/>
-<span class="absolute right-space-md font-label-sm text-label-sm text-outline-variant uppercase">USD</span>
+<span class="absolute left-space-md font-metric-md text-metric-md text-outline pointer-events-none">₹</span>
+<input class="w-full bg-surface-container-lowest pl-8 pr-space-md py-space-sm rounded-lg font-metric-md text-metric-md text-on-surface focus:outline-none focus:bg-surface-container-high transition-colors shadow-inner" id="inp-loan-capital" placeholder="0" type="text" value="14,00,000"/>
+<span class="absolute right-space-md font-label-sm text-label-sm text-outline-variant uppercase">INR</span>
 </div>
 </div>
 <div class="flex flex-col gap-space-xs">
@@ -1697,26 +1707,26 @@
   <div class="flex items-center justify-between">
     <label class="font-label-md text-label-md text-on-surface font-semibold flex items-center gap-1.5">
       <span class="material-symbols-outlined text-secondary text-base">verified</span>
-      <span>Bureau Credit Score</span>
+      <span>TransUnion CIBIL™ Score</span>
     </label>
     <span id="credit-tier-badge" class="px-2 py-0.5 rounded text-xs font-bold uppercase bg-secondary/15 text-secondary">
       Optimal Tier (755)
     </span>
   </div>
   <div class="flex items-center gap-3 pt-1">
-    <input id="inp-credit-score-slider" type="range" min="300" max="850" value="755" step="5" class="w-full accent-secondary cursor-pointer h-2 bg-surface-container-high rounded-lg" oninput="syncCreditScore(this.value)">
-    <input id="inp-credit-score" type="number" min="300" max="850" value="755" class="w-16 px-2 py-1 bg-surface-container-high text-on-surface font-bold text-center rounded-md border border-outline-variant/40 focus:outline-none focus:ring-1 focus:ring-secondary text-sm" oninput="syncCreditScore(this.value)">
+    <input id="inp-credit-score-slider" type="range" min="300" max="900" value="755" step="5" class="w-full accent-secondary cursor-pointer h-2 bg-surface-container-high rounded-lg" oninput="syncCreditScore(this.value)">
+    <input id="inp-credit-score" type="number" min="300" max="900" value="755" class="w-16 px-2 py-1 bg-surface-container-high text-on-surface font-bold text-center rounded-md border border-outline-variant/40 focus:outline-none focus:ring-1 focus:ring-secondary text-sm" oninput="syncCreditScore(this.value)">
   </div>
   <div class="flex items-center justify-between text-[10px] text-outline font-semibold px-0.5">
-    <span class="text-error font-semibold">300 (Subprime &lt;600)</span>
+    <span class="text-error font-semibold">300 (Subprime &lt;650)</span>
     <span class="text-secondary font-semibold">650 (Prime Gating)</span>
-    <span class="text-on-tertiary-container font-semibold">850 (Super-Prime)</span>
+    <span class="text-on-tertiary-container font-semibold">900 (Super-Prime)</span>
   </div>
 </div>
 <div class="flex flex-col gap-space-xs">
 <label class="font-label-md text-label-md text-on-surface-variant flex items-center justify-between">
 <span>Collateral Geo Tier</span>
-<span class="font-label-sm text-label-sm text-tertiary">Appraised $196k</span>
+<span class="font-label-sm text-label-sm text-tertiary">Appraised ₹19.6 Lakhs</span>
 </label>
 <div class="relative flex items-center">
 <select class="w-full bg-surface-container-lowest px-space-md py-space-sm rounded-lg font-body-md text-body-md text-on-surface focus:outline-none focus:bg-surface-container-high transition-colors appearance-none cursor-pointer shadow-inner" id="inp-geo">
@@ -1744,8 +1754,8 @@
 </div>
 <div class="flex flex-col gap-space-xs">
 <label class="font-label-md text-label-md text-on-surface-variant flex items-center justify-between">
-<span>Existing Obligation DTI</span>
-<span class="font-label-sm text-label-sm text-secondary">&lt; 36.0% Cap</span>
+<span>Existing Obligation FOIR / DTI</span>
+<span class="font-label-sm text-label-sm text-secondary">&lt; 45.0% RBI Cap</span>
 </label>
 <div class="relative flex items-center">
 <input class="w-full bg-surface-container-lowest px-space-md py-space-sm rounded-lg font-metric-md text-metric-md text-on-surface focus:outline-none focus:bg-surface-container-high transition-colors shadow-inner" id="inp-dti" placeholder="0.0%" type="text" value="28.4%"/>
@@ -1764,8 +1774,8 @@
 <div class="flex items-center gap-space-sm min-w-0">
 <span class="material-symbols-outlined text-primary text-xl">real_estate_agent</span>
 <div class="flex flex-col min-w-0">
-<span class="font-body-sm text-body-sm text-on-surface font-medium truncate">Parcel #3910-K • Meridian Ridge Reserve</span>
-<span class="font-label-sm text-label-sm text-outline truncate">Automated Valuation Model: $196,000 (Confidence 98.4%)</span>
+<span class="font-body-sm text-body-sm text-on-surface font-medium truncate">Meridian Enclave, Plot #14 • Clear Title &amp; EC Verified</span>
+<span class="font-label-sm text-label-sm text-outline truncate">Automated Valuation Model: ₹19,60,000 (Confidence 98.4%)</span>
 </div>
 </div>
 <span class="px-space-xs py-0.5 rounded bg-secondary/15 text-secondary font-label-sm text-label-sm font-semibold uppercase shrink-0">Clear Lien</span>
@@ -1800,7 +1810,7 @@
 </div>
 </div>
 <div class="flex items-center gap-space-xs self-start md:self-center">
-<span class="font-label-sm text-label-sm text-outline">Basel III Compliance:</span>
+<span class="font-label-sm text-label-sm text-outline">RBI Regulatory Compliance:</span>
 <span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-secondary/20 text-secondary font-semibold uppercase">Validated</span>
 </div>
 </div>
@@ -1819,7 +1829,7 @@
 </div>
 <div class="flex flex-row sm:flex-col items-center sm:items-end justify-between sm:justify-center shrink-0">
 <span class="font-label-sm text-label-sm text-outline uppercase">Computed Prime Rate</span>
-<span class="font-metric-lg text-metric-lg text-secondary font-bold">8.25% APR</span>
+<span class="font-metric-lg text-metric-lg text-secondary font-bold">8.25% p.a. (EBLR)</span>
 </div>
 </div>
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-md items-center">
@@ -1854,7 +1864,7 @@
 <div class="flex items-center justify-between font-body-sm text-body-sm">
 <span class="text-on-surface flex items-center gap-space-xs">
 <span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
-                  Credit History (Bureau 755)
+                  Credit History (CIBIL 755)
                 </span>
 <span class="font-metric-md text-metric-md text-secondary font-semibold">+38.2%</span>
 </div>
@@ -1866,7 +1876,7 @@
 <div class="flex items-center justify-between font-body-sm text-body-sm">
 <span class="text-on-surface flex items-center gap-space-xs">
 <span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
-                  Household Income-to-Debt Ratio
+                  Household FOIR Ratio (28.4%)
                 </span>
 <span class="font-metric-md text-metric-md text-secondary font-semibold">+16.4%</span>
 </div>
@@ -1908,7 +1918,7 @@
             </span>
 <span class="font-label-sm text-label-sm text-secondary font-mono">AUTONOMOUS DISPOSITION</span>
 </div>
-<p id="hud-prescriptive-directive" class="font-body-md text-body-md text-on-surface leading-relaxed">Issue formal sanction letter at prime rate (<span class="font-metric-md text-metric-md text-secondary font-semibold">8.25% APR</span>). Standard property mortgage first-lien registration required prior to capital disbursement. Loan-to-Value (<span class="text-tertiary font-semibold">71.4% LTV</span>) adheres to Basel III Risk-Weighted Capital Directive Section 4b. No secondary guarantor requirement triggered.</p>
+<p id="hud-prescriptive-directive" class="font-body-md text-body-md text-on-surface leading-relaxed">Issue formal sanction letter at prime rate (<span class="font-metric-md text-metric-md text-secondary font-semibold">8.25% p.a. (EBLR)</span>). Standard property mortgage first-lien registration required prior to capital disbursement. Loan-to-Value (<span class="text-tertiary font-semibold">71.4% LTV</span>) adheres to Reserve Bank of India (RBI) Digital Lending Master Directions. No secondary guarantor requirement triggered.</p>
 </div>
 <div class="flex flex-col sm:flex-row items-center gap-space-sm pt-space-xs">
 <button id="btn-sanction-letter" onclick="openSanctionModal()" type="button" class="w-full sm:flex-1 py-space-sm px-space-md rounded-lg bg-secondary text-on-secondary font-headline-sm text-headline-sm font-semibold flex items-center justify-center gap-space-xs hover:bg-secondary-fixed transition-all cursor-pointer shadow-[0_0_20px_rgba(78,222,163,0.3)] active:scale-[0.99]">
@@ -1964,10 +1974,10 @@
 <span class="block font-body-sm text-body-sm text-outline">Purchase Mortgage • Tier-2</span>
 </td>
 <td class="py-space-md px-space-md font-body-md text-body-md text-on-surface">
-                Graduate • Combined $7,000/mo
+                Graduate • Combined ₹70,000/mo
               </td>
 <td class="py-space-md px-space-md font-metric-md text-metric-md text-on-surface font-semibold">
-                $140,000
+                ₹14,00,000
               </td>
 <td class="py-space-md px-space-md">
 <span class="font-metric-md text-metric-md text-secondary font-bold">755</span>
@@ -1990,10 +2000,10 @@
 <span class="block font-body-sm text-body-sm text-outline">Refinance Commercial • Urban Metro</span>
 </td>
 <td class="py-space-md px-space-md font-body-md text-body-md text-on-surface">
-                Executive • Combined $18,400/mo
+                Executive • Combined ₹1,84,000/mo
               </td>
 <td class="py-space-md px-space-md font-metric-md text-metric-md text-on-surface font-semibold">
-                $520,000
+                ₹52,00,000
               </td>
 <td class="py-space-md px-space-md">
 <span class="font-metric-md text-metric-md text-secondary font-bold">810</span>
@@ -2016,10 +2026,10 @@
 <span class="block font-body-sm text-body-sm text-outline">Unsecured Liquidity • Rural Core</span>
 </td>
 <td class="py-space-md px-space-md font-body-md text-body-md text-on-surface">
-                Self-Employed • Combined $3,200/mo
+                Self-Employed • Combined ₹32,000/mo
               </td>
 <td class="py-space-md px-space-md font-metric-md text-metric-md text-on-surface font-semibold">
-                $85,000
+                ₹8,50,000
               </td>
 <td class="py-space-md px-space-md">
 <span class="font-metric-md text-metric-md text-error font-bold">582</span>
@@ -2042,10 +2052,10 @@
 <span class="block font-body-sm text-body-sm text-outline">Construction Bridge • Suburban Ring</span>
 </td>
 <td class="py-space-md px-space-md font-body-md text-body-md text-on-surface">
-                LLC Sponsor • Combined $11,500/mo
+                LLC Sponsor • Combined ₹1,15,000/mo
               </td>
 <td class="py-space-md px-space-md font-metric-md text-metric-md text-on-surface font-semibold">
-                $310,000
+                ₹31,00,000
               </td>
 <td class="py-space-md px-space-md">
 <span class="font-metric-md text-metric-md text-tertiary font-bold">668</span>
@@ -2068,10 +2078,10 @@
 <span class="block font-body-sm text-body-sm text-outline">Home Equity Credit • Suburban Ring</span>
 </td>
 <td class="py-space-md px-space-md font-body-md text-body-md text-on-surface">
-                Professional • Combined $9,800/mo
+                Professional • Combined ₹98,000/mo
               </td>
 <td class="py-space-md px-space-md font-metric-md text-metric-md text-on-surface font-semibold">
-                $115,000
+                ₹11,50,000
               </td>
 <td class="py-space-md px-space-md">
 <span class="font-metric-md text-metric-md text-secondary font-bold">788</span>
@@ -2118,7 +2128,7 @@
 </div>
 <div class="flex items-center gap-space-sm self-start lg:self-auto">
 <button class="flex items-center gap-space-xs px-space-md py-space-sm rounded-lg bg-surface-container-high hover:bg-surface-container-highest text-on-surface transition-all shadow-sm" type="button">
-<span class="material-symbols-outlined text-sm text-tertiary">history_toggle_off</span>
+<span class="material-symbols-outlined text-sm text-secondary">manage_search</span>
 <span class="font-label-md">Audit Trail</span>
 </button>
 <button class="flex items-center gap-space-xs px-space-md py-space-sm rounded-lg bg-primary text-on-primary font-semibold hover:brightness-110 transition-all shadow-[0_0_20px_rgba(192,193,255,0.25)]" type="button">
@@ -2554,7 +2564,7 @@
           <td class="py-2 px-2.5 font-mono text-xs font-bold text-secondary">#8849-FAC</td>
           <td class="py-2 px-2.5 text-xs text-on-surface">14:02:19 UTC</td>
           <td class="py-2 px-2.5 text-xs font-bold text-secondary">APPROVED</td>
-          <td class="py-2 px-2.5 font-mono text-xs text-on-surface">$4,200,000</td>
+          <td class="py-2 px-2.5 font-mono text-xs text-on-surface">₹42,00,000</td>
           <td class="py-2 px-2.5 font-mono text-xs text-on-surface">91.4%</td>
           <td class="py-2 px-2.5 font-mono text-[10px] text-outline truncate max-w-[100px]" title="0x93f41bb8726acda094156ce99a14e9128">0x93f41bb8726a...</td>
         </tr>
@@ -2562,7 +2572,7 @@
           <td class="py-2 px-2.5 font-mono text-xs font-bold text-secondary">#8848-FAC</td>
           <td class="py-2 px-2.5 text-xs text-on-surface">14:01:54 UTC</td>
           <td class="py-2 px-2.5 text-xs font-bold text-secondary">APPROVED</td>
-          <td class="py-2 px-2.5 font-mono text-xs text-on-surface">$1,800,000</td>
+          <td class="py-2 px-2.5 font-mono text-xs text-on-surface">₹18,00,000</td>
           <td class="py-2 px-2.5 font-mono text-xs text-on-surface">84.2%</td>
           <td class="py-2 px-2.5 font-mono text-[10px] text-outline truncate max-w-[100px]" title="0x77b029f6da110294e776a3cc02832daef">0x77b029f6da11...</td>
         </tr>
@@ -2570,7 +2580,7 @@
           <td class="py-2 px-2.5 font-mono text-xs font-bold text-error">#8847-FAC</td>
           <td class="py-2 px-2.5 text-xs text-on-surface">13:59:12 UTC</td>
           <td class="py-2 px-2.5 text-xs font-bold text-error">DECLINED</td>
-          <td class="py-2 px-2.5 font-mono text-xs text-on-surface">$9,500,000</td>
+          <td class="py-2 px-2.5 font-mono text-xs text-on-surface">₹95,00,000</td>
           <td class="py-2 px-2.5 font-mono text-xs text-on-surface">58.0%</td>
           <td class="py-2 px-2.5 font-mono text-[10px] text-outline truncate max-w-[100px]" title="0xcc4910243be12da2857410ebc238fa091">0xcc4910243be1...</td>
         </tr>
@@ -2621,7 +2631,7 @@
         </div>
         <div class="flex flex-col">
           <span class="font-bold text-on-surface text-base">Official Facility Sanction Note</span>
-          <span class="text-xs text-outline">Basel III Risk-Weighted Capital Directive Section 4b</span>
+          <span class="text-xs text-outline">Reserve Bank of India (RBI) Digital Lending Master Directions</span>
         </div>
       </div>
       <button onclick="closeSanctionModal()" class="p-1.5 rounded-lg hover:bg-surface-container-highest text-outline transition-colors">
@@ -2644,11 +2654,11 @@
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
         <div class="p-3 rounded-lg bg-surface-container-low">
           <span class="text-outline block text-[10px] uppercase font-bold">Approved Capital</span>
-          <span id="modal-capital" class="font-bold text-sm text-on-surface font-mono">$140,000</span>
+          <span id="modal-capital" class="font-bold text-sm text-on-surface font-mono">₹14,00,000</span>
         </div>
         <div class="p-3 rounded-lg bg-surface-container-low">
           <span class="text-outline block text-[10px] uppercase font-bold">Prime APR Rate</span>
-          <span class="font-bold text-sm text-secondary font-mono">8.25% Fixed</span>
+          <span class="font-bold text-sm text-secondary font-mono">8.25% p.a. (RLLR)</span>
         </div>
         <div class="p-3 rounded-lg bg-surface-container-low">
           <span class="text-outline block text-[10px] uppercase font-bold">Amortization</span>
@@ -2696,7 +2706,79 @@
   </div>
   <div class="flex flex-col min-w-0">
     <span class="text-xs font-bold text-on-surface">Application Routed to Disbursal Desk</span>
-    <span class="text-[11px] text-outline leading-tight mt-0.5">Liquidity allocated from Central Tier-1 Pool. Priority wire order #DSB-9812 created.</span>
+    <span class="text-[11px] text-outline leading-tight mt-0.5">Liquidity allocated from Central Tier-1 Pool. Priority NEFT/RTGS wire batch #DSB-9812 created.</span>
+  </div>
+</div>
+
+<!-- Regional Hub Deep Audit Modal -->
+<div id="modal-deep-audit" class="fixed inset-0 z-50 bg-black/40 backdrop-blur-xs flex items-center justify-center p-4 hidden">
+  <div class="bg-surface-container-lowest rounded-2xl max-w-xl w-full p-6 shadow-2xl border border-outline-variant/40 flex flex-col gap-4 animate-in fade-in zoom-in-95 duration-200 max-h-[92vh] overflow-y-auto">
+    <div class="flex items-start justify-between border-b border-outline-variant/30 pb-4">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-secondary/15 text-secondary flex items-center justify-center shrink-0">
+          <span class="material-symbols-outlined text-2xl">policy</span>
+        </div>
+        <div class="flex flex-col">
+          <h3 id="deep-audit-title" class="text-base font-bold text-on-surface leading-tight">Regional Syndicate Deep Audit Dossier</h3>
+          <span id="deep-audit-subtitle" class="text-xs text-outline">Apex Bharat Commercial Bank • RBI IRACP Supervisory Audit</span>
+        </div>
+      </div>
+      <button onclick="closeDeepAuditModal()" type="button" class="p-1 rounded-lg text-outline hover:text-on-surface hover:bg-surface-container transition-colors cursor-pointer">
+        <span class="material-symbols-outlined text-xl">close</span>
+      </button>
+    </div>
+
+    <div class="space-y-3.5 text-xs text-on-surface">
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+        <div class="p-3 rounded-xl bg-surface-container-low border border-outline-variant/30">
+          <span class="text-outline text-[10px] uppercase font-bold">Committed Capital</span>
+          <p id="deep-audit-capital" class="text-sm font-bold text-primary font-mono mt-0.5">₹58.20 Cr</p>
+        </div>
+        <div class="p-3 rounded-xl bg-surface-container-low border border-outline-variant/30">
+          <span class="text-outline text-[10px] uppercase font-bold">Sanction Rate</span>
+          <p id="deep-audit-rate" class="text-sm font-bold text-secondary font-mono mt-0.5">84.2%</p>
+        </div>
+        <div class="p-3 rounded-xl bg-surface-container-low border border-outline-variant/30">
+          <span class="text-outline text-[10px] uppercase font-bold">Avg CIBIL Score</span>
+          <p id="deep-audit-cibil" class="text-sm font-bold text-on-surface font-mono mt-0.5">748</p>
+        </div>
+        <div class="p-3 rounded-xl bg-surface-container-low border border-outline-variant/30">
+          <span class="text-outline text-[10px] uppercase font-bold">Stress Resilience</span>
+          <p class="text-sm font-bold text-secondary font-mono mt-0.5">Optimal</p>
+        </div>
+      </div>
+
+      <div class="p-3.5 rounded-xl bg-surface-container-low border border-outline-variant/30 space-y-2">
+        <div class="flex items-center justify-between text-xs font-bold text-on-surface">
+          <span class="flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-secondary text-sm">fact_check</span>
+            <span>Reserve Bank of India (RBI) Regulatory Attestation</span>
+          </span>
+          <span class="px-2 py-0.5 rounded bg-secondary/15 text-secondary text-[10px] font-bold">IRACP PASS</span>
+        </div>
+        <p class="text-outline text-[11px] leading-relaxed">
+          Full compliance with RBI Master Direction on Digital Lending 2025. Priority Sector Lending (PSL) allocation targets exceeded by 4.2%. 90+ DPD Non-Performing Assets contained under 0.18%.
+        </p>
+      </div>
+
+      <div class="p-3 rounded-xl bg-surface-container-low border border-outline-variant/30 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-primary text-base">lock</span>
+          <span class="text-[11px] font-mono text-outline">Ledger Hash: <strong id="deep-audit-hash" class="text-on-surface font-semibold">0x7a3f89...c4b2</strong></span>
+        </div>
+        <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-surface-container text-secondary">SHA-256 Validated</span>
+      </div>
+    </div>
+
+    <div class="pt-3 border-t border-outline-variant/30 flex items-center justify-between gap-3">
+      <button onclick="closeDeepAuditModal()" type="button" class="px-4 py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-xs font-semibold text-on-surface transition-colors cursor-pointer">
+        Close Dossier
+      </button>
+      <a href="/api/export-audit-csv" download="smartcredit_audit_ledger.csv" class="px-4 py-2 rounded-lg bg-primary hover:bg-primary-container text-on-primary text-xs font-bold transition-colors flex items-center gap-1.5 shadow-sm cursor-pointer">
+        <span class="material-symbols-outlined text-sm">download</span>
+        <span>Download Syndicate Audit Log (.csv)</span>
+      </a>
+    </div>
   </div>
 </div>
 
@@ -2711,7 +2793,7 @@
         </div>
         <div class="flex flex-col">
           <h3 class="text-base font-bold text-on-surface leading-tight">Underwriter Officer Authentication</h3>
-          <span class="text-xs text-outline">Apex Institutional Lending Group • Branch #042</span>
+          <span class="text-xs text-outline">Apex Bharat Commercial Bank • Branch #042</span>
         </div>
       </div>
       <button onclick="closeOfficerLoginModal()" type="button" class="p-1 rounded-lg text-outline hover:text-on-surface hover:bg-surface-container transition-colors cursor-pointer">
@@ -2743,7 +2825,7 @@
 
       <div>
         <label class="block text-xs font-semibold text-on-surface mb-1">Corporate Institutional Email</label>
-        <input id="login-work-email" type="email" value="j.patel@apexrisk.institutional" required class="w-full px-3 py-2 text-xs rounded-lg bg-surface-container-low border border-outline-variant/30 focus:border-secondary focus:ring-1 focus:ring-secondary text-on-surface font-mono outline-none transition-all"/>
+        <input id="login-work-email" type="email" value="j.patel@apexbharat.bank" required class="w-full px-3 py-2 text-xs rounded-lg bg-surface-container-low border border-outline-variant/30 focus:border-secondary focus:ring-1 focus:ring-secondary text-on-surface font-mono outline-none transition-all"/>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -2754,9 +2836,9 @@
         <div>
           <label class="block text-xs font-semibold text-on-surface mb-1">Underwriting Authority</label>
           <select id="login-officer-clearance" class="w-full px-3 py-2 text-xs rounded-lg bg-surface-container-low border border-outline-variant/30 focus:border-secondary focus:ring-1 focus:ring-secondary text-on-surface font-medium outline-none transition-all cursor-pointer">
-            <option value="Tier-1 Senior ($1.5M)" selected>Tier-1 Senior ($1.5M Cap)</option>
-            <option value="Tier-2 Lead ($3.0M)">Tier-2 Lead ($3.0M Cap)</option>
-            <option value="Managing Director ($10.0M)">MD Committee ($10.0M Cap)</option>
+            <option value="Tier-1 Senior (₹1.50 Cr Cap)" selected>Tier-1 Senior (₹1.50 Cr Cap)</option>
+            <option value="Tier-2 Lead (₹3.00 Cr Cap)">Tier-2 Lead (₹3.00 Cr Cap)</option>
+            <option value="Managing Director (₹10.00 Cr Cap)">MD Committee (₹10.00 Cr Cap)</option>
           </select>
         </div>
       </div>
@@ -2764,7 +2846,7 @@
       <div>
         <label class="block text-xs font-semibold text-on-surface mb-1">Branch Facility / Node</label>
         <select id="login-officer-branch" class="w-full px-3 py-2 text-xs rounded-lg bg-surface-container-low border border-outline-variant/30 focus:border-secondary focus:ring-1 focus:ring-secondary text-on-surface font-medium outline-none transition-all cursor-pointer">
-          <option value="Apex Group #042 (NYC)" selected>Apex Group #042 (NYC Financial Center)</option>
+          <option value="Apex Bharat Hub #042 (Mumbai BKC)" selected>Apex Group #042 (NYC Financial Center)</option>
           <option value="Apex Group #018 (London)">Apex Group #018 (London City Hub)</option>
           <option value="Apex Group #088 (Mumbai)">Apex Group #088 (Mumbai BKC Terminal)</option>
         </select>
@@ -3027,7 +3109,7 @@ function renderUnderwritingResult(data, loanCapital, term) {
         <span class="block font-body-sm text-body-sm text-outline">Autonomous Model Inference</span>
       </td>
       <td class="py-space-md px-space-md font-body-md text-body-md text-on-surface">Live KYC Profile</td>
-      <td class="py-space-md px-space-md font-metric-md text-metric-md text-on-surface font-semibold">$${e.capital.toLocaleString()}</td>
+      <td class="py-space-md px-space-md font-metric-md text-metric-md text-on-surface font-semibold">₹${e.capital.toLocaleString('en-IN')}</td>
       <td class="py-space-md px-space-md"><span class="font-metric-md text-metric-md ${isApproved ? 'text-secondary' : 'text-error'} font-semibold">${e.probability}%</span></td>
       <td class="py-space-md px-space-md font-metric-md text-metric-md text-outline">12ms</td>
       <td class="py-space-md px-space-md text-right"><span class="font-label-sm text-label-sm ${isApproved ? 'text-secondary' : 'text-error'} font-semibold uppercase">${e.verdict}</span></td>
@@ -3045,7 +3127,7 @@ function renderUnderwritingResult(data, loanCapital, term) {
       <td class="py-2 px-3 font-mono text-xs font-bold text-secondary">${e.app_id}</td>
       <td class="py-2 px-3 text-xs text-on-surface">${e.timestamp}</td>
       <td class="py-2 px-3 text-xs font-bold ${isApproved ? 'text-secondary' : 'text-error'}">${e.verdict}</td>
-      <td class="py-2 px-3 font-mono text-xs text-on-surface">$${e.capital.toLocaleString()}</td>
+      <td class="py-2 px-3 font-mono text-xs text-on-surface">₹${e.capital.toLocaleString('en-IN')}</td>
       <td class="py-2 px-3 font-mono text-xs text-on-surface">${e.probability}%</td>
       <td class="py-2 px-3 font-mono text-[10px] text-outline truncate max-w-[120px]" title="${e.hash}">${e.hash.substring(0, 16)}...</td>
     `;
@@ -3053,14 +3135,14 @@ function renderUnderwritingResult(data, loanCapital, term) {
   }
 }
 
-// Load Benchmark Profile
+// Load Benchmark Profile (Indian Banking Prime Profile)
 function loadBenchmark() {
   const pInc = document.getElementById('inp-prim-income');
-  if (pInc) pInc.value = '8,200';
+  if (pInc) pInc.value = '82,000';
   const cInc = document.getElementById('inp-co-income');
-  if (cInc) cInc.value = '3,400';
+  if (cInc) cInc.value = '34,000';
   const cap = document.getElementById('inp-loan-capital');
-  if (cap) cap.value = '160,000';
+  if (cap) cap.value = '16,00,000';
   const dti = document.getElementById('inp-dti');
   if (dti) dti.value = '24.1%';
   const term = document.getElementById('inp-term');
@@ -3073,14 +3155,14 @@ function loadBenchmark() {
   runUnderwriting();
 }
 
-// Reset Form to Baseline
+// Reset Form to Baseline (Indian Banking Standard Application)
 function resetForm() {
   const pInc = document.getElementById('inp-prim-income');
-  if (pInc) pInc.value = '5,500';
+  if (pInc) pInc.value = '55,000';
   const cInc = document.getElementById('inp-co-income');
-  if (cInc) cInc.value = '1,500';
+  if (cInc) cInc.value = '15,000';
   const cap = document.getElementById('inp-loan-capital');
-  if (cap) cap.value = '140,000';
+  if (cap) cap.value = '14,00,000';
   const dti = document.getElementById('inp-dti');
   if (dti) dti.value = '28.4%';
   const term = document.getElementById('inp-term');
@@ -3129,7 +3211,7 @@ async function switchCohort(cohortVal) {
     const appRate = document.getElementById('kpi-approval-rate');
     if (appRate) appRate.innerText = `${data.approval_rate_pct.toFixed(1)}%`;
     const totCap = document.getElementById('kpi-total-capital');
-    if (totCap) totCap.innerText = `$${(data.total_capital_requested / 1000000).toFixed(1)}M USD`;
+    if (totCap) totCap.innerText = `₹${(data.total_capital_requested / 1000000).toFixed(1)} Cr`;
     const npaRisk = document.getElementById('kpi-npa-risk');
     if (npaRisk) npaRisk.innerText = `${data.portfolio_npa_risk_pct.toFixed(1)}%`;
   } catch (err) {
@@ -3147,13 +3229,44 @@ function filterAuditTable(query) {
   });
 }
 
+
+// Deep Audit Modal Handlers
+function openDeepAuditModal(hub) {
+  const modal = document.getElementById('modal-deep-audit');
+  if (!modal) return;
+  const hubData = {
+    'Mumbai': { title: 'Mumbai BKC Financial Hub Deep Audit', sub: 'Apex Bharat Commercial Bank • West Commercial Syndicate', cap: '₹58.20 Cr', rate: '84.2%', cibil: '748', hash: '0x9f88a2...e4c1' },
+    'Bengaluru': { title: 'Bengaluru Tech Corridor Deep Audit', sub: 'Apex Bharat Commercial Bank • South Tech Syndicate', cap: '₹34.80 Cr', rate: '81.7%', cibil: '722', hash: '0x3b12dc...f990' },
+    'Delhi': { title: 'Delhi NCR Commercial Hub Deep Audit', sub: 'Apex Bharat Commercial Bank • North Direct Syndicate', cap: '₹22.30 Cr', rate: '79.3%', cibil: '710', hash: '0x88ea41...d723' }
+  };
+  const d = hubData[hub] || hubData['Mumbai'];
+  document.getElementById('deep-audit-title').innerText = d.title;
+  document.getElementById('deep-audit-subtitle').innerText = d.sub;
+  document.getElementById('deep-audit-capital').innerText = d.cap;
+  document.getElementById('deep-audit-rate').innerText = d.rate;
+  document.getElementById('deep-audit-cibil').innerText = d.cibil;
+  document.getElementById('deep-audit-hash').innerText = d.hash;
+  modal.classList.remove('hidden');
+}
+
+function closeDeepAuditModal() {
+  const modal = document.getElementById('modal-deep-audit');
+  if (modal) modal.classList.add('hidden');
+}
+
+// Dedicated Logout Handler
+function handleOfficerLogout() {
+  localStorage.removeItem('smartcredit_officer');
+  window.location.href = '/login?logged_out=1';
+}
+
 // Institutional Officer State Management
 const DEFAULT_OFFICER = {
   name: 'Jay Patel',
   id: 'UW-8492',
-  email: 'j.patel@apexrisk.institutional',
-  clearance: 'Tier-1 Senior ($1.5M)',
-  branch: 'Apex Group #042 (NYC)',
+  email: 'j.patel@apexbharat.bank',
+  clearance: 'Tier-1 Senior (₹1.50 Cr Cap)',
+  branch: 'Apex Bharat Hub #042 (Mumbai BKC)',
   avatar: 'https://lh3.googleusercontent.com/aida/AEtjO1VyS_oasWvIJkDjhdzJ653Md75M1JgLqsI6Db8FtCXNbcPAjvks47h5NHu_T_YQ4LQl-JShoqiuDcrh7SLblbTDxkpgVD2jyRTMcb6lQ8ZqmF66QDqySZHYYFEpX1jtB3mHdfODZIOvhczJJ_TBKx2jI4MZ8BYickyyaovQ-gfiKCpzmspt7El43-gOASbfpiGANnD4-RQI73xT4dZrlKjD1M7NzTeVVSG4JloEflwYtU98SGk-7x5ooqM'
 };
 
@@ -3229,9 +3342,9 @@ function handleOfficerLogin(event) {
   if (event) event.preventDefault();
   const name = document.getElementById('login-officer-name')?.value || 'Jay Patel';
   const id = document.getElementById('login-officer-id')?.value || 'UW-8492';
-  const email = document.getElementById('login-work-email')?.value || 'j.patel@apexrisk.institutional';
-  const clearance = document.getElementById('login-officer-clearance')?.value || 'Tier-1 Senior ($1.5M)';
-  const branch = document.getElementById('login-officer-branch')?.value || 'Apex Group #042 (NYC)';
+  const email = document.getElementById('login-work-email')?.value || 'j.patel@apexbharat.bank';
+  const clearance = document.getElementById('login-officer-clearance')?.value || 'Tier-1 Senior (₹1.50 Cr Cap)';
+  const branch = document.getElementById('login-officer-branch')?.value || 'Apex Bharat Hub #042 (Mumbai BKC)';
 
   const officer = {
     ...getOfficerSession(),
@@ -3296,6 +3409,12 @@ document.addEventListener('click', (e) => {
 
 // Wire Event Listeners
 document.addEventListener('DOMContentLoaded', () => {
+  // Verify Officer Authentication Session
+  if (!localStorage.getItem('smartcredit_officer')) {
+    // If not logged in, redirect to dedicated login page
+    window.location.href = '/login';
+    return;
+  }
   const btn = document.getElementById('btn-run-underwriting');
   if (btn) btn.addEventListener('click', runUnderwriting);
   updateOfficerUI();

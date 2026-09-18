@@ -131,7 +131,7 @@ p2.add_run(
 )
 
 bi_levels = [
-    ("Level 1: Key Performance Indicators (KPIs)", "Answers 'What is happening?' Tracks total loan application volume (800), aggregate portfolio approval rate (82.6%), total capital requested ($115.3M), and average loan ticket size ($144,125)."),
+    ("Level 1: Key Performance Indicators (KPIs)", "Answers 'What is happening?' Tracks total loan application volume (800), aggregate portfolio approval rate (82.6%), total capital underwritten (₹115.3 Crore), and average loan ticket size (₹14.4 Lakhs)."),
     ("Level 2: Visual Trends & Portfolio Health", "Answers 'Where is it going?' Highlights portfolio approval distributions, income distributions across approval classes, and loan tenure clustering."),
     ("Level 3: Underlying Risk Drivers", "Answers 'Why is it happening?' Investigates the impact of Credit History (0.0 vs 1.0), Property Area collateral risks (Semiurban vs Urban vs Rural), and Education/Employment tiers."),
     ("Level 4: Risk & Opportunity Identification", "Answers 'What could go wrong or grow?' Detects high-default risk applicant segments (debt-to-income > 45% combined with lack of credit history) while highlighting prime expansion segments in semiurban properties."),
@@ -285,7 +285,7 @@ if os.path.exists("screenshot_view4.png"):
 add_styled_heading(doc, "API & Cybersecurity Safeguards Verification", level=2)
 p_sec = doc.add_paragraph()
 p_sec.add_run(
-    "To ensure regulatory compliance (Basel III, OCC 2011-12, SR 11-7) and production reliability, the underlying FastAPI backend incorporates institutional-grade security mechanisms:\n"
+    "To ensure regulatory compliance (Reserve Bank of India IRACP Norms, RBI Digital Lending Master Directions 2025, and SR 11-7) and production reliability, the underlying FastAPI backend incorporates institutional-grade security mechanisms:\n"
 )
 sec_bullets = [
     ("Strict Pydantic Contract Validation:", "All incoming underwriting payloads are strictly validated against numeric boundaries (income, term, requested capital) and categorical regex patterns to neutralize injection vulnerabilities."),

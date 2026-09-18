@@ -187,42 +187,42 @@ class CreditModelEngine:
         else:
             risk_tier = "HIGH DEFAULT RISK"
 
-        # Factors
+        # Factors (Explainable AI & RBI Fair Lending)
         factors = []
         if req_data["Credit_History"] == 1.0:
-            factors.append({"factor": "Credit Bureau Compliance (Optimal 750+)", "impact": "+38.4%", "positive": True})
+            factors.append({"factor": "TransUnion CIBIL™ Compliance (Optimal 750+)", "impact": "+38.4%", "positive": True})
         else:
-            factors.append({"factor": "Delinquent Credit History Record", "impact": "-44.2%", "positive": False})
+            factors.append({"factor": "CIBIL CIR Historical Delinquency (<650 Default Risk)", "impact": "-44.2%", "positive": False})
 
         dti_est = (req_data["LoanAmount"] * 1000 * 0.085 / 12.0) / ((tot_inc / 12.0) + 1e-5)
         if dti_est < 0.35:
-            factors.append({"factor": f"Favorable Debt-to-Income ({dti_est*100:.1f}%)", "impact": "+16.2%", "positive": True})
+            factors.append({"factor": f"Favorable FOIR (Fixed Obligation to Income: {dti_est*100:.1f}%)", "impact": "+16.2%", "positive": True})
         else:
-            factors.append({"factor": f"High Debt Service Ratio ({dti_est*100:.1f}%)", "impact": "-18.5%", "positive": False})
+            factors.append({"factor": f"Elevated FOIR Ratio ({dti_est*100:.1f}% > 45% RBI Norm)", "impact": "-18.5%", "positive": False})
 
         if req_data["Property_Area"] == "Semiurban":
-            factors.append({"factor": "Semiurban High-Growth Collateral Alpha", "impact": "+8.1%", "positive": True})
+            factors.append({"factor": "Semi-Urban High-Growth Corridor Collateral Alpha", "impact": "+8.1%", "positive": True})
         else:
             factors.append({"factor": f"{req_data['Property_Area']} Property Appraisal Baseline", "impact": "+2.5%", "positive": True})
 
-        # Prescriptive Actions (Level 5)
+        # Prescriptive Actions (Level 5 Banking Governance)
         if verdict == "APPROVED":
             actions = [
-                "Issue unconditional Facility Sanction Letter at prime rate (8.25% APR).",
-                "Execute standard first-priority mortgage lien over collateral property.",
-                "Cross-sell institutional commercial credit facility and mortgage insurance bundle."
+                "Issue unconditional Facility Sanction Letter at RBI benchmark EBLR rate (8.25% p.a.).",
+                "Execute registered Memorandum of Deposit of Title Deeds (MODTD) over collateral property.",
+                "Cross-sell institutional commercial credit facility and PSL-qualifying insurance cover."
             ]
         elif req_data["Credit_History"] == 0.0:
             actions = [
-                "Decline standard unsecured line due to historical credit delinquency.",
-                "Require secondary institutional co-borrower/guarantor with prime 750+ FICO.",
-                "Offer Secured Fixed-Deposit Backed Credit Facility to rehabilitate bureau standing."
+                "Decline standard unsecured line due to historical CIBIL CIR credit delinquency.",
+                "Require secondary institutional co-borrower/guarantor with prime 750+ CIBIL score.",
+                "Offer Secured Fixed-Deposit (FD) Backed Credit Facility under RBI Priority Lending Framework."
             ]
         else:
             actions = [
-                "Recommend restructuring amortization term from 15 to 30 years to reduce monthly EMI by ~35%.",
-                "Require verification of supplementary liquid assets or secondary income source.",
-                "Route to Senior Credit Committee for conditional exception review."
+                "Recommend restructuring tenure up to 30 years to reduce monthly EMI under RBI IRACP norms.",
+                "Require verification of supplementary liquid assets (ITR Form 16 / GST Returns).",
+                "Route to Apex Bharat National Credit Committee for conditional exception review."
             ]
 
         # Audit logging
@@ -433,7 +433,7 @@ def export_audit_csv():
     import io, csv
     output = io.StringIO()
     writer = csv.writer(output)
-    writer.writerow(["Application_ID", "Timestamp_UTC", "Verdict", "Requested_Capital_USD", "Probability_Score", "SHA256_Hash"])
+    writer.writerow(["Application_ID", "Timestamp_UTC", "Verdict", "Requested_Capital_INR", "Probability_Score", "SHA256_Hash"])
     for entry in engine.audit_trail:
         writer.writerow([
             entry.get("app_id", ""),
@@ -448,6 +448,19 @@ def export_audit_csv():
         media_type="text/csv",
         headers={"Content-Disposition": "attachment; filename=smartcredit_audit_ledger.csv"}
     )
+
+@app.get("/login", response_class=HTMLResponse, tags=["Web Interface"])
+def serve_login_page():
+    login_path = os.path.join("templates", "login.html")
+    if os.path.exists(login_path):
+        with open(login_path, "r", encoding="utf-8") as f:
+            return HTMLResponse(content=f.read(), status_code=200)
+    return HTMLResponse("<h1>SmartCredit AI Platform</h1><p>Login template not found.</p>", status_code=404)
+
+@app.get("/logout", tags=["Web Interface"])
+def logout_user():
+    from fastapi.responses import RedirectResponse
+    return RedirectResponse(url="/login?logged_out=1", status_code=status.HTTP_303_SEE_OTHER)
 
 @app.get("/", response_class=HTMLResponse, tags=["Web Interface"])
 def serve_dashboard():

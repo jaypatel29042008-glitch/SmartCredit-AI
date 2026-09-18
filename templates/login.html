@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Officer Authentication Gateway | Apex Bharat Commercial Bank • SmartCredit AI</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2319327d'%3E%3Cpath d='M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        'primary': '#19327d',
+        'on-primary': '#ffffff',
+        'primary-container': '#2f4795',
+        'on-primary-container': '#dce1ff',
+        'secondary': '#006c47',
+        'on-secondary': '#ffffff',
+        'secondary-container': '#8cf5c2',
+        'surface': '#f9f9fb',
+        'surface-container-low': '#f3f4f6',
+        'surface-container': '#eaecef',
+        'surface-container-high': '#e4e6e9',
+        'surface-container-highest': '#dde0e3',
+        'surface-container-lowest': '#ffffff',
+        'on-surface': '#1a1c1e',
+        'on-surface-variant': '#43474e',
+        'outline': '#737780',
+        'outline-variant': '#c3c6d1',
+        'error': '#ba1a1a',
+        'error-container': '#ffdad6',
+        'on-error': '#ffffff',
+        'tertiary': '#68548e'
+      },
+      fontFamily: {
+        headline: ['Hanken Grotesk', 'sans-serif'],
+        body: ['Inter', 'sans-serif'],
+        mono: ['JetBrains Mono', 'monospace']
+      }
+    }
+  }
+};
+</script>
+<style>
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined' !important;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 1;
+  display: inline-block;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'liga';
+}
+</style>
+</head>
+<body class="bg-surface text-on-surface font-body min-h-screen flex flex-col justify-between selection:bg-primary/20">
+
+  <!-- Top Institutional Bar -->
+  <header class="w-full bg-surface-container-lowest border-b border-outline-variant/30 py-3.5 px-6 flex items-center justify-between shadow-xs">
+    <div class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-xl bg-primary flex items-center justify-center text-on-primary shadow-xs">
+        <span class="material-symbols-outlined text-xl">account_balance</span>
+      </div>
+      <div class="flex flex-col">
+        <div class="flex items-center gap-2">
+          <span class="font-headline font-extrabold text-base tracking-tight text-primary">SmartCredit<span class="text-secondary">AI</span></span>
+          <span class="px-2 py-0.5 rounded-full bg-secondary/10 text-secondary font-mono text-[10px] font-bold">RBI RE-042</span>
+        </div>
+        <span class="text-[11px] text-outline font-medium leading-tight">Apex Bharat Commercial Bank • National Credit Underwriting Grid</span>
+      </div>
+    </div>
+
+    <div class="flex items-center gap-3">
+      <div class="hidden sm:flex items-center gap-2 px-3 py-1 rounded-lg bg-surface-container-low border border-outline-variant/30 text-xs text-outline">
+        <span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+        <span class="text-on-surface font-medium">RBI SFMS Node Active</span>
+        <span>• 12ms Latency</span>
+      </div>
+      <a href="/download-report" download="SmartCredit_Loan_Approval_Project_Report.docx" class="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-outline-variant/40 bg-surface-container-lowest hover:bg-surface-container text-xs font-semibold text-on-surface transition-colors shadow-2xs">
+        <span class="material-symbols-outlined text-sm text-primary">description</span>
+        <span>Examiner Dossier (.docx)</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Notification Banner (If redirected from Logout) -->
+  <div id="logout-banner" class="hidden max-w-lg mx-auto w-full px-4 pt-4">
+    <div class="p-3 rounded-xl bg-secondary/10 border border-secondary/30 text-secondary text-xs font-semibold flex items-center gap-2">
+      <span class="material-symbols-outlined text-base">task_alt</span>
+      <span>Officer session securely terminated. Audit ledger closed in accordance with RBI guidelines.</span>
+    </div>
+  </div>
+
+  <!-- Main Login Container -->
+  <main class="flex-1 flex items-center justify-center p-4 sm:p-6 my-auto">
+    <div class="max-w-lg w-full bg-surface-container-lowest rounded-3xl border border-outline-variant/40 shadow-xl p-6 sm:p-8 flex flex-col gap-6">
+
+      <!-- Header & Clearance Badge -->
+      <div class="flex flex-col gap-2">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2 text-xs font-bold font-mono text-secondary uppercase tracking-wider">
+            <span class="material-symbols-outlined text-sm">verified_user</span>
+            <span>Prudential Underwriting Portal</span>
+          </div>
+          <span class="px-2 py-0.5 rounded bg-primary/10 text-primary font-mono text-[10px] font-bold">OCC / RBI IRACP</span>
+        </div>
+        <h1 class="text-2xl font-headline font-bold text-on-surface tracking-tight">Institutional Officer Authentication</h1>
+        <p class="text-xs text-outline leading-relaxed">
+          Access the Apex Bharat autonomous credit underwriting terminal, live KYC ingestion pipe, and SHA-256 cryptographic audit ledger.
+        </p>
+      </div>
+
+      <!-- Quick Session Banner -->
+      <div class="p-3.5 rounded-2xl bg-surface-container-low border border-outline-variant/30 flex items-start gap-3">
+        <span class="material-symbols-outlined text-secondary text-xl mt-0.5 shrink-0">shield_lock</span>
+        <div class="flex flex-col text-xs leading-normal">
+          <span class="font-bold text-on-surface">Tier-1 Regulatory Clearance Required</span>
+          <span class="text-outline text-[11px] mt-0.5">Every credit sanction decision is cryptographically anchored to your Officer ID with SHA-256 immutability.</span>
+        </div>
+      </div>
+
+      <!-- Authentication Form -->
+      <form id="officer-auth-form" onsubmit="handleAuthSubmit(event)" class="space-y-4">
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+          <div>
+            <label class="block text-xs font-bold text-on-surface mb-1 flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-xs text-primary">person</span>
+              <span>Officer Full Name</span>
+            </label>
+            <input id="auth-officer-name" type="text" value="Jay Patel" required 
+                   class="w-full px-3.5 py-2.5 text-xs rounded-xl bg-surface-container-low border border-outline-variant/40 focus:border-secondary focus:bg-surface-container-lowest focus:ring-2 focus:ring-secondary/20 text-on-surface font-medium outline-none transition-all"/>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-on-surface mb-1 flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-xs text-primary">badge</span>
+              <span>Employee / Officer ID</span>
+            </label>
+            <input id="auth-officer-id" type="text" value="UW-8492" required 
+                   class="w-full px-3.5 py-2.5 text-xs rounded-xl bg-surface-container-low border border-outline-variant/40 focus:border-secondary focus:bg-surface-container-lowest focus:ring-2 focus:ring-secondary/20 text-on-surface font-mono font-bold outline-none transition-all"/>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-on-surface mb-1 flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-xs text-primary">mail</span>
+            <span>Corporate Institutional Email</span>
+          </label>
+          <input id="auth-officer-email" type="email" value="j.patel@apexbharat.bank" required 
+                 class="w-full px-3.5 py-2.5 text-xs rounded-xl bg-surface-container-low border border-outline-variant/40 focus:border-secondary focus:bg-surface-container-lowest focus:ring-2 focus:ring-secondary/20 text-on-surface font-mono outline-none transition-all"/>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+          <div>
+            <label class="block text-xs font-bold text-on-surface mb-1 flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-xs text-primary">lock</span>
+              <span>Security PIN / Token</span>
+            </label>
+            <input id="auth-officer-pin" type="password" value="949211" required 
+                   class="w-full px-3.5 py-2.5 text-xs rounded-xl bg-surface-container-low border border-outline-variant/40 focus:border-secondary focus:bg-surface-container-lowest focus:ring-2 focus:ring-secondary/20 text-on-surface font-mono tracking-widest outline-none transition-all"/>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-on-surface mb-1 flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-xs text-primary">gavel</span>
+              <span>Underwriting Authority</span>
+            </label>
+            <select id="auth-officer-clearance" 
+                    class="w-full px-3 py-2.5 text-xs rounded-xl bg-surface-container-low border border-outline-variant/40 focus:border-secondary focus:bg-surface-container-lowest focus:ring-2 focus:ring-secondary/20 text-on-surface font-medium outline-none transition-all cursor-pointer">
+              <option value="Tier-1 Senior (₹1.50 Cr Cap)" selected>Tier-1 Senior (₹1.50 Cr Cap)</option>
+              <option value="Tier-2 Lead (₹3.00 Cr Cap)">Tier-2 Lead (₹3.00 Cr Cap)</option>
+              <option value="Managing Committee (₹10.00 Cr Cap)">Committee (₹10.00 Cr Cap)</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-on-surface mb-1 flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-xs text-primary">location_city</span>
+            <span>Regional Banking Hub / Node</span>
+          </label>
+          <select id="auth-officer-branch" 
+                  class="w-full px-3 py-2.5 text-xs rounded-xl bg-surface-container-low border border-outline-variant/40 focus:border-secondary focus:bg-surface-container-lowest focus:ring-2 focus:ring-secondary/20 text-on-surface font-medium outline-none transition-all cursor-pointer">
+            <option value="Apex Hub #042 (Mumbai BKC)" selected>Apex Bharat Hub #042 — Mumbai Bandra-Kurla Complex (BKC)</option>
+            <option value="Apex Hub #018 (Bengaluru)">Apex Bharat Hub #018 — Bengaluru Tech Corridor</option>
+            <option value="Apex Hub #088 (Delhi NCR)">Apex Bharat Hub #088 — New Delhi Connaught Place</option>
+            <option value="Apex Hub #012 (GIFT City)">Apex Bharat Hub #012 — GIFT City Gandhinagar IFC</option>
+          </select>
+        </div>
+
+        <!-- Buttons -->
+        <div class="pt-2 flex flex-col gap-2.5">
+          <button type="submit" 
+                  class="w-full py-3 px-4 rounded-xl bg-primary hover:bg-primary-container text-on-primary text-xs font-bold transition-all flex items-center justify-center gap-2 shadow-sm cursor-pointer active:scale-[0.99]">
+            <span class="material-symbols-outlined text-base">lock_open</span>
+            <span>Authenticate &amp; Launch Risk Terminal</span>
+          </button>
+
+          <button onclick="handleInstantDemoAuth(event)" type="button" 
+                  class="w-full py-2.5 px-4 rounded-xl bg-secondary/10 hover:bg-secondary/20 text-secondary text-xs font-bold transition-all flex items-center justify-center gap-2 border border-secondary/20 cursor-pointer active:scale-[0.99]">
+            <span class="material-symbols-outlined text-base">bolt</span>
+            <span>⚡ Instant 1-Click Demo Officer Access</span>
+          </button>
+        </div>
+
+      </form>
+
+      <!-- Security Guarantee Strip -->
+      <div class="pt-4 border-t border-outline-variant/20 flex flex-wrap items-center justify-between text-[10px] text-outline gap-2">
+        <span class="flex items-center gap-1">
+          <span class="material-symbols-outlined text-xs text-secondary">verified</span>
+          <span>RBI Master Direction 2025 Compliant</span>
+        </span>
+        <span class="font-mono">Rate Limit: 40 req/min</span>
+        <span class="font-mono">SHA-256 Ledger</span>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="w-full bg-surface-container-lowest border-t border-outline-variant/30 py-3 px-6 text-center text-xs text-outline">
+    <span>SmartCredit AI • Apex Bharat Commercial Bank Limited • Capstone Project for IBM SkillsBuild × AICTE × BharatCares</span>
+  </footer>
+
+  <script>
+    const DEFAULT_OFFICER = {
+      name: 'Jay Patel',
+      id: 'UW-8492',
+      email: 'j.patel@apexbharat.bank',
+      clearance: 'Tier-1 Senior (₹1.50 Cr Cap)',
+      branch: 'Apex Hub #042 (Mumbai BKC)',
+      avatar: 'https://lh3.googleusercontent.com/aida/AEtjO1VyS_oasWvIJkDjhdzJ653Md75M1JgLqsI6Db8FtCXNbcPAjvks47h5NHu_T_YQ4LQl-JShoqiuDcrh7SLblbTDxkpgVD2jyRTMcb6lQ8ZqmF66QDqySZHYYFEpX1jtB3mHdfODZIOvhczJJ_TBKx2jI4MZ8BYickyyaovQ-gfiKCpzmspt7El43-gOASbfpiGANnD4-RQI73xT4dZrlKjD1M7NzTeVVSG4JloEflwYtU98SGk-7x5ooqM'
+    };
+
+    // Check if redirected after logout
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('logged_out') || urlParams.has('logout')) {
+      const banner = document.getElementById('logout-banner');
+      if (banner) banner.classList.remove('hidden');
+      localStorage.removeItem('smartcredit_officer');
+    }
+
+    function handleAuthSubmit(e) {
+      if (e) e.preventDefault();
+      const officer = {
+        name: document.getElementById('auth-officer-name')?.value || 'Jay Patel',
+        id: document.getElementById('auth-officer-id')?.value || 'UW-8492',
+        email: document.getElementById('auth-officer-email')?.value || 'j.patel@apexbharat.bank',
+        clearance: document.getElementById('auth-officer-clearance')?.value || 'Tier-1 Senior (₹1.50 Cr Cap)',
+        branch: document.getElementById('auth-officer-branch')?.value || 'Apex Hub #042 (Mumbai BKC)',
+        avatar: DEFAULT_OFFICER.avatar
+      };
+      try {
+        localStorage.setItem('smartcredit_officer', JSON.stringify(officer));
+      } catch (err) {
+        console.error(err);
+      }
+      window.location.href = '/';
+    }
+
+    function handleInstantDemoAuth(e) {
+      if (e) e.preventDefault();
+      try {
+        localStorage.setItem('smartcredit_officer', JSON.stringify(DEFAULT_OFFICER));
+      } catch (err) {
+        console.error(err);
+      }
+      window.location.href = '/';
+    }
+  </script>
+</body>
+</html>
