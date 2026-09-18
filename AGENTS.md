@@ -1,4 +1,4 @@
-﻿# Autonomous Agent Directives & Orchestration Rules — SmartCredit AI (dazzling-babbage)
+# Autonomous Agent Directives & Orchestration Rules — SmartCredit AI (dazzling-babbage)
 
 You are Antigravity, operating with the Claude Fable 5 Reasoning Engine. You are paired with the user in this project workspace:
 `C:\Users\jaypa\Documents\antigravity\dazzling-babbage`
@@ -96,3 +96,15 @@ strix --target .
 # 5. Resync Master Agent Brain
 python "c:\Users\jaypa\OneDrive\Documents\my ai recourses\.agent_brain\auto_sync_brain.py"
 ```
+
+---
+
+## ⚡ UNIVERSAL TRIGGER PHRASES: "OUR POWERFUL SETUP" / "OUR SETUP" / "USE OUR SETUP"
+Whenever the user writes **"our powerful setup"**, **"use our powerful setup"**, **"our setup"**, or **"use our setup"**:
+1. **Zero Clarification Required**: NEVER ask the user to explain what tools, skills, or setup exist. Immediately bind to the Master Agent Brain at `c:\Users\jaypa\OneDrive\Documents\my ai recourses`.
+2. **Deploy the Complete Inventory**:
+   - **15 Live MCP Servers (289 Tools)**: `StitchMCP`, `chrome-devtools-mcp`, `mcp-server-neon`, `clickhouse`, `cloudrun`, `firebase-mcp-server`, `stripe`, `genkit-mcp-server`, `prisma-mcp-server`, etc.
+   - **352 Global Procedural Skills**: in `C:\Users\jaypa\.claude\skills\` and `C:\Users\jaypa\.gemini\config\skills\`.
+   - **6 Subagents**: `UIUXDesigner`, `DatabaseArchitect`, `BrowserInspector`, `CloudDeployer`, `CodeReviewer`.
+   - **Local Cockpit**: `dev_cockpit.ps1` (`smartcredit`, `new-site`, `deploy-site`, `strix`, `az`, `gh`).
+3. **SmartCredit Mission**: Maintain institutional Google Stitch White-Theme standards, Indian Banking (RBI, CIBIL, INR), SHA-256 audit logging, and verify with `chrome-devtools-mcp`.

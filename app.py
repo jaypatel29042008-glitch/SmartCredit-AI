@@ -314,9 +314,9 @@ async def rate_limiter(request: Request, call_next):
 # 3. REQUEST / RESPONSE SCHEMAS
 # -------------------------------------------------------------------
 class CreditApplicationRequest(BaseModel):
-    ApplicantIncome: float = Field(..., ge=100.0, le=500000.0, description="Monthly primary income in USD")
-    CoapplicantIncome: float = Field(0.0, ge=0.0, le=500000.0, description="Monthly co-applicant income in USD")
-    LoanAmount: float = Field(..., ge=1.0, le=5000.0, description="Requested principal in thousands USD (e.g. 140 = $140k)")
+    ApplicantIncome: float = Field(..., ge=100.0, le=5000000.0, description="Monthly primary income in INR (₹)")
+    CoapplicantIncome: float = Field(0.0, ge=0.0, le=5000000.0, description="Monthly co-applicant income in INR (₹)")
+    LoanAmount: float = Field(..., ge=1.0, le=50000.0, description="Requested principal in thousands INR (e.g. 140 = ₹1.4 Lakh)")
     Loan_Amount_Term: float = Field(360.0, ge=12.0, le=480.0, description="Tenure in months")
     Credit_History: float = Field(..., ge=0.0, le=1.0, description="1.0 if meets bureau guidelines, 0.0 otherwise")
     Gender: str = Field("Male", pattern="^(Male|Female|Other)$")
@@ -406,7 +406,7 @@ def get_model_governance():
     return {
         "model_benchmarks": engine.metrics,
         "feature_importances": dict(zip(feat_names, importances)),
-        "governance_standard": "SR 11-7 / OCC 2011-12 Validated",
+        "governance_standard": "RBI IRACP Norms & CICRA 2005 Validated",
         "bias_index": 0.002
     }
 
