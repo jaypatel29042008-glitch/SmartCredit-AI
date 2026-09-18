@@ -1,8 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@600;700&amp;family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2319327d'%3E%3Cpath d='M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<style>
+@layer base {
+  html, body { margin: 0; padding: 0; }
+  body { overscroll-behavior: none; }
+  main > :first-child { margin-top: 0 !important; }
+  main > :last-child { margin-bottom: 0 !important; }
+}
+::-webkit-scrollbar { display: none; }
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined' !important;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 1;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  vertical-align: middle;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: 'liga';
+}
+</style>
+<script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
     darkMode: "class",
     theme: {
       extend: {
@@ -341,17 +370,26 @@
       </div>
     </div>
 
-    <!-- Officer Profile & System Health Footer -->
-    <div class="p-4 border-t border-outline-variant/30 bg-surface-container-lowest flex items-center justify-between">
-      <div class="flex items-center gap-2.5">
-        <img alt="Officer" class="w-9 h-9 rounded-full object-cover border border-outline-variant/50" src="https://lh3.googleusercontent.com/aida/AEtjO1VyS_oasWvIJkDjhdzJ653Md75M1JgLqsI6Db8FtCXNbcPAjvks47h5NHu_T_YQ4LQl-JShoqiuDcrh7SLblbTDxkpgVD2jyRTMcb6lQ8ZqmF66QDqySZHYYFEpX1jtB3mHdfODZIOvhczJJ_TBKx2jI4MZ8BYickyyaovQ-gfiKCpzmspt7El43-gOASbfpiGANnD4-RQI73xT4dZrlKjD1M7NzTeVVSG4JloEflwYtU98SGk-7x5ooqM"/>
-        <div class="flex flex-col">
-          <span class="text-xs font-bold text-on-surface leading-tight">Jay Patel</span>
-          <span class="text-[10px] text-outline">Chief Risk Officer • Tier-1</span>
+    <!-- Officer Profile & Session Status Footer -->
+    <div class="p-3.5 border-t border-outline-variant/30 bg-surface-container-lowest flex flex-col gap-2">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2.5 min-w-0">
+          <img id="sidebar-officer-avatar" alt="Officer" class="w-8 h-8 rounded-full object-cover border border-outline-variant/50 shrink-0" src="https://lh3.googleusercontent.com/aida/AEtjO1VyS_oasWvIJkDjhdzJ653Md75M1JgLqsI6Db8FtCXNbcPAjvks47h5NHu_T_YQ4LQl-JShoqiuDcrh7SLblbTDxkpgVD2jyRTMcb6lQ8ZqmF66QDqySZHYYFEpX1jtB3mHdfODZIOvhczJJ_TBKx2jI4MZ8BYickyyaovQ-gfiKCpzmspt7El43-gOASbfpiGANnD4-RQI73xT4dZrlKjD1M7NzTeVVSG4JloEflwYtU98SGk-7x5ooqM"/>
+          <div class="flex flex-col min-w-0">
+            <span id="sidebar-officer-name" class="text-xs font-bold text-on-surface leading-tight truncate">Jay Patel</span>
+            <span id="sidebar-officer-title" class="text-[10px] text-outline truncate">Senior Underwriter • UW-8492</span>
+          </div>
         </div>
+        <button onclick="openOfficerLoginModal()" type="button" title="Switch Officer / Sign In" class="p-1.5 rounded-lg text-outline hover:text-secondary hover:bg-surface-container transition-colors shrink-0 cursor-pointer">
+          <span class="material-symbols-outlined text-base">switch_account</span>
+        </button>
       </div>
-      <div class="flex items-center text-on-tertiary-container" title="All Microservices Online">
-        <span class="material-symbols-outlined text-base">check_circle</span>
+      <div class="flex items-center justify-between px-2 py-1 rounded bg-secondary/10 text-secondary text-[10px] font-semibold">
+        <span class="flex items-center gap-1.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>
+          <span id="sidebar-session-status">Session Active | Tier-1 Auth</span>
+        </span>
+        <span class="font-mono text-[9px] text-secondary">OCC-L3</span>
       </div>
     </div>
   </div>
@@ -361,29 +399,106 @@
 <!-- Main Application Content Area (Offset for Desktop Left Sidebar) -->
 <div class="md:pl-72 flex-1 flex flex-col min-h-screen bg-surface">
   
-<header class="sticky top-0 z-30 h-14 bg-surface-container-lowest border-b border-outline-variant/30 flex items-center justify-between px-4 sm:px-6 shadow-xs">
-  <div class="flex items-center gap-3">
-    <button onclick="toggleSidebar()" class="md:hidden p-1.5 rounded-lg text-on-surface hover:bg-surface-container transition-colors">
+<header class="sticky top-0 z-30 h-16 bg-surface-container-lowest/95 backdrop-blur-md border-b border-outline-variant/30 flex items-center justify-between px-4 sm:px-6 shadow-xs">
+  <div class="flex items-center gap-3 min-w-0">
+    <button onclick="toggleSidebar()" type="button" class="md:hidden p-1.5 rounded-lg text-on-surface hover:bg-surface-container transition-colors cursor-pointer">
       <span class="material-symbols-outlined text-xl">menu</span>
     </button>
-    <div class="flex items-center gap-2 text-xs text-outline">
-      <span class="material-symbols-outlined text-sm text-outline">home</span>
+    
+    <!-- Financial Institution Banner -->
+    <div class="hidden lg:flex items-center gap-2 pr-3 border-r border-outline-variant/30">
+      <div class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary shrink-0">
+        <span class="material-symbols-outlined text-base">account_balance</span>
+      </div>
+      <div class="flex flex-col">
+        <span class="text-xs font-bold text-on-surface leading-tight tracking-tight">Apex Institutional Lending Group</span>
+        <span class="text-[10px] text-outline font-medium">Branch #042 • NY Financial Hub</span>
+      </div>
+    </div>
+
+    <!-- Screen Breadcrumbs -->
+    <div class="flex items-center gap-1.5 text-xs text-outline min-w-0 truncate">
+      <span class="material-symbols-outlined text-sm text-outline shrink-0">home</span>
       <span>/</span>
-      <span>Institutional Risk</span>
-      <span>/</span>
-      <span id="breadcrumb-title" class="font-bold text-secondary">Portfolio Intelligence</span>
+      <span class="hidden sm:inline">Institutional Risk</span>
+      <span class="hidden sm:inline">/</span>
+      <span id="breadcrumb-title" class="font-bold text-secondary truncate">Portfolio Intelligence</span>
     </div>
   </div>
 
-  <div class="flex items-center gap-3">
-    <div class="hidden md:flex items-center gap-2 px-2.5 py-1 rounded bg-surface-container text-on-surface-variant text-xs font-semibold">
-      <span class="material-symbols-outlined text-xs text-secondary">speed</span>
-      <span>Inference: 12ms</span>
+  <div class="flex items-center gap-2.5 sm:gap-3 shrink-0">
+    <!-- Active FedWire / Telemetry Badge -->
+    <div class="hidden xl:flex items-center gap-2 px-2.5 py-1.5 rounded-lg bg-surface-container-low border border-outline-variant/30 text-xs font-semibold">
+      <span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+      <span class="text-[11px] text-on-surface font-medium">FedWire Node Active</span>
+      <span class="text-outline text-[10px]">• 12ms</span>
     </div>
-    <a href="/download-report" download="SmartCredit_Loan_Approval_Project_Report.docx" class="px-3 py-1.5 rounded-lg bg-primary hover:bg-primary-container text-on-primary text-xs font-semibold transition-colors flex items-center gap-1.5 shadow-xs">
-      <span class="material-symbols-outlined text-sm">description</span>
-      <span class="hidden sm:inline">Download Examiner Package</span> (.docx)
+
+    <!-- Download Examiner Package CTA -->
+    <a href="/download-report" download="SmartCredit_Loan_Approval_Project_Report.docx" class="hidden sm:flex px-3 py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high border border-outline-variant/40 text-on-surface text-xs font-semibold transition-colors items-center gap-1.5 shadow-xs">
+      <span class="material-symbols-outlined text-sm text-primary">description</span>
+      <span>Examiner Dossier (.docx)</span>
     </a>
+
+    <!-- Underwriter Profile HUD Button -->
+    <div class="relative">
+      <button id="officer-profile-btn" onclick="toggleProfileDropdown()" type="button" class="flex items-center gap-2 p-1.5 pr-2.5 rounded-xl bg-surface-container-low hover:bg-surface-container border border-outline-variant/30 transition-all cursor-pointer shadow-xs">
+        <img id="hud-officer-avatar" alt="Senior Underwriter" class="w-7 h-7 rounded-lg object-cover border border-outline-variant/40 shrink-0" src="https://lh3.googleusercontent.com/aida/AEtjO1VyS_oasWvIJkDjhdzJ653Md75M1JgLqsI6Db8FtCXNbcPAjvks47h5NHu_T_YQ4LQl-JShoqiuDcrh7SLblbTDxkpgVD2jyRTMcb6lQ8ZqmF66QDqySZHYYFEpX1jtB3mHdfODZIOvhczJJ_TBKx2jI4MZ8BYickyyaovQ-gfiKCpzmspt7El43-gOASbfpiGANnD4-RQI73xT4dZrlKjD1M7NzTeVVSG4JloEflwYtU98SGk-7x5ooqM"/>
+        <div class="hidden sm:flex flex-col text-left">
+          <span id="hud-officer-name" class="text-xs font-bold text-on-surface leading-none">Jay Patel</span>
+          <span id="hud-officer-badge" class="text-[10px] text-secondary font-mono leading-none mt-0.5 font-bold">UW-8492 • Tier 1</span>
+        </div>
+        <span class="material-symbols-outlined text-sm text-outline">expand_more</span>
+      </button>
+
+      <!-- Profile Dropdown Popover -->
+      <div id="officer-profile-dropdown" class="hidden absolute right-0 mt-2 w-80 bg-surface-container-lowest border border-outline-variant/40 rounded-2xl shadow-2xl z-50 p-4 transition-all animate-in fade-in duration-150">
+        <!-- Dropdown Header -->
+        <div class="flex items-start gap-3 pb-3 border-b border-outline-variant/30">
+          <img id="popover-officer-avatar" alt="Officer" class="w-11 h-11 rounded-xl object-cover border border-secondary/40 shrink-0" src="https://lh3.googleusercontent.com/aida/AEtjO1VyS_oasWvIJkDjhdzJ653Md75M1JgLqsI6Db8FtCXNbcPAjvks47h5NHu_T_YQ4LQl-JShoqiuDcrh7SLblbTDxkpgVD2jyRTMcb6lQ8ZqmF66QDqySZHYYFEpX1jtB3mHdfODZIOvhczJJ_TBKx2jI4MZ8BYickyyaovQ-gfiKCpzmspt7El43-gOASbfpiGANnD4-RQI73xT4dZrlKjD1M7NzTeVVSG4JloEflwYtU98SGk-7x5ooqM"/>
+          <div class="flex flex-col min-w-0">
+            <span id="popover-officer-name" class="text-sm font-bold text-on-surface leading-tight">Senior Underwriter Jay Patel</span>
+            <span class="text-[11px] text-outline mt-0.5">Apex Credit Risk Committee</span>
+            <span class="inline-flex items-center gap-1 text-[10px] text-secondary font-bold font-mono mt-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>
+              ID: UW-8492 • Level 3 Clearance
+            </span>
+          </div>
+        </div>
+
+        <!-- Authority & Covenants Summary -->
+        <div class="py-3 space-y-2 text-xs">
+          <div class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low">
+            <span class="text-outline text-[11px]">Approval Authority</span>
+            <span class="font-bold text-on-surface font-mono">Up to $1.5M Capital</span>
+          </div>
+          <div class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low">
+            <span class="text-outline text-[11px]">Branch Node</span>
+            <span class="font-semibold text-on-surface">Apex Group #042 (NYC)</span>
+          </div>
+          <div class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low">
+            <span class="text-outline text-[11px]">Audit Logging</span>
+            <span class="text-secondary font-semibold font-mono text-[10px]">SHA-256 Chained (Active)</span>
+          </div>
+        </div>
+
+        <!-- Dropdown Actions -->
+        <div class="pt-2 border-t border-outline-variant/30 space-y-1">
+          <a href="/api/export-audit-csv" download="smartcredit_audit_ledger.csv" class="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-semibold text-on-surface hover:bg-surface-container transition-colors">
+            <span class="material-symbols-outlined text-base text-secondary">download</span>
+            <span>Export Officer Decision Ledger (CSV)</span>
+          </a>
+          <a href="/download-report" download="SmartCredit_Loan_Approval_Project_Report.docx" class="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-semibold text-on-surface hover:bg-surface-container transition-colors">
+            <span class="material-symbols-outlined text-base text-primary">print</span>
+            <span>Examiner Supervisory Report</span>
+          </a>
+          <button onclick="openOfficerLoginModal()" type="button" class="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-semibold text-error hover:bg-error-container/20 transition-colors cursor-pointer">
+            <span class="material-symbols-outlined text-base">logout</span>
+            <span>Switch Officer / Sign In</span>
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </header>
 
@@ -392,13 +507,13 @@
   <main id="view-portfolio" class="w-full flex-1">
     <div class="flex flex-col w-full">
 <!-- Subheader Institutional Telemetry Bar -->
-<section class="w-full bg-surface-container-lowest shadow-sm mb-space-lg">
-<div class="max-w-[1680px] mx-auto px-margin-desktop py-space-sm flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-space-md">
+<section class="w-full bg-surface-container-lowest border-b border-outline-variant/20 shadow-xs mb-space-lg">
+<div class="max-w-[1680px] mx-auto px-margin-desktop py-space-sm flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-space-md">
 <!-- Left: Cohort Selector & Live Feed Status -->
 <div class="flex flex-wrap items-center gap-space-md">
 <!-- Cohort Dropdown Control -->
 <div class="relative inline-block">
-<select id="cohort-select" onchange="switchCohort(this.value)" class="px-3 py-1.5 bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md rounded border border-outline-variant/30 shadow-xs transition-colors cursor-pointer appearance-none pr-8">
+<select id="cohort-select" onchange="switchCohort(this.value)" class="px-3 py-1.5 bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md rounded-lg border border-outline-variant/30 shadow-xs transition-colors cursor-pointer appearance-none pr-8">
   <option value="all" selected>Q3 2025 YTD (Consolidated) — All Commercial Portfolios</option>
   <option value="commercial">Commercial High-Ticket Facility (Income &gt; $5,500/mo)</option>
   <option value="retail">Retail &amp; Residential Mortgages (Income &le; $5,500/mo)</option>
@@ -407,32 +522,27 @@
 <span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-outline text-sm pointer-events-none">arrow_drop_down</span>
 </div>
 <!-- Live Telemetry Pill -->
-<div class="flex items-center gap-2 px-2.5 py-1 bg-surface-container-high rounded text-on-surface">
+<div class="flex items-center gap-2 px-2.5 py-1 bg-surface-container-high rounded-lg text-on-surface">
 <span class="flex h-2 w-2 relative">
-<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-on-tertiary-container opacity-75"></span>
-<span class="relative inline-flex rounded-full h-2 w-2 bg-on-tertiary-container"></span>
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-secondary"></span>
 </span>
-<span class="font-label-sm text-label-sm font-semibold tracking-wider uppercase text-on-tertiary-container">DATA PIPE: REAL-TIME FEDWIRE FEED</span>
+<span class="font-label-sm text-label-sm font-semibold tracking-wider uppercase text-secondary">DATA PIPE: REAL-TIME FEDWIRE FEED</span>
 <span class="text-outline-variant font-bold">•</span>
-<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Latency: 12ms</span>
-</div>
-<!-- Stress Scenario Indicator -->
-<div class="flex items-center gap-1.5 px-2.5 py-1 bg-surface-container-low rounded text-on-surface-variant font-label-sm text-label-sm">
-<span class="material-symbols-outlined text-[15px] text-secondary">stacked_line_chart</span>
-<span class="font-semibold text-on-surface">Stress Horizon:</span>
-<span class="px-1.5 py-0.5 rounded bg-surface-container font-medium text-secondary">CCAR Severely Adverse (Q3-Q4)</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">12ms Latency</span>
 </div>
 </div>
 <!-- Right Action Suite -->
 <div class="flex items-center gap-space-sm justify-end">
-<button class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-primary text-on-primary font-label-md text-label-md uppercase tracking-wider rounded shadow-sm hover:bg-primary-container transition-colors" type="button">
-<span class="material-symbols-outlined text-[16px] text-tertiary-fixed">bolt</span>
-<span>Simulate CCAR Macro Stress Test</span>
-</button>
-<button class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-surface-container-lowest text-on-surface font-label-md text-label-md uppercase tracking-wider rounded shadow-sm hover:bg-surface-container-low transition-colors" type="button">
-<span class="material-symbols-outlined text-[16px] text-outline">file_present</span>
-<span>Export Board Audit Dossier</span>
-</button>
+<span class="px-2.5 py-1 bg-surface-container-low rounded-lg text-on-surface-variant font-label-sm text-label-sm border border-outline-variant/30 flex items-center gap-1.5">
+  <span class="material-symbols-outlined text-sm text-secondary">stacked_line_chart</span>
+  <span class="font-semibold text-on-surface">Stress Horizon:</span>
+  <span class="text-secondary font-semibold">CCAR Adverse Q3-Q4</span>
+</span>
+<a href="/api/export-audit-csv" download="smartcredit_audit_ledger.csv" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-surface-container-lowest hover:bg-surface-container text-on-surface font-label-md text-label-md rounded-lg border border-outline-variant/30 shadow-xs transition-colors">
+<span class="material-symbols-outlined text-sm text-secondary">download</span>
+<span>Export Audit Ledger (CSV)</span>
+</a>
 </div>
 </div>
 </section>
@@ -511,7 +621,7 @@
 <div class="flex items-center justify-between pb-space-xs">
 <span class="font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold">Default Risk (NPA Filter)</span>
 <span class="p-1 rounded bg-error-container text-error">
-<span class="material-symbols-outlined text-[16px]">drive_file_rename_outline</span>
+<span class="material-symbols-outlined text-[16px]">warning</span>
 </span>
 </div>
 <div class="my-space-xs">
@@ -2590,6 +2700,95 @@
   </div>
 </div>
 
+<!-- Institutional Officer Login Modal -->
+<div id="modal-officer-login" class="fixed inset-0 z-50 bg-black/40 backdrop-blur-xs flex items-center justify-center p-4 hidden">
+  <div class="bg-surface-container-lowest rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-outline-variant/40 flex flex-col gap-5 animate-in fade-in zoom-in-95 duration-200 max-h-[92vh] overflow-y-auto">
+    <!-- Header -->
+    <div class="flex items-start justify-between border-b border-outline-variant/30 pb-4">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
+          <span class="material-symbols-outlined text-2xl">badge</span>
+        </div>
+        <div class="flex flex-col">
+          <h3 class="text-base font-bold text-on-surface leading-tight">Underwriter Officer Authentication</h3>
+          <span class="text-xs text-outline">Apex Institutional Lending Group • Branch #042</span>
+        </div>
+      </div>
+      <button onclick="closeOfficerLoginModal()" type="button" class="p-1 rounded-lg text-outline hover:text-on-surface hover:bg-surface-container transition-colors cursor-pointer">
+        <span class="material-symbols-outlined text-xl">close</span>
+      </button>
+    </div>
+
+    <!-- Info Banner -->
+    <div class="p-3 rounded-xl bg-surface-container-low border border-outline-variant/30 flex items-start gap-2.5">
+      <span class="material-symbols-outlined text-secondary text-lg mt-0.5 shrink-0">verified_user</span>
+      <div class="flex flex-col text-xs">
+        <span class="font-bold text-on-surface">Tier-1 Regulatory Clearance Required</span>
+        <span class="text-outline text-[11px] leading-relaxed mt-0.5">Every credit decision is cryptographically anchored to this officer ID and logged to the SHA-256 OCC audit ledger.</span>
+      </div>
+    </div>
+
+    <!-- Login Form -->
+    <form id="form-officer-login" onsubmit="handleOfficerLogin(event)" class="space-y-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div>
+          <label class="block text-xs font-semibold text-on-surface mb-1">Officer Name</label>
+          <input id="login-officer-name" type="text" value="Jay Patel" required class="w-full px-3 py-2 text-xs rounded-lg bg-surface-container-low border border-outline-variant/30 focus:border-secondary focus:ring-1 focus:ring-secondary text-on-surface font-medium outline-none transition-all"/>
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-on-surface mb-1">Officer Badge / ID</label>
+          <input id="login-officer-id" type="text" value="UW-8492" required class="w-full px-3 py-2 text-xs rounded-lg bg-surface-container-low border border-outline-variant/30 focus:border-secondary focus:ring-1 focus:ring-secondary text-on-surface font-mono font-bold outline-none transition-all"/>
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-xs font-semibold text-on-surface mb-1">Corporate Institutional Email</label>
+        <input id="login-work-email" type="email" value="j.patel@apexrisk.institutional" required class="w-full px-3 py-2 text-xs rounded-lg bg-surface-container-low border border-outline-variant/30 focus:border-secondary focus:ring-1 focus:ring-secondary text-on-surface font-mono outline-none transition-all"/>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div>
+          <label class="block text-xs font-semibold text-on-surface mb-1">Security PIN / Clearance</label>
+          <input id="login-officer-pin" type="password" value="949211" required class="w-full px-3 py-2 text-xs rounded-lg bg-surface-container-low border border-outline-variant/30 focus:border-secondary focus:ring-1 focus:ring-secondary text-on-surface font-mono tracking-widest outline-none transition-all"/>
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-on-surface mb-1">Underwriting Authority</label>
+          <select id="login-officer-clearance" class="w-full px-3 py-2 text-xs rounded-lg bg-surface-container-low border border-outline-variant/30 focus:border-secondary focus:ring-1 focus:ring-secondary text-on-surface font-medium outline-none transition-all cursor-pointer">
+            <option value="Tier-1 Senior ($1.5M)" selected>Tier-1 Senior ($1.5M Cap)</option>
+            <option value="Tier-2 Lead ($3.0M)">Tier-2 Lead ($3.0M Cap)</option>
+            <option value="Managing Director ($10.0M)">MD Committee ($10.0M Cap)</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-xs font-semibold text-on-surface mb-1">Branch Facility / Node</label>
+        <select id="login-officer-branch" class="w-full px-3 py-2 text-xs rounded-lg bg-surface-container-low border border-outline-variant/30 focus:border-secondary focus:ring-1 focus:ring-secondary text-on-surface font-medium outline-none transition-all cursor-pointer">
+          <option value="Apex Group #042 (NYC)" selected>Apex Group #042 (NYC Financial Center)</option>
+          <option value="Apex Group #018 (London)">Apex Group #018 (London City Hub)</option>
+          <option value="Apex Group #088 (Mumbai)">Apex Group #088 (Mumbai BKC Terminal)</option>
+        </select>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="pt-2 flex flex-col gap-2">
+        <button type="submit" class="w-full py-2.5 px-4 rounded-xl bg-primary text-on-primary text-xs font-bold hover:bg-primary-container transition-all flex items-center justify-center gap-2 shadow-sm cursor-pointer">
+          <span class="material-symbols-outlined text-base">lock_open</span>
+          <span>Authenticate &amp; Open Audit Session</span>
+        </button>
+
+        <button onclick="handleQuickDemoLogin(event)" type="button" class="w-full py-2.5 px-4 rounded-xl bg-secondary/10 hover:bg-secondary/20 text-secondary text-xs font-bold transition-all flex items-center justify-center gap-2 border border-secondary/20 cursor-pointer">
+          <span class="material-symbols-outlined text-base">bolt</span>
+          <span>Instant Demo Officer Access (1-Click)</span>
+        </button>
+
+        <button onclick="closeOfficerLoginModal()" type="button" class="w-full py-1.5 text-xs text-outline hover:text-on-surface font-medium transition-colors cursor-pointer">
+          Cancel &amp; Continue as Current Officer
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
 
 <script>
 // Tab Switching Controller
@@ -2948,10 +3147,158 @@ function filterAuditTable(query) {
   });
 }
 
+// Institutional Officer State Management
+const DEFAULT_OFFICER = {
+  name: 'Jay Patel',
+  id: 'UW-8492',
+  email: 'j.patel@apexrisk.institutional',
+  clearance: 'Tier-1 Senior ($1.5M)',
+  branch: 'Apex Group #042 (NYC)',
+  avatar: 'https://lh3.googleusercontent.com/aida/AEtjO1VyS_oasWvIJkDjhdzJ653Md75M1JgLqsI6Db8FtCXNbcPAjvks47h5NHu_T_YQ4LQl-JShoqiuDcrh7SLblbTDxkpgVD2jyRTMcb6lQ8ZqmF66QDqySZHYYFEpX1jtB3mHdfODZIOvhczJJ_TBKx2jI4MZ8BYickyyaovQ-gfiKCpzmspt7El43-gOASbfpiGANnD4-RQI73xT4dZrlKjD1M7NzTeVVSG4JloEflwYtU98SGk-7x5ooqM'
+};
+
+function getOfficerSession() {
+  try {
+    const saved = localStorage.getItem('smartcredit_officer');
+    if (saved) return JSON.parse(saved);
+  } catch (e) {
+    console.warn("Could not read officer session:", e);
+  }
+  return DEFAULT_OFFICER;
+}
+
+function updateOfficerUI() {
+  const officer = getOfficerSession();
+  
+  // HUD Button in Top Header
+  const hudName = document.getElementById('hud-officer-name');
+  if (hudName) hudName.innerText = officer.name;
+  const hudBadge = document.getElementById('hud-officer-badge');
+  if (hudBadge) hudBadge.innerText = `${officer.id} • ${officer.clearance.split(' ')[0] || 'Tier 1'}`;
+
+  // Popover Dropdown
+  const popName = document.getElementById('popover-officer-name');
+  if (popName) popName.innerText = `Senior Underwriter ${officer.name}`;
+
+  // Left Sidebar Dock
+  const sideName = document.getElementById('sidebar-officer-name');
+  if (sideName) sideName.innerText = officer.name;
+  const sideTitle = document.getElementById('sidebar-officer-title');
+  if (sideTitle) sideTitle.innerText = `Senior Underwriter • ${officer.id}`;
+  const sideStatus = document.getElementById('sidebar-session-status');
+  if (sideStatus) sideStatus.innerText = `Session Active | ${officer.clearance.split(' ')[0] || 'Tier-1'} Auth`;
+}
+
+// Toggle Profile Dropdown
+function toggleProfileDropdown() {
+  const dropdown = document.getElementById('officer-profile-dropdown');
+  if (dropdown) {
+    dropdown.classList.toggle('hidden');
+  }
+}
+
+// Open Officer Login Modal
+function openOfficerLoginModal() {
+  const dropdown = document.getElementById('officer-profile-dropdown');
+  if (dropdown) dropdown.classList.add('hidden');
+  
+  const officer = getOfficerSession();
+  const nameInp = document.getElementById('login-officer-name');
+  if (nameInp) nameInp.value = officer.name;
+  const idInp = document.getElementById('login-officer-id');
+  if (idInp) idInp.value = officer.id;
+  const emailInp = document.getElementById('login-work-email');
+  if (emailInp) emailInp.value = officer.email;
+  const clearanceInp = document.getElementById('login-officer-clearance');
+  if (clearanceInp) clearanceInp.value = officer.clearance;
+  const branchInp = document.getElementById('login-officer-branch');
+  if (branchInp) branchInp.value = officer.branch;
+
+  const modal = document.getElementById('modal-officer-login');
+  if (modal) modal.classList.remove('hidden');
+}
+
+// Close Officer Login Modal
+function closeOfficerLoginModal() {
+  const modal = document.getElementById('modal-officer-login');
+  if (modal) modal.classList.add('hidden');
+}
+
+// Handle Form Submission
+function handleOfficerLogin(event) {
+  if (event) event.preventDefault();
+  const name = document.getElementById('login-officer-name')?.value || 'Jay Patel';
+  const id = document.getElementById('login-officer-id')?.value || 'UW-8492';
+  const email = document.getElementById('login-work-email')?.value || 'j.patel@apexrisk.institutional';
+  const clearance = document.getElementById('login-officer-clearance')?.value || 'Tier-1 Senior ($1.5M)';
+  const branch = document.getElementById('login-officer-branch')?.value || 'Apex Group #042 (NYC)';
+
+  const officer = {
+    ...getOfficerSession(),
+    name,
+    id,
+    email,
+    clearance,
+    branch
+  };
+
+  try {
+    localStorage.setItem('smartcredit_officer', JSON.stringify(officer));
+  } catch (e) {
+    console.warn("Could not save officer session:", e);
+  }
+
+  updateOfficerUI();
+  closeOfficerLoginModal();
+
+  // Trigger Toast Notification
+  const toast = document.getElementById('toast-disbursal');
+  if (toast) {
+    const title = toast.querySelector('.font-bold');
+    const desc = toast.querySelector('.text-outline');
+    if (title) title.innerText = `Officer Session Verified: ${officer.id}`;
+    if (desc) desc.innerText = `Authenticated under ${officer.branch} with ${officer.clearance}. Cryptographic session token initialized.`;
+    triggerDisbursalToast();
+  }
+}
+
+// Handle Instant Demo Officer 1-Click
+function handleQuickDemoLogin(event) {
+  if (event) event.preventDefault();
+  try {
+    localStorage.setItem('smartcredit_officer', JSON.stringify(DEFAULT_OFFICER));
+  } catch (e) {
+    console.warn("Could not save officer session:", e);
+  }
+  updateOfficerUI();
+  closeOfficerLoginModal();
+
+  const toast = document.getElementById('toast-disbursal');
+  if (toast) {
+    const title = toast.querySelector('.font-bold');
+    const desc = toast.querySelector('.text-outline');
+    if (title) title.innerText = `Demo Officer Session Active`;
+    if (desc) desc.innerText = `Senior Underwriter Jay Patel (${DEFAULT_OFFICER.id}) loaded with Tier-1 clearance.`;
+    triggerDisbursalToast();
+  }
+}
+
+// Close Dropdowns on Click Outside
+document.addEventListener('click', (e) => {
+  const dropdown = document.getElementById('officer-profile-dropdown');
+  const btn = document.getElementById('officer-profile-btn');
+  if (dropdown && !dropdown.classList.contains('hidden')) {
+    if (!dropdown.contains(e.target) && !btn.contains(e.target)) {
+      dropdown.classList.add('hidden');
+    }
+  }
+});
+
 // Wire Event Listeners
 document.addEventListener('DOMContentLoaded', () => {
   const btn = document.getElementById('btn-run-underwriting');
   if (btn) btn.addEventListener('click', runUnderwriting);
+  updateOfficerUI();
 });
 </script>
 
