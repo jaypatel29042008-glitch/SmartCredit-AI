@@ -449,9 +449,13 @@ def export_audit_csv():
         headers={"Content-Disposition": "attachment; filename=smartcredit_audit_ledger.csv"}
     )
 
+@app.get("/SmartCredit_Loan_Approval_Project_Report.docx", tags=["Examiner Deliverables"])
+def download_examiner_report_static():
+    return download_examiner_report()
+
 @app.get("/login", response_class=HTMLResponse, tags=["Web Interface"])
 def serve_login_page():
-    login_path = os.path.join("templates", "login.html")
+    login_path = "login.html" if os.path.exists("login.html") else os.path.join("templates", "login.html")
     if os.path.exists(login_path):
         with open(login_path, "r", encoding="utf-8") as f:
             return HTMLResponse(content=f.read(), status_code=200)
@@ -464,7 +468,7 @@ def logout_user():
 
 @app.get("/", response_class=HTMLResponse, tags=["Web Interface"])
 def serve_dashboard():
-    index_path = os.path.join("templates", "index.html")
+    index_path = "index.html" if os.path.exists("index.html") else os.path.join("templates", "index.html")
     if os.path.exists(index_path):
         with open(index_path, "r", encoding="utf-8") as f:
             return HTMLResponse(content=f.read(), status_code=200)

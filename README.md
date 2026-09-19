@@ -4,8 +4,9 @@
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.115%2B-009688.svg)](https://fastapi.tiangolo.com/)
 [![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-1.3%2B-F7931E.svg)](https://scikit-learn.org/)
 [![TailwindCSS](https://img.shields.io/badge/TailwindCSS-v3.4-38B2AC.svg)](https://tailwindcss.com/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Live Demo](https://img.shields.io/badge/Live%20Platform-GitHub%20Pages-2ea44f?style=for-the-badge&logo=githubpages&logoColor=white)](https://jaypatel29042008-glitch.github.io/SmartCredit-AI/)
 
+> **🌐 Live Interactive Platform:** [https://jaypatel29042008-glitch.github.io/SmartCredit-AI/](https://jaypatel29042008-glitch.github.io/SmartCredit-AI/)  
 > **Capstone Project for IBM SkillsBuild x AICTE x BharatCares Internship**  
 > **Domain Area:** Financial Analytics & Automated Credit Underwriting  
 > **Dataset Benchmark:** [Kaggle Loan Prediction Problem Dataset](https://www.kaggle.com/datasets/altruistdelhire04/loan-prediction-problem-dataset)
