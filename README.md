@@ -110,34 +110,34 @@ The platform exposes high-performance REST endpoints documented via interactive 
 * Git
 
 ### 1. Clone the Repository
-`ash
-git clone https://github.com/jaypatel/smartcredit-ai.git
-cd dazzling-babbage
-`
+```bash
+git clone https://github.com/jaypatel29042008-glitch/SmartCredit-AI.git
+cd SmartCredit-AI
+```
 
 ### 2. Install Dependencies
-`ash
+```bash
 pip install -r requirements.txt
-`
+```
 
 ### 3. Launch the Platform (Single-Command Execution)
-`ash
+```bash
 python app.py
-`
+```
 * Interactive Web Platform: http://localhost:8000
 * Interactive API Documentation: http://localhost:8000/docs
 
 ### 4. Re-Compile Formal Project Report (.docx)
-`ash
+```bash
 python generate_report.py
-`
+```
 Compiles SmartCredit_Loan_Approval_Project_Report.docx with all 4 embedded UI screenshots.
 
 ---
 
 ## Repository Structure
 
-`
+```text
 ├── app.py                                         # Single unified runner (ML Pipeline, FastAPI REST API, Static Server)
 ├── templates/
 │   └── index.html                                 # Google Stitch 4-Screen White-Theme SPA
@@ -151,7 +151,7 @@ Compiles SmartCredit_Loan_Approval_Project_Report.docx with all 4 embedded UI sc
 ├── screenshot_view3.png                           # UI Screenshot: Real-Time Underwriting & Decision HUD
 ├── screenshot_view4.png                           # UI Screenshot: Institutional Model Governance
 └── .gitignore                                     # Clean repository filter
-`
+```
 
 ---
 
